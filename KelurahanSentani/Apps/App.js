@@ -4,11 +4,15 @@
         .when("/", {
             templateUrl:"main.htm",
         })
-        .when("/rw", {
-            templateUrl: "rw.htm",
+        .when("/staff", {
+            templateUrl: "../Apps/Views/staff.html",
         })
-        .when("/view", {
-            templateUrl: "../Apps/Views/view.html",
+        .when("/rw", {
+            templateUrl: "../Apps/Views/rw.html",
+        })
+        .when("/rt", {
+            templateUrl: "../Apps/Views/rt.html",
+        })
     ;
 })
 
