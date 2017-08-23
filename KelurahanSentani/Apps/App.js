@@ -13,6 +13,21 @@
         .when("/rt", {
             templateUrl: "../Apps/Views/rt.html",
         })
+        .when("/kependudukan", {
+            templateUrl: "../Apps/Views/kependudukan.html",
+        })
+        .when("/pmasuk", {
+            templateUrl: "../Apps/Views/pmasuk.html",
+        })
+        .when("/pkeluar", {
+            templateUrl: "../Apps/Views/pkeluar.html",
+        })
+        .when("/kelahiran", {
+            templateUrl: "../Apps/Views/kelahiran.html",
+        })
+        .when("/kematian", {
+            templateUrl: "../Apps/Views/kematian.html",
+        })
     ;
 })
 
