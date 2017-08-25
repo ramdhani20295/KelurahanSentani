@@ -4,6 +4,9 @@
         .when("/", {
             templateUrl:"main.htm",
         })
+        .when("/pejabat", {
+            templateUrl: "../Apps/Views/pejabat.html",
+        })
         .when("/staff", {
             templateUrl: "../Apps/Views/staff.html",
         })

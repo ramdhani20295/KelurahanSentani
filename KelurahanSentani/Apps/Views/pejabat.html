@@ -11,7 +11,7 @@
             <div class="col-md-12">
 
                 <button type="button" class="btn btn-primary" href="#modal-container-708778" role="button" data-toggle="modal">
-                    Add RW
+                    Add Pejabat
                 </button>
             </div>
         </div>
@@ -27,13 +27,22 @@
                         <thead>
                             <tr>
                                 <th>
-                                    #
+                                    
                                 </th>
                                 <th>
-                                    Product
+                                    Nama
                                 </th>
                                 <th>
-                                    Payment Taken
+                                    Alamat
+                                </th>
+                                <th>
+                                    Level
+                                </th>
+                                <th>
+                                    Instansi
+                                </th>
+                                <th>
+                                    Jabatan
                                 </th>
                                 <th>
                                     Status
@@ -67,48 +76,6 @@
                                 </td>
                                 <td>
                                     Approved
-                                </td>
-                            </tr>
-                            <tr class="success">
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    02/04/2012
-                                </td>
-                                <td>
-                                    Declined
-                                </td>
-                            </tr>
-                            <tr class="warning">
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    03/04/2012
-                                </td>
-                                <td>
-                                    Pending
-                                </td>
-                            </tr>
-                            <tr class="danger">
-                                <td>
-                                    4
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    04/04/2012
-                                </td>
-                                <td>
-                                    Call in to confirm
                                 </td>
                             </tr>
                         </tbody>
@@ -147,25 +114,47 @@
                                                     <label>
                                                         Nama
                                                     </label>
-                                                    <input type="text" class="form-control" ng-model="model.Nama"/>
+                                                    <input type="text" class="form-control"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputUsname1">
-                                                        Username
+                                                    <label>
+                                                        Alamat
                                                     </label>
-                                                    <input type="text" class="form-control" id="exampleInputUsame1" />
+                                                    <input type="text" class="form-control"/>
                                                 </div>
                                                 <div class="form-group">
-
-                                                    <label for="exampleInputPassword1">
-                                                        Password
+                                                    <label>
+                                                        Level
                                                     </label>
-                                                    <input type="password" class="form-control" id="exampleInputPassword1" />
+                                                    <select class="form-control">
+                                                        <option>Kelurahan</option>
+                                                        <option>RW</option>
+                                                        <option>RT</option>
+                                                    </select>
                                                 </div>
-
-                                                <button type="submit" class="btn btn-default">
-                                                    Submit
-                                                </button>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Instansi
+                                                    </label>
+                                                    <input type="text" class="form-control"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Jabatan
+                                                    </label>
+                                                    <div class="form-control">
+                                                        <label class="radio-inline"><input type="radio" name="optradio">Ketua</label>
+                                                        <label class="radio-inline"><input type="radio" name="optradio">Sekretaris</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Status
+                                                    </label>
+                                                    <div class="form-control">
+                                                        <label class="radio-inline"><input type="radio" name="optradio">True</label>
+                                                        <label class="radio-inline"><input type="radio" name="optradio">False</label>
+                                                    </div>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
