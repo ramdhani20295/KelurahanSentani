@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 </head>
 <body>
 
@@ -27,16 +27,19 @@
                         <thead>
                             <tr>
                                 <th>
-                                    #
+                                    No
                                 </th>
                                 <th>
-                                    Product
+                                    No RW
                                 </th>
                                 <th>
-                                    Payment Taken
+                                    No RT
                                 </th>
                                 <th>
-                                    Status
+                                    Ketua RT
+                                </th>
+                                <th>
+                                    Sekretaris RT
                                 </th>
                             </tr>
                         </thead>
@@ -54,10 +57,13 @@
                                 <td>
                                     Default
                                 </td>
+                                <td>
+                                    Default
+                                </td>
                             </tr>
                             <tr class="active">
                                 <td>
-                                    1
+                                    2
                                 </td>
                                 <td>
                                     TB - Monthly
@@ -66,49 +72,10 @@
                                     01/04/2012
                                 </td>
                                 <td>
-                                    Approved
-                                </td>
-                            </tr>
-                            <tr class="success">
-                                <td>
-                                    2
+                                    Default
                                 </td>
                                 <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    02/04/2012
-                                </td>
-                                <td>
-                                    Declined
-                                </td>
-                            </tr>
-                            <tr class="warning">
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    03/04/2012
-                                </td>
-                                <td>
-                                    Pending
-                                </td>
-                            </tr>
-                            <tr class="danger">
-                                <td>
-                                    4
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    04/04/2012
-                                </td>
-                                <td>
-                                    Call in to confirm
+                                    Default
                                 </td>
                             </tr>
                         </tbody>
@@ -124,7 +91,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                
+
 
                 <div class="modal fade" id="modal-container-708778" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -145,27 +112,32 @@
                                             <form role="form">
                                                 <div class="form-group">
                                                     <label>
-                                                        Nama
+                                                        No RW
                                                     </label>
-                                                    <input type="text" class="form-control" ng-model="model.Nama"  />
+                                                    <select class="form-control">
+                                                        <option>01</option>
+                                                        <option>02</option>
+                                                        <option>03</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputUsname1">
-                                                        Username
+                                                    <label>
+                                                        No RT
                                                     </label>
-                                                    <input type="text" class="form-control" ng-model="model.Keterangan"  />
+                                                    <input type="text" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
-
-                                                    <label for="exampleInputPassword1">
-                                                        Password
+                                                    <label>
+                                                        Ketua RT
                                                     </label>
-                                                    <input type="password" class="form-control" id="exampleInputPassword1" />
+                                                    <input type="text" class="form-control" />
                                                 </div>
-
-                                                <button type="submit" class="btn btn-default">
-                                                    Submit
-                                                </button>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Sekretaris RT
+                                                    </label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
