@@ -22,8 +22,15 @@ namespace KelurahanSentani
             this.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         }
 
-        public IRepository<person> Penduduk { get { return new Repository<person>(this); } }
-      
+        public IRepository<penduduk> Penduduk { get { return new Repository<penduduk>(this); } }
+        public IRepository<kartukeluarga> KartuKeluarga { get { return new Repository<kartukeluarga>(this); } }
+        public IRepository<kkdetail> KKDetail { get { return new Repository<kkdetail>(this); } }
+        public IRepository<rw> RW { get { return new Repository<rw>(this); } }
+        public IRepository<rt> RT { get { return new Repository<rt>(this); } }
+        public IRepository<pejabat> Pejabat { get { return new Repository<pejabat>(this); } }
+
+
+
         public IDbConnection Connection
         {
             get
@@ -39,6 +46,8 @@ namespace KelurahanSentani
                 }
             }
         }
+
+      
 
         public void Dispose()
         {

@@ -4,57 +4,63 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
-using DAL.Extentions;
 
 namespace KelurahanSentani.Apis
 {
-    public class PendudukController : ApiController
+    public class PejabatController : ApiController
     {
-      
+        // GET: api/Pejabat
         // GET: api/Penduduk
+
+            [Authorize(Roles ="Administrator")]
         public HttpResponseMessage Get()
         {
             using (var db = new OcphDbContext())
             {
-                var result = db.Penduduk.Select();
-                foreach(var item in result)
+                var result = db.Pejabat.Select();
+                foreach (var item in result)
                 {
-                    var kkdetail = db.KKDetail.Where(O => O.PendudukId == item.Id).FirstOrDefault();
-                    if(kkdetail!=null)
-                        item.KartuKeluarga = db.KartuKeluarga.Where(O => O.Id == kkdetail.KartuKeluargaId).FirstOrDefault();
+                    if(item.Level== LevelStruktur.RW)
+                    {
+                        item.Instansi = db.RW.Where(O => O.Id == item.InstansiID).FirstOrDefault();
+                    }else if(item.Level== LevelStruktur.RT)
+                    {
+                        item.Instansi = db.RT.Where(O => O.Id == item.InstansiID).FirstOrDefault();
+                    }
                 }
                 return Request.CreateResponse(HttpStatusCode.OK, result.ToList());
             }
         }
 
         // GET: api/Penduduk/5
-        public HttpResponseMessage Get(string NIK)
+        public HttpResponseMessage Get(int id)
         {
             using (var db = new OcphDbContext())
             {
-                var result = db.Penduduk.Where(O=>O.NIK==NIK).FirstOrDefault();
-               if(result!=null)
+                var item = db.Pejabat.Where(O => O.Id==id).FirstOrDefault();
+                if (item!=null &&item.Level == LevelStruktur.RW)
                 {
-                    var kkdetail = db.KKDetail.Where(O => O.PendudukId == result.Id).FirstOrDefault();
-                    if (kkdetail != null)
-                        result.KartuKeluarga = db.KartuKeluarga.Where(O => O.Id == kkdetail.KartuKeluargaId).FirstOrDefault();
+                    item.Instansi = db.RW.Where(O => O.Id == item.InstansiID).FirstOrDefault();
                 }
-                return Request.CreateResponse(HttpStatusCode.OK, result);
+                else if (item != null &&item.Level == LevelStruktur.RT)
+                {
+                    item.Instansi = db.RT.Where(O => O.Id == item.InstansiID).FirstOrDefault();
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, item);
             }
         }
 
         // POST: api/Penduduk
         [HttpPost]
-        public  HttpResponseMessage Post(penduduk value)
+        public HttpResponseMessage Post(penduduk value)
         {
-            using(var db = new OcphDbContext())
+            using (var db = new OcphDbContext())
             {
                 try
                 {
                     var result = db.Penduduk.InsertAndGetLastID(value);
-                    return Request.CreateResponse(HttpStatusCode.OK,result);
+                    return Request.CreateResponse(HttpStatusCode.OK, result);
                 }
                 catch (Exception ex)
                 {
@@ -64,24 +70,24 @@ namespace KelurahanSentani.Apis
         }
 
         // PUT: api/Penduduk/5
-        public HttpResponseMessage Put(int id , penduduk value)
+        public HttpResponseMessage Put(int id, pejabat value)
         {
             using (var db = new OcphDbContext())
             {
-             
+
                 try
                 {
                     if (value != null && value.Id == id)
                     {
-                        var result = db.Penduduk.Update(O => new { O.Agama, O.JK, O.Nama, O.NIK, O.Pekerjaan, O.Pendidikan, O.TanggalLahir, O.TempatLahir }, value, O => O.Id == id);
-                        if(result ==true)
-                            return Request.CreateResponse(HttpStatusCode.OK, result);
+                        var result = db.Pejabat.Update(O => new { O.Alamat,O.InstansiID,O.Jabatan,O.Level,O.Nama,O.Status}, value, O => O.Id == id);
+                        if (result == true)
+                            return Request.CreateResponse(HttpStatusCode.OK, value);
                         else
                             throw new SystemException("Data Gagal Diubah");
                     }
                     else
                         throw new SystemException("Data Gagal Diubah");
-                  
+
                 }
                 catch (Exception ex)
                 {
@@ -99,9 +105,9 @@ namespace KelurahanSentani.Apis
 
                 try
                 {
-                    if (id>0)
+                    if (id > 0)
                     {
-                        var result = db.Penduduk.Delete(O => O.Id==id);
+                        var result = db.Pejabat.Delete(O => O.Id == id);
                         if (result == true)
                             return Request.CreateResponse(HttpStatusCode.OK, result);
                         else

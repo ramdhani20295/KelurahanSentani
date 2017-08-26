@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using KelurahanSentani.DataModels;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace KelurahanSentani.Models
@@ -62,7 +63,8 @@ namespace KelurahanSentani.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+   
+    public class RegisterViewModel:pejabat
     {
         [Required]
         [EmailAddress]

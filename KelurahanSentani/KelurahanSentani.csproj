@@ -44,8 +44,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DAL, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OcphDAL.1.0.5\lib\net45\DAL.dll</HintPath>
+    <Reference Include="AspNet.Identity.MySQL, Version=1.0.0.38741, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.Identity.MySQL.1.0.0.38741\lib\net452\AspNet.Identity.MySQL.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
@@ -80,9 +80,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MySql.AspNet.Identity, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.AspNet.Identity.2.1.1\lib\net45\MySql.AspNet.Identity.dll</HintPath>
-    </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
@@ -199,7 +196,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apis\AccountController.cs" />
+    <Compile Include="Apis\KartuKeluargaController.cs" />
+    <Compile Include="Apis\PejabatController.cs" />
     <Compile Include="Apis\PendudukController.cs" />
+    <Compile Include="Apis\StrukturKelurahanController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -209,15 +210,19 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DataModels\detail_surat.cs" />
-    <Compile Include="DataModels\kartu_keluarga.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="DataModels\jenissurat.cs" />
+    <Compile Include="DataModels\kartukeluarga.cs" />
+    <Compile Include="DataModels\kkdetail.cs" />
     <Compile Include="DataModels\pejabat.cs" />
+    <Compile Include="DataModels\penduduk.cs" />
+    <Compile Include="DataModels\pendudukdetail.cs" />
     <Compile Include="DataModels\persetujuan.cs" />
-    <Compile Include="DataModels\person.cs" />
-    <Compile Include="DataModels\person_detail.cs" />
+    <Compile Include="DataModels\roles.cs" />
     <Compile Include="DataModels\rt.cs" />
     <Compile Include="DataModels\rw.cs" />
     <Compile Include="DataModels\surat.cs" />
+    <Compile Include="EnumCollection.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -230,6 +235,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Apps\App.js" />
+    <Content Include="Apps\Controller.js" />
+    <Content Include="Apps\Service.js" />
     <Content Include="Apps\Views\RT.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -1035,7 +1042,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1070,6 +1079,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1081,6 +1091,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\OcphDAL\IQuerableImplement\DAL.csproj">
+      <Project>{b80cefb7-fb32-4c32-9fbf-1f0ad7dd2863}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

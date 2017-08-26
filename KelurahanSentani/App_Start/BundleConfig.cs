@@ -25,7 +25,7 @@ namespace KelurahanSentani
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                      "~/Scripts/angular.js",
-                    "~/Scripts/angular-route.js","~/Apps/App.js"));
+                    "~/Scripts/angular-route.js","~/Apps/App.js","~/Apps/Service.js", "~/Apps/Controller.js"));
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

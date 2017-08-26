@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;using DAL;
- 
- namespace KelurahanSentani.DataModels 
+using System.Threading.Tasks;
+using DAL;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace KelurahanSentani.DataModels 
 { 
-     [TableName("person")] 
-     public class person:BaseNotifyProperty  
+     [TableName("penduduk")] 
+     public class penduduk:BaseNotifyProperty  
    {
           [PrimaryKey("Id")] 
           [DbColumn("Id")] 
@@ -60,8 +63,9 @@ using System.Threading.Tasks;using DAL;
                      }
           } 
 
-          [DbColumn("Agama")] 
-          public string Agama 
+          [DbColumn("Agama")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Kepercayaan Agama 
           { 
                get{return _agama;} 
                set{ 
@@ -70,8 +74,9 @@ using System.Threading.Tasks;using DAL;
                      }
           } 
 
-          [DbColumn("JK")] 
-          public string JK 
+          [DbColumn("JK")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Kelamin JK 
           { 
                get{return _jk;} 
                set{ 
@@ -90,36 +95,28 @@ using System.Threading.Tasks;using DAL;
                      }
           } 
 
-          [DbColumn("Pendidikan")] 
-          public string Pendidikan 
+          [DbColumn("Pendidikan")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Pendidikan Pendidikan 
           { 
                get{return _pendidikan;} 
                set{ 
                       _pendidikan=value; 
                      OnPropertyChange("Pendidikan");
                      }
-          } 
+          }
 
-          [DbColumn("KKId")] 
-          public int KKId 
-          { 
-               get{return _kkid;} 
-               set{ 
-                      _kkid=value; 
-                     OnPropertyChange("KKId");
-                     }
-          } 
+        public kartukeluarga KartuKeluarga { get; internal set; }
 
-          private int  _id;
+        private int  _id;
            private string  _nik;
            private string  _nama;
            private string  _tempatlahir;
            private DateTime  _tanggallahir;
-           private string  _agama;
-           private string  _jk;
+           private Kepercayaan  _agama;
+           private Kelamin  _jk;
            private string  _pekerjaan;
-           private string  _pendidikan;
-           private int  _kkid;
+           private Pendidikan  _pendidikan;
       }
 }
 

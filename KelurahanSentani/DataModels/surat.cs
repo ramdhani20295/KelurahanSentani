@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;using DAL;
+using System.Threading.Tasks;
+using DAL;
  
  namespace KelurahanSentani.DataModels 
 { 
@@ -20,40 +21,62 @@ using System.Threading.Tasks;using DAL;
                      }
           } 
 
-          [DbColumn("KodeSurat")] 
-          public string KodeSurat 
+          [DbColumn("JenisSuratID")] 
+          public int JenisSuratID 
           { 
-               get{return _kodesurat;} 
+               get{return _jenissuratid;} 
                set{ 
-                      _kodesurat=value; 
-                     OnPropertyChange("KodeSurat");
+                      _jenissuratid=value; 
+                     OnPropertyChange("JenisSuratID");
                      }
           } 
 
-          [DbColumn("JenisSurat")] 
-          public string JenisSurat 
+          [DbColumn("NoSurat")] 
+          public string NoSurat 
           { 
-               get{return _jenissurat;} 
+               get{return _nosurat;} 
                set{ 
-                      _jenissurat=value; 
-                     OnPropertyChange("JenisSurat");
+                      _nosurat=value; 
+                     OnPropertyChange("NoSurat");
                      }
           } 
 
-          [DbColumn("FormatSurat")] 
-          public string FormatSurat 
+          [DbColumn("TanggalBuat")] 
+          public DateTime TanggalBuat 
           { 
-               get{return _formatsurat;} 
+               get{return _tanggalbuat;} 
                set{ 
-                      _formatsurat=value; 
-                     OnPropertyChange("FormatSurat");
+                      _tanggalbuat=value; 
+                     OnPropertyChange("TanggalBuat");
+                     }
+          } 
+
+          [DbColumn("PersonID")] 
+          public int PersonID 
+          { 
+               get{return _personid;} 
+               set{ 
+                      _personid=value; 
+                     OnPropertyChange("PersonID");
+                     }
+          } 
+
+          [DbColumn("BerlakuHingga")] 
+          public DateTime BerlakuHingga 
+          { 
+               get{return _berlakuhingga;} 
+               set{ 
+                      _berlakuhingga=value; 
+                     OnPropertyChange("BerlakuHingga");
                      }
           } 
 
           private int  _id;
-           private string  _kodesurat;
-           private string  _jenissurat;
-           private string  _formatsurat;
+           private int  _jenissuratid;
+           private string  _nosurat;
+           private DateTime  _tanggalbuat;
+           private int  _personid;
+           private DateTime  _berlakuhingga;
       }
 }
 

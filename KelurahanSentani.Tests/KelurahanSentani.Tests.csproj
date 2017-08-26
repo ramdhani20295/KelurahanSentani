@@ -88,7 +88,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apis\AccountControllerTests.cs" />
+    <Compile Include="Apis\KartuKeluargaControllerTests.cs" />
     <Compile Include="Apis\PendudukControllerTests.cs" />
+    <Compile Include="Apis\StrukturKelurahanControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

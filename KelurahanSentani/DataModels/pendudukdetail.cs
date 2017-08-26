@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;using DAL;
+using System.Threading.Tasks;
+using DAL;
  
  namespace KelurahanSentani.DataModels 
 { 
-     [TableName("person_detail")] 
-     public class person_detail:BaseNotifyProperty  
+     [TableName("pendudukdetail")] 
+     public class pendudukdetail:BaseNotifyProperty  
    {
           [PrimaryKey("Id")] 
           [DbColumn("Id")] 
@@ -17,16 +18,6 @@ using System.Threading.Tasks;using DAL;
                set{ 
                       _id=value; 
                      OnPropertyChange("Id");
-                     }
-          } 
-
-          [DbColumn("IdPerson")] 
-          public int IdPerson 
-          { 
-               get{return _idperson;} 
-               set{ 
-                      _idperson=value; 
-                     OnPropertyChange("IdPerson");
                      }
           } 
 
@@ -91,7 +82,6 @@ using System.Threading.Tasks;using DAL;
           } 
 
           private int  _id;
-           private int  _idperson;
            private string  _statusperkawinan;
            private string  _hubungandalamkeluarga;
            private string  _kewarganegaraan;
