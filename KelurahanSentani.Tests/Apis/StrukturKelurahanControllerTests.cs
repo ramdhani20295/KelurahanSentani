@@ -5,56 +5,67 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KelurahanSentani.DataModels;
 using System.Net.Http;
 using System.Web.Http;
-using System.Net.Http.Headers;
 using System.Net;
-using Newtonsoft.Json;
-using System.Threading;
+using KelurahanSentani.DataModels;
 
 namespace KelurahanSentani.Apis.Tests
 {
     [TestClass()]
-    public class PendudukControllerTests
+    public class StrukturKelurahanControllerTests
     {
-        PendudukController controller = new PendudukController();
+        StrukturKelurahanController controller = new StrukturKelurahanController();
         [TestMethod()]
-        public async Task GetTest()
+        public void GetRWTest()
         {
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
-            var result = controller.Get();
+            var result = controller.GetRW();
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 
         [TestMethod()]
-        public void GetTestById()
+        public void GetRwByRwIdTest()
         {
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
-            var result = controller.Get("12121");
+            var result = controller.GetRw(1);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
+        }
+
+        [TestMethod()]
+        public void PostRWTest()
+        {
+            controller.Request = new HttpRequestMessage();
+            controller.Configuration = new HttpConfiguration();
+            List<rt> listrt = new List<rt>();
+            listrt.Add(new rt { NoRT = "1" , PejabatId=3});
+          
+
+            var result = controller.PostRW(new DataModels.rw { NoRW="1", Id=0,DaftarRT=listrt, PejabatId=4  });
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 
 
         [TestMethod()]
-        public async Task PostTest()
+        public void PostRTWhenRWthereTest()
         {
-            var value = new penduduk { Agama = Kepercayaan.Islam, JK = Kelamin.Pria, Nama = "Chandra", NIK = "12121", Pekerjaan = "TNI", Pendidikan = Pendidikan.SMA, TanggalLahir = DateTime.Now, TempatLahir = "Palopo" };
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
-            var result = controller.Post(value);
+            List<rt> listrt = new List<rt>();
+            listrt.Add(new rt { NoRT = "1", PejabatId = 5 , RWId=4});
+            var result = controller.PostRW(new DataModels.rw { NoRW = "1", Id =4, DaftarRT = listrt, PejabatId = 4  });
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
+
 
         [TestMethod()]
         public void PutTest()
         {
-            var value = new penduduk { Id=15, Agama = Kepercayaan.Khatolik, JK = Kelamin.Pria, Nama = "Chandra", NIK = "12121", Pekerjaan = "TNI", Pendidikan = Pendidikan.SMA, TanggalLahir = DateTime.Now, TempatLahir = "Palopo" };
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
-            var result = controller.Put(15, value);
+            var result = controller.Put(1, new DataModels.rw { Id=1, NoRW = "1", PejabatId = 1 });
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 
@@ -63,7 +74,7 @@ namespace KelurahanSentani.Apis.Tests
         {
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
-            var result = controller.Delete(15);
+            var result = controller.Delete(1);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
     }

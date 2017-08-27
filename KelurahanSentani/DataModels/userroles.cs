@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;using DAL;
+using System.Threading.Tasks;
+using DAL;
  
  namespace KelurahanSentani.DataModels 
 { 
-     [TableName("aspnetuserroles")] 
-     public class aspnetuserroles:BaseNotifyProperty  
+     [TableName("userroles")] 
+     public class userroles:BaseNotifyProperty  
    {
           [PrimaryKey("UserId")] 
           [DbColumn("UserId")] 

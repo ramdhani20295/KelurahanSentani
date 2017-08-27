@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KelurahanSentani", "KelurahanSentani\KelurahanSentani.csproj", "{C762FDA6-156A-45B1-9B09-A0D2E56B798F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KelurahanSentani.Tests", "KelurahanSentani.Tests\KelurahanSentani.Tests.csproj", "{80E40C83-04CD-442D-B81B-F39458D29EC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\OcphDAL\IQuerableImplement\DAL.csproj", "{B80CEFB7-FB32-4C32-9FBF-1F0AD7DD2863}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{80E40C83-04CD-442D-B81B-F39458D29EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80E40C83-04CD-442D-B81B-F39458D29EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80E40C83-04CD-442D-B81B-F39458D29EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B80CEFB7-FB32-4C32-9FBF-1F0AD7DD2863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B80CEFB7-FB32-4C32-9FBF-1F0AD7DD2863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B80CEFB7-FB32-4C32-9FBF-1F0AD7DD2863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B80CEFB7-FB32-4C32-9FBF-1F0AD7DD2863}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

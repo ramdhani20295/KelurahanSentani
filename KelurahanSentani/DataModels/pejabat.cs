@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;using DAL;
- 
- namespace KelurahanSentani.DataModels 
+using System.Threading.Tasks;
+using DAL;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
+
+namespace KelurahanSentani.DataModels 
 { 
      [TableName("pejabat")] 
      public class pejabat:BaseNotifyProperty  
@@ -40,8 +43,9 @@ using System.Threading.Tasks;using DAL;
                      }
           } 
 
-          [DbColumn("Level")] 
-          public string Level 
+          [DbColumn("Level")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LevelStruktur Level 
           { 
                get{return _level;} 
                set{ 
@@ -60,8 +64,9 @@ using System.Threading.Tasks;using DAL;
                      }
           } 
 
-          [DbColumn("Jabatan")] 
-          public string Jabatan 
+          [DbColumn("Jabatan")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public JenisJabatan Jabatan 
           { 
                get{return _jabatan;} 
                set{ 
@@ -71,7 +76,7 @@ using System.Threading.Tasks;using DAL;
           } 
 
           [DbColumn("Status")] 
-          public string Status 
+          public bool Status 
           { 
                get{return _status;} 
                set{ 
@@ -80,13 +85,26 @@ using System.Threading.Tasks;using DAL;
                      }
           } 
 
-          private int  _id;
+          [DbColumn("usersId")] 
+          public string usersId 
+          { 
+               get{return _usersid;} 
+               set{ 
+                      _usersid=value; 
+                     OnPropertyChange("usersId");
+                     }
+          }
+
+        public object Instansi { get; internal set; }
+
+        private int  _id;
            private string  _nama;
            private string  _alamat;
-           private string  _level;
+           private LevelStruktur  _level;
            private int  _instansiid;
-           private string  _jabatan;
-           private string  _status;
+           private JenisJabatan  _jabatan;
+           private bool  _status;
+           private string  _usersid;
       }
 }
 

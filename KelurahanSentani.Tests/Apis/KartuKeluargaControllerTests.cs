@@ -5,56 +5,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KelurahanSentani.DataModels;
 using System.Net.Http;
 using System.Web.Http;
-using System.Net.Http.Headers;
 using System.Net;
-using Newtonsoft.Json;
-using System.Threading;
 
 namespace KelurahanSentani.Apis.Tests
 {
     [TestClass()]
-    public class PendudukControllerTests
+    public class KartuKeluargaControllerTests
     {
-        PendudukController controller = new PendudukController();
+        KartuKeluargaController controller = new KartuKeluargaController();
+
         [TestMethod()]
-        public async Task GetTest()
+        public void GetTest()
         {
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
             var result = controller.Get();
+            Assert.AreEqual(0, result.Count());
+        }
+
+        [TestMethod()]
+        public void GetTestByID()
+        {
+            controller.Request = new HttpRequestMessage();
+            controller.Configuration = new HttpConfiguration();
+            var result = controller.Get("12312");
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 
         [TestMethod()]
-        public void GetTestById()
+        public void PostTest()
         {
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
-            var result = controller.Get("12121");
-            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
-        }
-
-
-        [TestMethod()]
-        public async Task PostTest()
-        {
-            var value = new penduduk { Agama = Kepercayaan.Islam, JK = Kelamin.Pria, Nama = "Chandra", NIK = "12121", Pekerjaan = "TNI", Pendidikan = Pendidikan.SMA, TanggalLahir = DateTime.Now, TempatLahir = "Palopo" };
-            controller.Request = new HttpRequestMessage();
-            controller.Configuration = new HttpConfiguration();
-            var result = controller.Post(value);
+            var result = controller.Post(new DataModels.kartukeluarga { Alamat="Jln", KodePos="1234", NoKK="123456", RTId=1 });
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 
         [TestMethod()]
         public void PutTest()
         {
-            var value = new penduduk { Id=15, Agama = Kepercayaan.Khatolik, JK = Kelamin.Pria, Nama = "Chandra", NIK = "12121", Pekerjaan = "TNI", Pendidikan = Pendidikan.SMA, TanggalLahir = DateTime.Now, TempatLahir = "Palopo" };
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
-            var result = controller.Put(15, value);
+            var result = controller.Put(1,new DataModels.kartukeluarga {Id=1, Alamat = "Jln", KodePos = "1234", NoKK = "123456", RTId = 1 });
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 
@@ -63,7 +57,7 @@ namespace KelurahanSentani.Apis.Tests
         {
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
-            var result = controller.Delete(15);
+            var result = controller.Delete(1);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
     }

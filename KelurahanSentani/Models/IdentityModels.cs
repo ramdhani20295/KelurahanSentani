@@ -1,7 +1,8 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
-using MySql.AspNet.Identity;
+using AspNet.Identity.MySQL;
+
 namespace KelurahanSentani.Models
 {
     public class ApplicationUser : IdentityUser
@@ -15,5 +16,21 @@ namespace KelurahanSentani.Models
         }
     }
 
-    
+    public class ApplicationDbContext : MySQLDatabase
+    {
+        public ApplicationDbContext()
+            : base("DefaultConnection")
+        {
+        }
+
+        public ApplicationDbContext(string connectionStringName) : base(connectionStringName)
+        {
+        }
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext("DefaultConnection");
+        }
+    }
+
 }

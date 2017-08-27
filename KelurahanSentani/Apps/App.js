@@ -1,4 +1,4 @@
-﻿angular.module('app', ['ngRoute'])
+﻿angular.module('app', ['app.service','app.controller','ngRoute'])
 .config(function ($routeProvider) {
     $routeProvider
         .when("/", {
@@ -6,12 +6,14 @@
         })
         .when("/pejabat", {
             templateUrl: "../Apps/Views/pejabat.html",
+            controller: "PejabatController"
         })
         .when("/staff", {
             templateUrl: "../Apps/Views/staff.html",
         })
         .when("/rw", {
             templateUrl: "../Apps/Views/rw.html",
+            controller:"StrukturKelurahanController"
         })
         .when("/rt", {
             templateUrl: "../Apps/Views/rt.html",

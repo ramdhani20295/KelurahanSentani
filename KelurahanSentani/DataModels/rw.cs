@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;using DAL;
+using System.Threading.Tasks;
+using DAL;
  
  namespace KelurahanSentani.DataModels 
 { 
@@ -30,30 +31,21 @@ using System.Threading.Tasks;using DAL;
                      }
           } 
 
-          [DbColumn("KetuaRW")] 
-          public int KetuaRW 
+          [PrimaryKey("PejabatId")] 
+          [DbColumn("PejabatId")] 
+          public int PejabatId 
           { 
-               get{return _ketuarw;} 
+               get{return _pejabatid;} 
                set{ 
-                      _ketuarw=value; 
-                     OnPropertyChange("KetuaRW");
+                      _pejabatid=value; 
+                     OnPropertyChange("PejabatId");
                      }
-          } 
+          }
 
-          [DbColumn("SekertarisRW")] 
-          public int SekertarisRW 
-          { 
-               get{return _sekertarisrw;} 
-               set{ 
-                      _sekertarisrw=value; 
-                     OnPropertyChange("SekertarisRW");
-                     }
-          } 
-
+       public List<rt> DaftarRT { get; set; }
           private int  _id;
            private string  _norw;
-           private int  _ketuarw;
-           private int  _sekertarisrw;
+           private int  _pejabatid;
       }
 }
 
