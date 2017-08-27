@@ -31,6 +31,9 @@
         .when("/kematian", {
             templateUrl: "../Apps/Views/kematian.html",
         })
+        .when("/kk", {
+            templateUrl: "../Apps/Views/kk.html",
+        })
     ;
 })
 
