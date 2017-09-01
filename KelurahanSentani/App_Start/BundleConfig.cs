@@ -21,7 +21,7 @@ namespace KelurahanSentani
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/js/bootstrap.js",
-                      "~/js/tether.js",
+                      "~/js/tether.min.js",
                         "~/js/jquery.cookie.js",
                               "~/js/front.js",
                           "~/js/grasp_mobile_progress_circle-1.0.0.min.js",
@@ -35,12 +35,11 @@ namespace KelurahanSentani
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                            "~/Content/bootstrap.css",
+                        "~/Content/style.default.css",
                           "~/Content/grasp_mobile_progress_circle-1.0.0.min.css",
-                               "~/Content/style.green.css",
                             "~/Content/custom.css",
-                            "~/Content/font-awesome.css"
-                              ));
+                              "~/Content/bootstrap.css",
+                              "~/CSS/font-awesome.css"));
         }
     }
 }

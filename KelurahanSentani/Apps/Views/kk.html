@@ -10,12 +10,13 @@
         <div class="row">
             <div class="col-md-12">
                 <button type="button" class="btn btn-primary" href="#modal-container-708778" role="button" data-toggle="modal">
-                    Add Kartu Keluarga
+                    Tambah KK
                 </button>
             </div>
         </div>
     </div>
 
+    <!--Tambah-->
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -28,7 +29,7 @@
                                     ×
                                 </button>
                                 <h4 class="modal-title" id="myModalLabel">
-                                    Modal title
+                                    Tambah KK
                                 </h4>
                             </div>
                             <div class="modal-body">
@@ -38,42 +39,15 @@
                                             <form role="form">
                                                 <div class="form-group">
                                                     <label>
-                                                        No Induk Kependudukan
+                                                        Nomor KK
                                                     </label>
                                                     <input type="text" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
-                                                        No Kartu Keluarga
+                                                        Kepala Keluarga
                                                     </label>
                                                     <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Nama
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Tempat Lahir
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Tanggal Lahir
-                                                    </label>
-                                                    <input type="date" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Jenis Kelamin
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>Laki-laki</option>
-                                                        <option>Perempuan</option>
-                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
@@ -103,7 +77,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
-                                                        Desa/Kelurahan
+                                                        Kelurahan/Desa
                                                     </label>
                                                     <input type="text" class="form-control" />
                                                 </div>
@@ -115,7 +89,13 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
-                                                        Kabupaten
+                                                        Kabupaten/Kota
+                                                    </label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Kode Pos
                                                     </label>
                                                     <input type="text" class="form-control" />
                                                 </div>
@@ -124,60 +104,6 @@
                                                         Provinsi
                                                     </label>
                                                     <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Agama
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Status Perkawinan
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>Kawin</option>
-                                                        <option>Belum Kawin</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Status Dalam Keluarga
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>Kepala Keluarga</option>
-                                                        <option>02</option>
-                                                        <option>03</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Pendidikan
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>SD</option>
-                                                        <option>SMP</option>
-                                                        <option>SMA</option>
-                                                        <option>S1</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Pekerjaan
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>Wiraswasta</option>
-                                                        <option>PNS</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Status Penduduk
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>Tetap</option>
-                                                        <option>Sementara</option>
-                                                    </select>
                                                 </div>
                                             </form>
                                         </div>
@@ -202,6 +128,295 @@
             </div>
         </div>
     </div>
+
+    <!--Ubah-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" id="modal-container-UbahKK" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    ×
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Ubah KK
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form role="form">
+                                                <div class="form-group">
+                                                    <label>
+                                                        Nomor KK
+                                                    </label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Kepala Keluarga
+                                                    </label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Alamat
+                                                    </label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        No RW
+                                                    </label>
+                                                    <select class="form-control">
+                                                        <option>01</option>
+                                                        <option>02</option>
+                                                        <option>03</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        No RT
+                                                    </label>
+                                                    <select class="form-control">
+                                                        <option>01</option>
+                                                        <option>02</option>
+                                                        <option>03</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Kelurahan/Desa
+                                                    </label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Kecamatan
+                                                    </label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Kabupaten/Kota
+                                                    </label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Kode Pos
+                                                    </label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Provinsi
+                                                    </label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                    Save changes
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--DetailKK-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" id="modal-container-DetailKK" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    ×
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Detail KK
+                                </h4>
+                            </div>
+                            
+                            <h2>KARTU KELUARGA</h2>
+                            No.
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Kepala Keluarga</th>
+                                        <td>:</td>
+                                        <td>Jacob</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Alamat</th>
+                                        <td>:</td>
+                                        <td colspan="2">Larry the Bird</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">RW/RT</th>
+                                        <td>:</td>
+                                        <td colspan="2">Larry the Bird</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Kelurahan/Desa</th>
+                                        <td>:</td>
+                                        <td colspan="2">Larry the Bird</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Kecamatan</th>
+                                        <td>:</td>
+                                        <td>Jayapura Utara</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Kabupaten/Kota</th>
+                                        <td>:</td>
+                                        <td>Jayapura</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Kode Pos</th>
+                                        <td>:</td>
+                                        <td>99111</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Provinsi</th>
+                                        <td>:</td>
+                                        <td>Papua</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div ng-init="Init()">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <table class="table">
+                        <thead class="thead-default">
+                            <tr>
+                                <th>
+                                    Nomor KK
+                                </th>
+                                <th>
+                                    Kepala Keluarga
+                                </th>
+                                <th>
+                                    RW
+                                </th>
+                                <th>
+                                    RT
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Default
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-cog"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" style="border:0px">
+                                            <li>
+                                                <a class="btn btn-default" href="#modal-container-UbahKK" role="button" data-toggle="modal">
+                                                    Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="btn btn-default" href="#modal-container-DetailKK" role="button" data-toggle="modal">
+                                                    Detail
+                                                </a>                                                
+                                            </li>
+                                            <li><a class="btn" href="#!/kkanggota">Anggota</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="active">
+                                <td>
+                                    2
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Default
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-cog"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" style="border:0px">
+                                            <li><a class="btn" href="#">HTML</a></li>
+                                            <li><a class="btn btn-warning" href="#">HTML</a></li>
+                                            <li><a class="btn" href="#">HTML</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 
 </body>
 </html>

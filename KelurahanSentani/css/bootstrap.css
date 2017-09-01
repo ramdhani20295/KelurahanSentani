@@ -306,7 +306,7 @@ template {
     border-collapse: collapse !important;
   }
   .table td,
-  .table th {
+  .table th { align-content:center;
     background-color: #fff !important;
   }
   .table-bordered th,
