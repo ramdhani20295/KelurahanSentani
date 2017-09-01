@@ -5,6 +5,31 @@
     <title></title>
 </head>
 <body>
+    
+    <table class="table table-sm">
+        <tbody>
+            <tr>
+                <th scope="row">Nomor KK</th>
+                <td>:</td>
+                <td>Mark</td>
+            </tr>
+            <tr>
+                <th scope="row">Kepala Keluarga</th>
+                <td>:</td>
+                <td>Jacob</td>
+            </tr>
+            <tr>
+                <th scope="row">RW</th>
+                <td>:</td>
+                <td colspan="2">Larry the Bird</td>
+            </tr>
+            <tr>
+                <th scope="row">RT</th>
+                <td>:</td>
+                <td colspan="2">Larry the Bird</td>
+            </tr>
+        </tbody>
+    </table>
 
     <div class="container-fluid">
         <div class="row">
@@ -29,7 +54,7 @@
                                     ×
                                 </button>
                                 <h4 class="modal-title" id="myModalLabel">
-                                    Modal title
+                                    Tambah Anggota
                                 </h4>
                             </div>
                             <div class="modal-body">
@@ -39,35 +64,33 @@
                                             <form role="form">
                                                 <div class="form-group">
                                                     <label>
-                                                        Nomor KK
+                                                        NIK
                                                     </label>
                                                     <input type="text" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
-                                                        Kepala Keluarga
+                                                        Nama
                                                     </label>
                                                     <input type="text" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
-                                                        No RW
+                                                        Jenis Kelamin
                                                     </label>
-                                                    <select class="form-control">
-                                                        <option>01</option>
-                                                        <option>02</option>
-                                                        <option>03</option>
-                                                    </select>
+                                                    <input type="text" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
-                                                        No RT
+                                                        Tempat Lahir
                                                     </label>
-                                                    <select class="form-control">
-                                                        <option>01</option>
-                                                        <option>02</option>
-                                                        <option>03</option>
-                                                    </select>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Tanggal Lahir
+                                                    </label>
+                                                    <input type="date" class="form-control" />
                                                 </div>
                                             </form>
                                         </div>
@@ -94,81 +117,6 @@
     </div>
 
     <!--Edit-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="modal fade" id="model-container-708779" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    ×
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">
-                                    Edit
-                                </h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <form role="form">
-                                                <div class="form-group">
-                                                    <label>
-                                                        Nomor KK
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Kepala Keluarga
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        No RW
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>01</option>
-                                                        <option>02</option>
-                                                        <option>03</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        No RT
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>01</option>
-                                                        <option>02</option>
-                                                        <option>03</option>
-                                                    </select>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                    Close
-                                </button>
-                                <button type="button" class="btn btn-primary">
-                                    Save changes
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 
     <div ng-init="Init()">
@@ -178,19 +126,22 @@
                 <div class="col-md-12">
 
                     <table class="table">
-                        <thead>
+                        <thead class="thead-default">
                             <tr>
                                 <th>
-                                    Nomor KK
+                                    NIK
                                 </th>
                                 <th>
-                                    Kepala Keluarga
+                                    Nama
                                 </th>
                                 <th>
-                                    RW
+                                    Jenis Kelamin
                                 </th>
                                 <th>
-                                    RT
+                                    Tempat / Tanggal Lahir
+                                </th>
+                                <th>
+                                    Hubungan
                                 </th>
                                 <th>
                                     Action
@@ -212,6 +163,9 @@
                                     Default
                                 </td>
                                 <td>
+                                    Default
+                                </td>
+                                <td>
                                     <div class="dropdown">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fa fa-cog"></i>
@@ -223,11 +177,10 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a class="btn btn-default" href="#">
-                                                    Detail
+                                                <a class="btn btn-danger">
+                                                    Hapus
                                                 </a>
                                             </li>
-                                            <li><a class="btn" href="#">Anggota</a></li>
                                         </ul>
                                     </div>
                                 </td>
