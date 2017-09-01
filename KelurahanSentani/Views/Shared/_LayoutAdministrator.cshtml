@@ -27,8 +27,8 @@
                 </div>
                 <div class="main-menu">
                     <ul id="side-main-menu" class="side-menu list-unstyled">
-                        <li class="active"><a href="index.html"> <i class="icon-home"></i><span>Home</span></a></li>
-                        <li> <a href="forms.html"><i class="icon-form"></i><span>Forms</span></a></li>
+                        <li> <a href="index.html"> <i class="icon-home"></i><span>Home</span></a></li>
+                        <li> <a href="#!/kk"><i class="icon-form"></i><span>Kartu Keluarga</span></a></li>
                         <li> <a href="charts.html"><i class="icon-presentation"></i><span>Charts</span></a></li>
                         <li> <a href="tables.html"> <i class="icon-grid"> </i><span>Tables                        </span></a></li>
                         <li> <a href="login.html"> <i class="icon-interface-windows"></i><span>Login page                        </span></a></li>
@@ -69,20 +69,9 @@
         </nav>
         <div>
             <!-- navbar-->
-            @RenderBody()
-            <footer class="main-footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <p>Your company &copy; 2017-2019</p>
-                        </div>
-                        <div class="col-sm-6 text-right">
-                            <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
-                            <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <div class="row body-content">
+                @RenderBody()
+            </div>
         </div>
         <!-- Javascript files-->
     </div>
