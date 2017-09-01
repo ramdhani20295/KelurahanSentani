@@ -11,14 +11,6 @@
     <link rel="stylesheet" href="https://file.myfontastic.com/da58YPMQ7U5HY8Rb6UxkNf/icons.css">
 </head>
 <body ng-app="app">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-           
-        </div>
-    </div>
     <div class="container body-content" style="padding:10px">
         <!-- Side Navbar -->
         <nav class="side-navbar">
@@ -75,7 +67,7 @@
                 </div>
             </div>
         </nav>
-        <div class="page home-page">
+        <div>
             <!-- navbar-->
             @RenderBody()
             <footer class="main-footer">
@@ -93,12 +85,6 @@
             </footer>
         </div>
         <!-- Javascript files-->
-
-
-
-
-      
-      
     </div>
 
     @Scripts.Render("~/bundles/jquery")

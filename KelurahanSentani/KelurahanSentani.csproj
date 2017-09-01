@@ -1144,11 +1144,8 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAccount.cshtml" />
-    <Content Include="Views\Shared\_LayoutRT.cshtml" />
     <Content Include="Views\Home\rt.cshtml" />
-    <Content Include="Views\Shared\_LayoutRW.cshtml" />
     <Content Include="Views\Home\rw.cshtml" />
-    <Content Include="Views\Shared\_LayoutAdministrator.cshtml" />
     <Content Include="Views\Home\Administrator.cshtml" />
   </ItemGroup>
   <ItemGroup>
