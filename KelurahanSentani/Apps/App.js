@@ -36,6 +36,9 @@
         .when("/kk", {
             templateUrl: "../Apps/Views/kk.html",
         })
+        .when("/anggotakk", {
+            templateUrl: "../Apps/Views/anggotakk.html",
+        })
     ;
 })
 

@@ -38,7 +38,8 @@ namespace KelurahanSentani
                         "~/Content/style.default.css",
                           "~/Content/grasp_mobile_progress_circle-1.0.0.min.css",
                             "~/Content/custom.css",
-                              "~/Content/bootstrap.css"));
+                              "~/Content/bootstrap.css",
+                              "~/CSS/font-awesome.css"));
         }
     }
 }
