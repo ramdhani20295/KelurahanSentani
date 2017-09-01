@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <button type="button" class="btn btn-primary" href="#modal-container-708778" role="button" data-toggle="modal">
+                <button type="button" class="btn btn-primary" href="#modal-container-TambahPejabat" role="button" data-toggle="modal">
                     Tambah Pejabat
                 </button>
             </div>
@@ -72,8 +72,8 @@
                                 </td>
                                 
                                 <td>
-                                    <a href="#modal-container-708778" role="button" data-toggle="modal"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
-                                    <a href="#">
+                                    <a href="#modal-container-UbahPejabat" role="button" data-toggle="modal" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
+                                    <a href="#" data-toggle="tooltip" title="Hapus">
                                         <i class="fa fa-trash-o fa-lg"></i>
                                     </a>
                                 </td>
@@ -86,14 +86,13 @@
 
     </div>
 
-
-
+    <!--Tambah Pejabat-->
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
 
 
-                <div class="modal fade" id="modal-container-708778" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modal-container-TambahPejabat" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -102,7 +101,7 @@
                                     ×
                                 </button>
                                 <h4 class="modal-title" id="myModalLabel">
-                                    Modal title
+                                    Tambah Pejabat
                                 </h4>
                             </div>
                             <div class="modal-body">
@@ -166,6 +165,85 @@
         </div>
     </div>
 
+    <!--Tambah Pejabat-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+
+                <div class="modal fade" id="modal-container-UbahPejabat" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    ×
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Ubah Pejabat
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form role="form">
+                                                <div class="form-group">
+                                                    <label>
+                                                        Nama
+                                                    </label>
+                                                    <input type="text" class="form-control" ng-model="model.Nama" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Alamat
+                                                    </label>
+                                                    <input type="text" class="form-control" ng-model="model.Alamat" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Level
+                                                    </label>
+                                                    <select class="form-control" ng-model="model.Level" ng-options="x for x in Levels"></select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Instansi
+                                                    </label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Jabatan
+                                                    </label>
+                                                    <div class="form-control">
+                                                        <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Ketua" name="optradio">Ketua</label>
+                                                        <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Sekretaris" name="optradio">Sekretaris</label>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" class="btn btn-primary" ng-click="Tambah(model)">
+                                    Save changes
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
