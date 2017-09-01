@@ -22,55 +22,84 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel-group" id="panel-712071">
+                                    <div class="panel panel-default" ng-repeat="item in Strukturs">
+                                        <div class="panel-heading" >
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">RW {{item.Nama}}</div>
+                                                <div class="col-md-4">Pejabat:{{item.Pejabat.Nama}}</div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4"><button class="btn btn-default glyphicon glyphicon-list" role="button" data-toggle="collapse" data-parent="#panel-712071" href="#panel-element-{{item.Id}}"></button></div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div id="panel-element-{{item.Id}}" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <button class="btn btn-default" type="button">
+                                                    <em class="glyphicon glyphicon-align-left"></em>Tambah RT
+                                                </button>
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                #
+                                                            </th>
+                                                            <th>
+                                                                No RT
+                                                            </th>
+                                                            <th>
+                                                               Pejabat
+                                                            </th>
+                                                            <th>
+                                                               
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="rt in item.DaftarRT">
+                                                            <td>
+                                                                {{$index+1}}
+                                                            </td>
+                                                            <td>
+                                                                {{rt.Nama}}
+                                                            </td>
+                                                            <td>
+                                                                {{rt.Pejabat.Nama}}
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group">
 
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    No
-                                </th>
-                                <th>
-                                    No RW
-                                </th>
-                                <th>
-                                    Ketua RW
-                                </th>
-                                <th>
-                                    Sekretaris RW
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    01/04/2012
-                                </td>
-                                <td>
-                                    Default
-                                </td>
-                            </tr>
-                            <tr class="active">
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    01/04/2012
-                                </td>
-                                <td>
-                                    Default
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                                                    <button class="btn btn-default" type="button">
+                                                                        <em class="glyphicon glyphicon-align-left"></em> Left
+                                                                    </button>
+                                                                    <button class="btn btn-default" type="button">
+                                                                        <em class="glyphicon glyphicon-align-right"></em> Right
+                                                                    </button>
+                                                                    <button class="btn btn-default" type="button">
+                                                                        <em class="glyphicon glyphicon-align-justify"></em> Justify
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
                 </div>
             </div>
         </div>

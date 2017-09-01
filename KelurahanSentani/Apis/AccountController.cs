@@ -76,7 +76,7 @@ namespace KelurahanSentani.Apis
         }
 
         // POST: api/Account
-        public async Task<HttpResponseMessage> Register(RegisterViewModel model)
+        public async Task<HttpResponseMessage> Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
@@ -95,10 +95,10 @@ namespace KelurahanSentani.Apis
                     using (var db = new OcphDbContext())
                     {
                         model.usersId = user.Id;
-                        db.Pejabat.Insert(model);
+                      model.Id=  db.Pejabat.InsertAndGetLastID(model);
                     }
                 }
-                return Request.CreateResponse(result);
+                return Request.CreateResponse(model);
             }
             else
             {

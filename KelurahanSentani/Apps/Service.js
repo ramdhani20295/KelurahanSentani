@@ -26,11 +26,9 @@
 
         function Load()
         {
-            messages.push({ code: 1234, message: 'Test Message' });
+            messages.push({ code: 1, message: 'Data Berhasil Ditambah' });
+            messages.push({ code: 1, message: 'Data Berhasil Diubah' });
             messages.push({ code: 401, message: 'Anda tidak memiliki hak akses' });
-            messages.push({ code: 1234, message: 'Test Message' });
-            messages.push({ code: 1234, message: 'Test Message' });
-
         }
 
         return service;
@@ -49,14 +47,12 @@
                 $http({
                     method: 'GET',
                     url: BaseUrl.URL + "/api/pejabat/get",
-                }).then(function (data) {
+                }).then(function (response) {
                     // With the data succesfully returned, we can resolve promise and we can access it in controller
-                    service.collection = data;
+                    service.collection = response.data;
                     deferred.resolve(service.collection);
                     service.isInstant = true;
-
                     }, function (error) {
-
                         alert(Helpers.getMessage(error.status,error.data.Message));
                    // deferred.reject(error);
                 });
@@ -94,6 +90,48 @@
             });
 
         }
+
+        service.Insert = function (model)
+        {
+            deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: BaseUrl.URL + "/api/account/register",
+                data: model
+            }).then(function (response) {
+                service.collection.push(response.data);
+                alert(Helpers.getMessage(1, ""));
+                deferred.resolve(response.data);
+                service.isInstant = true;
+            }, function (error) {
+
+                alert(Helpers.getMessage(error.status, error.data.Message));
+                // deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+        service.Update = function (model) {
+            deferred = $q.defer();
+            $http({
+                method: 'put',
+                url: BaseUrl.URL + "/api/pejabat/put",
+                data: model
+            }).then(function (response) {
+                service.collection.push(response.data);
+                alert(Helpers.getMessage(2, ""));
+                deferred.resolve(response.data);
+                service.isInstant = true;
+            }, function (error) {
+
+                alert(Helpers.getMessage(error.status, error.data.Message));
+                // deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
         return service;
     })
 

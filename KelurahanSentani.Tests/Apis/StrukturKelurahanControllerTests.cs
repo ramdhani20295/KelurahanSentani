@@ -40,10 +40,10 @@ namespace KelurahanSentani.Apis.Tests
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
             List<rt> listrt = new List<rt>();
-            listrt.Add(new rt { NoRT = "1" , PejabatId=3});
+            listrt.Add(new rt { Nama = "1" , PejabatId=3});
           
 
-            var result = controller.PostRW(new DataModels.rw { NoRW="1", Id=0,DaftarRT=listrt, PejabatId=4  });
+            var result = controller.PostRW(new DataModels.rw { Nama="1", Id=0,DaftarRT=listrt, PejabatId=4  });
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 
@@ -54,8 +54,8 @@ namespace KelurahanSentani.Apis.Tests
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
             List<rt> listrt = new List<rt>();
-            listrt.Add(new rt { NoRT = "1", PejabatId = 5 , RWId=4});
-            var result = controller.PostRW(new DataModels.rw { NoRW = "1", Id =4, DaftarRT = listrt, PejabatId = 4  });
+            listrt.Add(new rt { Nama = "1", PejabatId = 5 , RWId=4});
+            var result = controller.PostRW(new DataModels.rw { Nama = "1", Id =4, DaftarRT = listrt, PejabatId = 4  });
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 
@@ -65,7 +65,7 @@ namespace KelurahanSentani.Apis.Tests
         {
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
-            var result = controller.Put(1, new DataModels.rw { Id=1, NoRW = "1", PejabatId = 1 });
+            var result = controller.Put(1, new DataModels.rw { Id=1, Nama = "1", PejabatId = 1 });
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 

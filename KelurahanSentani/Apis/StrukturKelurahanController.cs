@@ -18,8 +18,11 @@ namespace KelurahanSentani.Apis
                 var result = db.RW.Select();
                 foreach(var item in result)
                 {
-                    item.DaftarRT = db.RT.Where(O => O.RWId == item.Id).ToList();
-                    if(item.DaftarRT!=null)
+                    item.Pejabat = db.Pejabat.Where(O => O.Id == item.PejabatId).FirstOrDefault();
+                    
+                    var a = db.RT.Where(O => O.RWId == item.Id).ToList();
+                    item.DaftarRT = a;
+                    if (item.DaftarRT!=null)
                     {
                         foreach(var data in item.DaftarRT)
                         {
@@ -108,7 +111,7 @@ namespace KelurahanSentani.Apis
         {
             using(var db = new OcphDbContext())
             {
-                var result = db.RW.Update(O => new { O.NoRW, O.PejabatId }, value, O => O.Id == id);
+                var result = db.RW.Update(O => new { O.Nama, O.PejabatId }, value, O => O.Id == id);
                 if (result)
                     return Request.CreateResponse(HttpStatusCode.OK, value);
                 else

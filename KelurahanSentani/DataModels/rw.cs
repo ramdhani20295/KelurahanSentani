@@ -22,7 +22,7 @@ using DAL;
           } 
 
           [DbColumn("NoRW")] 
-          public string NoRW 
+          public string Nama
           { 
                get{return _norw;} 
                set{ 
@@ -43,7 +43,9 @@ using DAL;
           }
 
        public List<rt> DaftarRT { get; set; }
-          private int  _id;
+        public pejabat Pejabat { get; internal set; }
+
+        private int  _id;
            private string  _norw;
            private int  _pejabatid;
       }

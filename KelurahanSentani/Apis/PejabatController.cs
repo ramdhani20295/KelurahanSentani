@@ -53,13 +53,13 @@ namespace KelurahanSentani.Apis
 
         // POST: api/Penduduk
         [HttpPost]
-        public HttpResponseMessage Post(penduduk value)
+        public HttpResponseMessage Post(pejabat value)
         {
             using (var db = new OcphDbContext())
             {
                 try
                 {
-                    var result = db.Penduduk.InsertAndGetLastID(value);
+                    var result = db.Pejabat.InsertAndGetLastID(value);
                     return Request.CreateResponse(HttpStatusCode.OK, result);
                 }
                 catch (Exception ex)

@@ -7,74 +7,114 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="https://file.myfontastic.com/da58YPMQ7U5HY8Rb6UxkNf/icons.css">
 </head>
 <body ng-app="app">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Master<strong class="caret"></strong></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#!/pejabat">Add Pejabat</a>
-                            </li>
-                            <!--<li>
-                                <a href="#!/staff">Add Staff</a>
-                            </li>-->
-                            <li>
-                                <a href="#!/rw">Add RW</a>
-                            </li>
-                            <li>
-                                <a href="#!/rt">Add RT</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Create<strong class="caret"></strong></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#!/kependudukan">Kependudukan</a>
-                            </li>
-                            <li>
-                                <a href="#!/pmasuk">Penduduk Masuk</a>
-                            </li>
-                            <li>
-                                <a href="#!/pkeluar">Penduduk Keluar</a>
-                            </li>
-                            <li>
-                                <a href="#!/kelahiran">Kelahiran</a>
-                            </li>
-                            <li>
-                                <a href="#!/kematian">Kematian</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+           
         </div>
     </div>
     <div class="container body-content" style="padding:10px">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        <!-- Side Navbar -->
+        <nav class="side-navbar">
+            <div class="side-navbar-wrapper">
+                <div class="sidenav-header d-flex align-items-center justify-content-center">
+                    <div class="sidenav-header-inner text-center">
+                        <img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+                        <div>
+                            @Html.Partial("_LoginPartial")
+                        </div>
+
+                    </div>
+                    <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
+                </div>
+                <div class="main-menu">
+                    <ul id="side-main-menu" class="side-menu list-unstyled">
+                        <li class="active"><a href="index.html"> <i class="icon-home"></i><span>Home</span></a></li>
+                        <li> <a href="forms.html"><i class="icon-form"></i><span>Forms</span></a></li>
+                        <li> <a href="charts.html"><i class="icon-presentation"></i><span>Charts</span></a></li>
+                        <li> <a href="tables.html"> <i class="icon-grid"> </i><span>Tables                        </span></a></li>
+                        <li> <a href="login.html"> <i class="icon-interface-windows"></i><span>Login page                        </span></a></li>
+                        <li>
+                            <a href="#">
+                                <i class="icon-mail"></i><span>Demo</span>
+                                <div class="badge badge-warning">6 New</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="admin-menu">
+                    <ul id="side-admin-menu" class="side-menu list-unstyled">
+                        <li>
+                            <a href="#pages-nav-list" data-toggle="collapse" aria-expanded="false">
+                                <i class="icon-interface-windows"></i><span>Dropdown</span>
+                                <div class="arrow pull-right"><i class="fa fa-angle-down"></i></div>
+                            </a>
+                            <ul id="pages-nav-list" class="collapse list-unstyled">
+                                <li> <a href="#">Page 1</a></li>
+                                <li> <a href="#">Page 2</a></li>
+                                <li> <a href="#">Page 3</a></li>
+                                <li> <a href="#">Page 4</a></li>
+                            </ul>
+                        </li>
+                        <li> <a href="#"> <i class="icon-screen"> </i><span>Demo</span></a></li>
+                        <li>
+                            <a href="#">
+                                <i class="icon-flask"> </i><span>Demo</span>
+                                <div class="badge badge-info">Special</div>
+                            </a>
+                        </li>
+                        <li> <a href=""> <i class="icon-flask"> </i><span>Demo</span></a></li>
+                        <li> <a href=""> <i class="icon-picture"> </i><span>Demo</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="page home-page">
+            <!-- navbar-->
+            @RenderBody()
+            <footer class="main-footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p>Your company &copy; 2017-2019</p>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+                            <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- Javascript files-->
+
+
+
+
+      
+      
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
 </body>
 </html>

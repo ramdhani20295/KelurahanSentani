@@ -22,7 +22,7 @@ using DAL;
           } 
 
           [DbColumn("NoRT")] 
-          public string NoRT 
+          public string Nama
           { 
                get{return _nort;} 
                set{ 

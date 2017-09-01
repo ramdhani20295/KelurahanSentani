@@ -76,10 +76,12 @@ namespace KelurahanSentani.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    string url = await this.GetUserUrlAsync(model);
+                    return RedirectToLocal(url);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -89,6 +91,21 @@ namespace KelurahanSentani.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+        }
+
+        private async Task<string> GetUserUrlAsync(LoginViewModel model)
+        {
+            var user = await UserManager.FindByNameAsync(model.Email);
+            if (await UserManager.IsInRoleAsync(user.Id, "Administrator"))
+                return Url.Action("Administrator", "Home");
+            else if (await UserManager.IsInRoleAsync(user.Id, "Lurah"))
+                return Url.Action("Lurah", "Home");
+            else if (await UserManager.IsInRoleAsync(user.Id, "Rw"))
+                return Url.Action("Rw", "Home");
+            else
+                return Url.Action("Rt", "Home");
+
+
         }
 
         //
@@ -145,7 +162,7 @@ namespace KelurahanSentani.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [Authorize(Roles ="Administrator")]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
@@ -211,10 +228,10 @@ namespace KelurahanSentani.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
