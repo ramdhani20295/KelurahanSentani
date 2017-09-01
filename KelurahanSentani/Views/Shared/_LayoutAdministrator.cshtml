@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" href="https://file.myfontastic.com/da58YPMQ7U5HY8Rb6UxkNf/icons.css">
 </head>
@@ -73,9 +72,9 @@
                                 <div class="brand-text hidden-sm-down"><span></span><strong class="text-primary">Sistem Informasi Kelurahan</strong></div>
                             </a>
                         </div>
-                        @Html.Partial("_LoginPartial")
+                      
                         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                            <li class="nav-item"><a href="login.html" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+                            @Html.Partial("_LoginPartial")
                         </ul>
                     </div>
                 </div>
