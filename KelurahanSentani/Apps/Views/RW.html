@@ -8,10 +8,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-
-                <button type="button" class="btn btn-primary" href="#modal-container-708778" role="button" data-toggle="modal">
-                    Add RW
-                </button>
+                <i class="fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah RW" href="#modal-container-TambahRW" role="button" data-toggle="modal">RW</i>
             </div>
         </div>
     </div>
@@ -28,10 +25,10 @@
                                     <div class="panel panel-default" ng-repeat="item in Strukturs">
                                         <div class="panel-heading" >
                                             <div class="col-md-12">
-                                                <div class="col-md-4">RW {{item.Nama}}</div>
-                                                <div class="col-md-4">Pejabat:{{item.Pejabat.Nama}}</div>
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-4"><button class="btn btn-default glyphicon glyphicon-list" role="button" data-toggle="collapse" data-parent="#panel-712071" href="#panel-element-{{item.Id}}"></button></div>
+                                                <div class="col-md-12">RW : {{item.Nama}}</div>
+                                                <div class="col-md-12">Pejabat : {{item.Pejabat.Nama}}</div>
+                                                <div class="col-md-12"></div>
+                                                <div class="col-md-12"><button class="btn btn-default glyphicon glyphicon-list" role="button" data-toggle="collapse" data-parent="#panel-712071" href="#panel-element-{{item.Id}}"></button></div>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
@@ -41,7 +38,7 @@
                                                     <em class="glyphicon glyphicon-align-left"></em>Tambah RT
                                                 </button>
                                                 <table class="table">
-                                                    <thead>
+                                                    <thead class="thead-default">
                                                         <tr>
                                                             <th>
                                                                 #
@@ -50,10 +47,10 @@
                                                                 No RT
                                                             </th>
                                                             <th>
-                                                               Pejabat
+                                                                Pejabat
                                                             </th>
                                                             <th>
-                                                               
+
                                                             </th>
                                                         </tr>
                                                     </thead>
@@ -69,18 +66,11 @@
                                                                 {{rt.Pejabat.Nama}}
                                                             </td>
                                                             <td>
-                                                                <div class="btn-group">
-
-                                                                    <button class="btn btn-default" type="button">
-                                                                        <em class="glyphicon glyphicon-align-left"></em> Left
-                                                                    </button>
-                                                                    <button class="btn btn-default" type="button">
-                                                                        <em class="glyphicon glyphicon-align-right"></em> Right
-                                                                    </button>
-                                                                    <button class="btn btn-default" type="button">
-                                                                        <em class="glyphicon glyphicon-align-justify"></em> Justify
-                                                                    </button>
-                                                                </div>
+                                                                <a href="#modal-container-DetailRW" role="button" data-toggle="modal" data-toggle="tooltip" title="Detail Anggota"><i class="fa fa-book fa-fw" aria-hidden="true"></i></a>
+                                                                <a href="#modal-container-UbahRW" role="button" data-toggle="modal" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
+                                                                <a href="#" data-toggle="tooltip" title="Hapus">
+                                                                    <i class="fa fa-trash-o fa-lg"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
 
@@ -111,8 +101,7 @@
         <div class="row">
             <div class="col-md-12">
 
-
-                <div class="modal fade" id="modal-container-708778" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modal-container-TambahRW" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -137,15 +126,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
-                                                        Ketua RW
+                                                        Nama
                                                     </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Sekretaris RW
-                                                    </label>
-                                                    <input type="text" class="form-control" />
+                                                    <select class="form-control">
+                                                        <option>~~</option>
+                                                        <option>~~</option>
+                                                    </select>
                                                 </div>
                                             </form>
                                         </div>
