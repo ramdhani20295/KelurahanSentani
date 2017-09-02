@@ -243,7 +243,7 @@
     <Content Include="Apps\Views\pejabat.html" />
     <Content Include="Apps\Views\RT.html" />
     <Content Include="Apps\Views\RW.html" />
-    <Content Include="Apps\Views\staff.html" />
+    <Content Include="Apps\Views\permohonan.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
