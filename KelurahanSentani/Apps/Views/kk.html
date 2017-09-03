@@ -5,122 +5,119 @@
     <title></title>
 </head>
 <body>
+
     <section class="forms">
         <div class="container-fluid">
             <header>
                 <h1 class="h3 display">DAFTAR KARTU KELUARGA</h1>
             </header>
-         <div class="row">
-             <div class="col-lg-12"></div>
-                 <div class="card">
-                     <div class="card-header d-flex align-items-center">
-                         <a data-target="#modal-container-TambahKK"  role="button" data-toggle="modal">
-                             <i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah KK">KK</i>
-                         </a>
-                     </div>
-                     <div class="card-block">
-                         <!--TableKK-->
-                         <div ng-init="Init()">
+            <div class="row">
 
-                             <table class="table">
-                                 <thead class="thead-default">
-                                     <tr>
-                                         <th>
-                                             Nomor KK
-                                         </th>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                            <a data-target="#modal-container-TambahKK" role="button" data-toggle="modal">
+                                <i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah KK">KK</i>
+                            </a>
+                        </div>
+                        <div class="card-block">
+                            <!--TabelKK-->
+                            <table class="table">
+                                <thead class="thead-default">
+                                    <tr>
+                                        <th>
+                                            Nomor KK
+                                        </th>
 
-                                         <th>
-                                             Kepala Keluarga
-                                         </th>
-                                         <th>
-                                             RW
-                                         </th>
-                                         <th>
-                                             RT
-                                         </th>
-                                         <th>
-                                             Action
-                                         </th>
-                                     </tr>
-                                 </thead>
-                                 <tbody>
-                                     <tr>
-                                         <td>
-                                             1
-                                         </td>
-                                         <td>
-                                             TB - Monthly  TB - Monthly TB - Monthly TB - Monthly TB - Monthly TB - Monthly TB - Monthly TB - Monthly TB - Monthly
-                                         </td>
-                                         <td>
-                                             01/04/2012
-                                         </td>
-                                         <td>
-                                             Default
-                                         </td>
-                                         <td>
-                                             <div class="dropdown">
-                                                 <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                     <i class="fa fa-cog"></i>
-                                                 </a>
-                                                 <ul class="dropdown-menu">
-                                                     <li>
-                                                         <a class="btn btn-default" data-target="#modal-container-UbahKK" role="button" data-toggle="modal">
-                                                             <i class="fa fa-pencil fa-fw" aria-hidden="true"> Ubah</i>
-                                                         </a>
-                                                     </li>
-                                                     <li>
-                                                         <a class="btn btn-default" href="#modal-container-DetailKK" role="button" data-toggle="modal">
-                                                             <i class="fa fa-book fa-fw" aria-hidden="true"> Detail</i>
-                                                         </a>
-                                                     </li>
-                                                     <li>
-                                                         <a class="btn" href="#!kkanggota">
-                                                             <i class="fa fa-book fa-users" aria-hidden="true"> Anggota</i>
-                                                         </a>
-                                                     </li>
-                                                 </ul>
-                                             </div>
-                                         </td>
-                                     </tr>
-                                     <tr class="active">
-                                         <td>
-                                             2
-                                         </td>
-                                         <td>
-                                             TB - Monthly
-                                         </td>
-                                         <td>
-                                             01/04/2012
-                                         </td>
-                                         <td>
-                                             Default
-                                         </td>
-                                         <td>
-                                             <div class="dropdown">
-                                                 <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                     <i class="fa fa-cog"></i>
-                                                 </a>
-                                                 <ul class="dropdown-menu" style="border:0px">
-                                                     <li><a class="btn" href="#">HTML</a></li>
-                                                     <li><a class="btn btn-warning" href="#">HTML</a></li>
-                                                     <li><a class="btn" href="#">HTML</a></li>
-                                                 </ul>
-                                             </div>
-                                         </td>
-                                     </tr>
-                                 </tbody>
-                             </table>
+                                        <th>
+                                            Kepala Keluarga
+                                        </th>
+                                        <th>
+                                            RW
+                                        </th>
+                                        <th>
+                                            RT
+                                        </th>
+                                        <th>
+                                            Action
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            TB - Monthly
+                                        </td>
+                                        <td>
+                                            01/04/2012
+                                        </td>
+                                        <td>
+                                            Default
+                                        </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-cog"></i>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a class="btn btn-default" data-target="#modal-container-UbahKK" role="button" data-toggle="modal">
+                                                            <i class="fa fa-pencil fa-fw" aria-hidden="true"> Ubah</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="btn btn-default" href="#modal-container-DetailKK" role="button" data-toggle="modal">
+                                                            <i class="fa fa-book fa-fw" aria-hidden="true"> Detail</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="btn" href="#!kkanggota">
+                                                            <i class="fa fa-book fa-users" aria-hidden="true"> Anggota</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td>
+                                            2
+                                        </td>
+                                        <td>
+                                            TB - Monthly
+                                        </td>
+                                        <td>
+                                            01/04/2012
+                                        </td>
+                                        <td>
+                                            Default
+                                        </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-cog"></i>
+                                                </a>
+                                                <ul class="dropdown-menu" style="border:0px">
+                                                    <li><a class="btn" href="#">HTML</a></li>
+                                                    <li><a class="btn btn-warning" href="#">HTML</a></li>
+                                                    <li><a class="btn" href="#">HTML</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
-                         </div>
-
-                     </div>
-                 </div>
-             </div>
-         
+            </div>
         </div>
-    
-    </section>
-  
+      </section>
+
 
 </body>
 </html>
