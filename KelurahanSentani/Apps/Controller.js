@@ -31,19 +31,35 @@
 
     })
 
-
     .controller("StrukturKelurahanController", function ($scope, StrukturKelurahanService,PejabatService) {
         $scope.Strukturs = [];
         $scope.Pejabats = [];
-        PejabatService.source().then(
-            function (response) {
-                $scope.Pejabats = response.data;
-                StrukturKelurahanService.source().then(function (response) {
-                    $scope.Strukturs = response.data;
+       
+        StrukturKelurahanService.source().then(function (response) {
+            $scope.Strukturs = response.data;
+            $scope.Pejabats = PejabatService.GetPejabatRW();
+            
+        });
 
-                });
+
+        $scope.Save = function (item, SelectedPejabat)
+        {
+            if (item === undefined || item.Id === undefined)
+            {
+                if (SelectedPejabat === undefined)
+                {
+                    alert("Tentukan Ketua RW");
+                } else
+                {
+                    StrukturKelurahanService.Insert.then(function (response) {
+
+                    });
+                }
+              
             }
-        );
+
+          
+        }
      
 
     })
