@@ -37,21 +37,21 @@
 
     .factory("PejabatService", function ($http, $q, BaseUrl,Helpers) {
         var service = {};
-        service.isInstant = false;
-        service.collection = [];
+       var isInstant = false;
+       var collection = [];
         service.source = function ()
         {
             deferred = $q.defer();
-            if (!service.isInstant)
+            if (!isInstant)
             {
                 $http({
                     method: 'GET',
                     url: BaseUrl.URL + "/api/pejabat/get",
                 }).then(function (response) {
                     // With the data succesfully returned, we can resolve promise and we can access it in controller
-                    service.collection = response.data;
-                    deferred.resolve(service.collection);
-                    service.isInstant = true;
+                    collection = response.data;
+                    deferred.resolve(collection);
+                    isInstant = true;
                     }, function (error) {
                         alert(Helpers.getMessage(error.status,error.data.Message));
                    // deferred.reject(error);
@@ -59,22 +59,39 @@
                
             } else
             {
-                deferred.resolve(service.collection);
+                deferred.resolve(collection);
             }
 
             return deferred.promise;
         }
         service.GetPejabatRW = function ()
         {
-            if (!service.isInstant)
-                service.source();
-
             var datas = [];
-            angular.forEach(service.collection, function (value, key) {
-                if (value.Level == 'RW') {
-                    datas.push(value);
-                }
-            });
+            if (!isInstant)
+            {
+               this.source().then(function (response) {
+                    angular.forEach(response, function (value, key) {
+                        if (value.Level === 'RW') {
+                            datas.push(value);
+                        }
+                    });
+
+                  
+                });
+             
+            }
+            else
+            {
+                var datas = [];
+                angular.forEach(collection, function (value, key) {
+                    if (value.Level === 'RW') {
+                        datas.push(value);
+                    }
+                });
+               
+            }
+
+            return datas;
 
         }
 
@@ -99,10 +116,9 @@
                 url: BaseUrl.URL + "/api/account/register",
                 data: model
             }).then(function (response) {
-                service.collection.push(response.data);
+                collection.push(response.data);
                 alert(Helpers.getMessage(1, ""));
                 deferred.resolve(response.data);
-                service.isInstant = true;
             }, function (error) {
 
                 alert(Helpers.getMessage(error.status, error.data.Message));
@@ -122,7 +138,6 @@
                 service.collection.push(response.data);
                 alert(Helpers.getMessage(2, ""));
                 deferred.resolve(response.data);
-                service.isInstant = true;
             }, function (error) {
 
                 alert(Helpers.getMessage(error.status, error.data.Message));
