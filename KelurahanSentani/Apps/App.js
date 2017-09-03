@@ -15,8 +15,8 @@
             templateUrl: "../Apps/Views/rw.html",
             controller:"StrukturKelurahanController"
         })
-        .when("/rt", {
-            templateUrl: "../Apps/Views/rt.html",
+        .when("/surat", {
+            templateUrl: "../Apps/Views/surat.html",
         })
         .when("/kependudukan", {
             templateUrl: "../Apps/Views/kependudukan.html",
