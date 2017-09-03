@@ -5,385 +5,361 @@
     <meta charset="utf-8" />
 </head>
 <body>
+   
+        <!-- navbar-->
+   
+        <section class="forms">
+            <div class="container-fluid">
+                <header>
+                    <h1 class="h3 display">STRUKTUR KELURAHAN</h1>
+                </header>
+                <div class="row">
 
-    <h2>
-        Daftar RW
-    </h2>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <a href="#modal-container-TambahRW" role="button" data-toggle="modal">
+                                    <i class="fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah RW">RW</i>
+                                </a>
+                            </div>
+                            <div class="card-block">
+                                <div class="list-group">
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#modal-container-TambahRW" role="button" data-toggle="modal">
-                    <i class="fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah RW">RW</i>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div ng-init="Init()">
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel-group" id="panel-712071">
-                                    <div class="panel panel-default" ng-repeat="item in Strukturs">
-                                        <div class="panel-heading" >
-                                            <div class="col-md-12">
-                                                <table class="table table-sm">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">RW</th>
-                                                            <td>:</td>
-                                                            <td>{{item.Nama}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Pejabat</th>
-                                                            <td>:</td>
-                                                            <td>{{item.Pejabat.Nama}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="3">
-                                                                <a href="#panel-element-{{item.Id}}" data-toggle="collapse" data-parent="#panel-712071" role="button">
-                                                                    <i class="fa fa-list" aria-hidden="true" data-toggle="tooltip" title="List RT"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div id="panel-element-{{item.Id}}" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <h2>
-                                                    Daftar RT
-                                                </h2>
-                                                <a href="#modal-container-TambahRT" role="button" data-toggle="modal">
-                                                    <i class="fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah RT">RT</i>
-                                                </a>
-                                                <table class="table">
-                                                    <thead class="thead-default">
-                                                        <tr>
-                                                            <th>
-                                                                No RT
-                                                            </th>
-                                                            <th>
-                                                                Pejabat
-                                                            </th>
-                                                            <th>
-                                                                Action
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr ng-repeat="rt in item.DaftarRT">
-                                                            <td>
-                                                                {{rt.Nama}}
-                                                            </td>
-                                                            <td>
-                                                                {{rt.Pejabat.Nama}}
-                                                            </td>
-                                                            <td>
-                                                                <a href="#modal-container-DetailRT" role="button" data-toggle="modal">
-                                                                    <i class="fa fa-book fa-fw" aria-hidden="true" data-toggle="tooltip" title="Detail Anggota"></i>
-                                                                </a>
-                                                                <a href="#modal-container-UbahRT" role="button" data-toggle="modal">
-                                                                    <i class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
-                                                                </a>
-                                                                <a href="#" data-toggle="tooltip" title="Hapus">
-                                                                    <i class="fa fa-trash-o fa-lg"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                    <div class="list-group-item" ng-repeat="item in Strukturs">
+                                        <a href="#panel-{{item.Id}}" data-toggle="tab">RW {{item.Nama}}</a>
                                     </div>
-                                 
+
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="tab-content">
+                                <div class="tab-pane" ng-repeat="item in Strukturs" id="panel-{{item.Id}}">
+                                    <div class="card-header d-flex align-items-center">
+                                        <a href="#modal-container-TambahRT" role="button" data-toggle="modal">
+                                            <i class="fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah RT">RT</i>
+                                        </a>
+                                    </div>
+                                    <div class="card-block text-center">
+                                        <div class="panel-body">
 
+                                            <table class="table">
+                                                <thead class="thead-default">
+                                                    <tr>
+                                                        <th>
+                                                            No RT
+                                                        </th>
+                                                        <th>
+                                                            Pejabat
+                                                        </th>
+                                                        <th>
+                                                            Action
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="rt in item.DaftarRT">
+                                                        <td>
+                                                            {{rt.Nama}}
+                                                        </td>
+                                                        <td>
+                                                            {{rt.Pejabat.Nama}}
+                                                        </td>
+                                                        <td>
+                                                            <a href="#modal-container-DetailRT" role="button" data-toggle="modal">
+                                                                <i style="color:rgba(14, 88, 27, 0.40)" class="fa fa-book fa-fw" aria-hidden="true" data-toggle="tooltip" title="Detail Anggota"></i>
+                                                            </a>
+                                                            <a href="#modal-container-UbahRT" role="button" data-toggle="modal">
+                                                                <i class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
+                                                            </a>
+                                                            <a href="#" data-toggle="tooltip" title="Hapus">
+                                                                <i class="fa fa-trash-o fa-lg"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
 
-
-
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-    
-    <!--Tambah RW-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-
-                <div class="modal fade" id="modal-container-TambahRW" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    ×
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">
-                                    Tambah RW
-                                </h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <form role="form">
-                                                <div class="form-group">
-                                                    <label>
-                                                        No RW
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Nama
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>~~</option>
-                                                        <option>~~</option>
-                                                    </select>
-                                                </div>
-                                            </form>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
 
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                    Close
-                                </button>
-                                <button type="button" class="btn btn-primary">
-                                    Save changes
-                                </button>
-                            </div>
+
+                       
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-        </div>
-    </div>
-
-    <!--Tambah RT-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-
-                <div class="modal fade" id="modal-container-TambahRT" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    ×
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">
-                                    Tambah RT
-                                </h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <form role="form">
-                                                <div class="form-group">
-                                                    <label>
-                                                        No RW
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>~~</option>
-                                                        <option>~~</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        No RT
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Nama
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>~~</option>
-                                                        <option>~~</option>
-                                                    </select>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                    Close
-                                </button>
-                                <button type="button" class="btn btn-primary">
-                                    Save changes
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!--Detail RT-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="modal fade" id="modal-container-DetailRT" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    ×
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">
-                                    Detail RT
-                                </h4>
-                            </div>
-
-                            <table class="table table-sm">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Nama</th>
-                                        <td>:</td>
-                                        <td>Dhani</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Alamat</th>
-                                        <td>:</td>
-                                        <td>Kloofkamp</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Level</th>
-                                        <td>:</td>
-                                        <td>~</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Instansi</th>
-                                        <td>:</td>
-                                        <td>~</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Jabatan</th>
-                                        <td>:</td>
-                                        <td>~</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <div class="modal-footer">
-
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!--Ubah RT-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-
-                <div class="modal fade" id="modal-container-UbahRT" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    ×
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">
-                                    Ubah RT
-                                </h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <form role="form">
-                                                <div class="form-group">
-                                                    <label>
-                                                        No RW
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>~~</option>
-                                                        <option>~~</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        No RT
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Nama
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>~~</option>
-                                                        <option>~~</option>
-                                                    </select>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                    Close
-                                </button>
-                                <button type="button" class="btn btn-primary">
-                                    Save changes
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-
+        </section>
+      
 
 </body>
 </html>
+
+
+<!--Tambah RW-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="modal fade" id="modal-container-TambahRW" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                ×
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                Tambah RW
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <label>
+                                                    No RW
+                                                </label>
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>
+                                                    Nama
+                                                </label>
+                                                <select class="form-control">
+                                                    <option>~~</option>
+                                                    <option>~~</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-primary">
+                                Save changes
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Tambah RT-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="modal fade" id="modal-container-TambahRT" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                ×
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                Tambah RT
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <label>
+                                                    No RW
+                                                </label>
+                                                <select class="form-control">
+                                                    <option>~~</option>
+                                                    <option>~~</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>
+                                                    No RT
+                                                </label>
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>
+                                                    Nama
+                                                </label>
+                                                <select class="form-control">
+                                                    <option>~~</option>
+                                                    <option>~~</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-primary">
+                                Save changes
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Detail RT-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="modal fade" id="modal-container-DetailRT" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                ×
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                Detail RT
+                            </h4>
+                        </div>
+
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Nama</th>
+                                    <td>:</td>
+                                    <td>Dhani</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Alamat</th>
+                                    <td>:</td>
+                                    <td>Kloofkamp</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Level</th>
+                                    <td>:</td>
+                                    <td>~</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Instansi</th>
+                                    <td>:</td>
+                                    <td>~</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Jabatan</th>
+                                    <td>:</td>
+                                    <td>~</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Ubah RT-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="modal fade" id="modal-container-UbahRT" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                ×
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                Ubah RT
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <label>
+                                                    No RW
+                                                </label>
+                                                <select class="form-control">
+                                                    <option>~~</option>
+                                                    <option>~~</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>
+                                                    No RT
+                                                </label>
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>
+                                                    Nama
+                                                </label>
+                                                <select class="form-control">
+                                                    <option>~~</option>
+                                                    <option>~~</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-primary">
+                                Save changes
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
