@@ -6,90 +6,88 @@
 </head>
 <body>
     
-    <h2>
-        Daftar Pejabat
-    </h2>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#modal-container-TambahPejabat" role="button" data-toggle="modal">
-                    <i aria-hidden="true" data-toggle="tooltip"  title="Tambah Pejabat" class="fa fa-user-plus">Pejabat</i>
-                </a>  
-            </div>
-        </div>
-    </div>
-
-    <div ng-init="Init()">
-
+    <section class="forms">
         <div class="container-fluid">
+            <header>
+                <h1 class="h3 display">DAFTAR PEJABAT</h1>
+            </header>
             <div class="row">
-                <div class="col-md-12">
 
-                    <table class="table">
-                        <thead class="thead-default">
-                            <tr>
-                                <th>
-                                    No
-                                </th>
-                                <th>
-                                    Nama
-                                </th>
-                                <th>
-                                    Alamat
-                                </th>
-                                <th>
-                                    Level
-                                </th>
-                                <th>
-                                    Instansi
-                                </th>
-                                <th>
-                                    Jabatan
-                                </th>
-                                <th>
-                                    Action
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="item in Pejabats">
-                                <td>
-                                    {{$index+1}}
-                                </td>
-                                <td>
-                                    {{item.Nama}}
-                                </td>
-                                <td>
-                                   {{item.Alamat}}
-                                </td>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                            <a href="#modal-container-TambahPejabat" role="button" data-toggle="modal">
+                                <i aria-hidden="true" data-toggle="tooltip" title="Tambah Pejabat" class="fa fa-user-plus">Pejabat</i>
+                            </a>
+                        </div>
+                        <div class="card-block">
+                            <!--TabelPejabat-->
+                            <table class="table">
+                                <thead class="thead-default">
+                                    <tr>
+                                        <th>
+                                            No
+                                        </th>
+                                        <th>
+                                            Nama
+                                        </th>
+                                        <th>
+                                            Alamat
+                                        </th>
+                                        <th>
+                                            Level
+                                        </th>
+                                        <th>
+                                            Instansi
+                                        </th>
+                                        <th>
+                                            Jabatan
+                                        </th>
+                                        <th>
+                                            Action
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in Pejabats">
+                                        <td>
+                                            {{$index+1}}
+                                        </td>
+                                        <td>
+                                            {{item.Nama}}
+                                        </td>
+                                        <td>
+                                            {{item.Alamat}}
+                                        </td>
 
-                                <td>
-                                    {{item.Level}}
-                                </td>
-                                <td>
-                                   {{item.Instansi.Nama}}
-                                </td>
-                                <td>
-                                    {{item.Jabatan}}
-                                </td>
-                                
-                                <td>
-                                    <a href="#modal-container-UbahPejabat" role="button" data-toggle="modal">
-                                        <i class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa fa-trash-o fa-lg" data-toggle="tooltip" title="Hapus"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                        <td>
+                                            {{item.Level}}
+                                        </td>
+                                        <td>
+                                            {{item.Instansi.Nama}}
+                                        </td>
+                                        <td>
+                                            {{item.Jabatan}}
+                                        </td>
+
+                                        <td>
+                                            <a href="#modal-container-UbahPejabat" role="button" data-toggle="modal">
+                                                <i class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="fa fa-trash-o fa-lg" data-toggle="tooltip" title="Hapus"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
-
-    </div>
+    </section>
 
     <!--Tambah Pejabat-->
     <div class="container-fluid">
