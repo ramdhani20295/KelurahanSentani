@@ -2,7 +2,7 @@
 .config(function ($routeProvider) {
     $routeProvider
         .when("/", {
-            templateUrl:"main.htm",
+            templateUrl: "../Apps/Views/main.html",
         })
         .when("/pejabat", {
             templateUrl: "../Apps/Views/pejabat.html",
