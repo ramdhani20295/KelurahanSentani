@@ -6,8 +6,9 @@
 </head>
 <body>
    
-        <!-- navbar-->
+    
    
+
         <section class="forms">
             <div class="container-fluid">
                 <header>
@@ -23,8 +24,8 @@
                                 </a>
                             </div>
                             <div class="card-block">
-                                <div class="list-group-item"  ng-repeat="item in Strukturs">
-                                   <a class="btn" data-target="#panel-{{item.Id}}" data-toggle="tab">RW {{item.Nama}}</a><span>{{item.Pejabat.Nama}}</span>
+                                <div ng-click="SetNoActive()"  class="list-group-item"  ng-repeat="item in Strukturs">
+                                   <a class="btn btn-primary" data-target="#panel-{{item.Id}}" data-toggle="tab">RW {{item.Nama}}</a><span>{{item.Pejabat.Nama}}</span>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +98,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-
+            <!-- navbar-->
+            <center>
+                <div ng-show="IsBusy">
+                    <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </center>
             <div class="modal fade" id="modal-container-TambahRW" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -119,7 +126,7 @@
                                                 <label>
                                                     No RW
                                                 </label>
-                                                <input type="text" class="form-control" ng-model="Nama" />
+                                                <input type="text" class="form-control" ng-model="model.Nama" />
                                             </div>
                                             <div class="form-group">
                                                 <label>
