@@ -6,65 +6,137 @@
 </head>
 <body>
 
+    <section class="forms">
+        <div class="container-fluid">
+            <header>
+                <h1 class="h3 display">ANGGOTA KARTU KELUARGA</h1>
+            </header>
+            <div class="row">
 
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                            <h2>No.</h2>
+                        </div>
+                        <div class="card-block">
+                            <!--TabelKK-->
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Kepala Keluarga</th>
+                                        <td>:</td>
+                                        <td>Jacob</td>
+                                        <td></td>
+                                        <th scope="row">Kecamatan</th>
+                                        <td>:</td>
+                                        <td>Jayapura Utara</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Alamat</th>
+                                        <td>:</td>
+                                        <td colspan="2">Larry the Bird</td>
+                                        <th scope="row">Kabupaten/Kota</th>
+                                        <td>:</td>
+                                        <td>Jayapura</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">RW/RT</th>
+                                        <td>:</td>
+                                        <td colspan="2">Larry the Bird</td>
+                                        <th scope="row">Kode Pos</th>
+                                        <td>:</td>
+                                        <td>99111</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Kelurahan/Desa</th>
+                                        <td>:</td>
+                                        <td colspan="2">Larry the Bird</td>
+                                        <th scope="row">Provinsi</th>
+                                        <td>:</td>
+                                        <td>Papua</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-
-                <h2>Anggota Kartu Keluarga</h2>
-                No.
-                <table class="table table-sm">
-                    <tbody>
-                        <tr>
-                            <th scope="row">Kepala Keluarga</th>
-                            <td>:</td>
-                            <td>Jacob</td>
-                            <td></td>
-                            <th scope="row">Kecamatan</th>
-                            <td>:</td>
-                            <td>Jayapura Utara</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Alamat</th>
-                            <td>:</td>
-                            <td colspan="2">Larry the Bird</td>
-                            <th scope="row">Kabupaten/Kota</th>
-                            <td>:</td>
-                            <td>Jayapura</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">RW/RT</th>
-                            <td>:</td>
-                            <td colspan="2">Larry the Bird</td>
-                            <th scope="row">Kode Pos</th>
-                            <td>:</td>
-                            <td>99111</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Kelurahan/Desa</th>
-                            <td>:</td>
-                            <td colspan="2">Larry the Bird</td>
-                            <th scope="row">Provinsi</th>
-                            <td>:</td>
-                            <td>Papua</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <section class="forms">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                            <a href="#modal-container-TambahAnggota" role="button" data-toggle="modal">
+                                <i style="color:black" class="fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah Anggota">Anggota</i>
+                            </a>
+                        </div>
+                        <div class="card-block">
+                            <!--TabelKK-->
+                            <table class="table">
+                                <thead class="thead-default">
+                                    <tr>
+                                        <th>
+                                            Nama Lengkap
+                                        </th>
+                                        <th>
+                                            NIK
+                                        </th>
+                                        <th>
+                                            Jenis Kelamin
+                                        </th>
+                                        <th>
+                                            Tempat / Tanggal Lahir
+                                        </th>
+                                        <th>
+                                            Hubungan
+                                        </th>
+                                        <th>
+                                            Action
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            TB - Monthly
+                                        </td>
+                                        <td>
+                                            01/04/2012
+                                        </td>
+                                        <td>
+                                            Default
+                                        </td>
+                                        <td>
+                                            Default
+                                        </td>
+                                        <td>
+                                            <a href="#modal-container-DetailAnggota" role="button" data-toggle="modal">
+                                                <i style="color:black" class="fa fa-book fa-fw" aria-hidden="true" data-toggle="tooltip" title="Detail Anggota"></i>
+                                            </a>
+                                            <a href="#modal-container-UbahAnggota" role="button" data-toggle="modal">
+                                                <i style="color:black" class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
+                                            </a>
+                                            <a href="#" data-toggle="tooltip">
+                                                <i style="color:black" class="fa fa-trash-o fa-lg" title="Hapus"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
-    </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#modal-container-TambahAnggota" role="button" data-toggle="modal">
-                    <i class="fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah Anggota" >Anggota</i>
-                </a>
-            </div>
-        </div>
-    </div>
+    </section>
 
     <!--Tambah-->
     <div class="container-fluid">
@@ -667,73 +739,6 @@
 
             </div>
         </div>
-    </div>
-
-    <!--Table-->
-    <div ng-init="Init()">
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-
-                    <table class="table">
-                        <thead class="thead-default">
-                            <tr>
-                                <th>
-                                    Nama Lengkap
-                                </th>
-                                <th>
-                                    NIK
-                                </th>
-                                <th>
-                                    Jenis Kelamin
-                                </th>
-                                <th>
-                                    Tempat / Tanggal Lahir
-                                </th>
-                                <th>
-                                    Hubungan
-                                </th>
-                                <th>
-                                    Action
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    01/04/2012
-                                </td>
-                                <td>
-                                    Default
-                                </td>
-                                <td>
-                                    Default
-                                </td>
-                                <td>
-                                    <a href="#modal-container-DetailAnggota" role="button" data-toggle="modal">
-                                        <i class="fa fa-book fa-fw" aria-hidden="true" data-toggle="tooltip" title="Detail Anggota"></i>
-                                    </a>
-                                    <a href="#modal-container-UbahAnggota" role="button" data-toggle="modal">
-                                        <i class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
-                                    </a>
-                                    <a href="#" data-toggle="tooltip">
-                                        <i class="fa fa-trash-o fa-lg" title="Hapus"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
     </div>
 
 </body>
