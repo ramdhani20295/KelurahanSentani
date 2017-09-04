@@ -60,6 +60,7 @@ namespace KelurahanSentani.Apis
         }
 
         // POST: api/StrukturKelurahan
+        [HttpPost]
         public HttpResponseMessage PostRW(rw value)
         {
             using(var db = new OcphDbContext())

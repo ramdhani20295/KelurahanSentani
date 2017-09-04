@@ -21,7 +21,6 @@ namespace KelurahanSentani
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/js/tether.min.js", "~/js/bootstrap.js",
-                     
                         "~/js/jquery.cookie.js",
                               "~/js/front.js",
                           "~/js/grasp_mobile_progress_circle-1.0.0.min.js",

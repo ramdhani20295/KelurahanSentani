@@ -34,30 +34,55 @@
     .controller("StrukturKelurahanController", function ($scope, StrukturKelurahanService,PejabatService) {
         $scope.Strukturs = [];
         $scope.Pejabats = [];
-       
+        $scope.IsBusy = false;
         StrukturKelurahanService.source().then(function (response) {
             $scope.Strukturs = response.data;
             $scope.Pejabats = PejabatService.GetPejabatRW();
             
         });
 
+        $scope.SetNoActive = function ()
+        {
+            $(document).ready(function () {
+                $('.btn').click(function (e) {
 
+                    var a = $('.btn').removeClass('active');
+
+
+                });
+            });
+
+
+
+        }
         $scope.Save = function (item, SelectedPejabat)
         {
-            if (item === undefined || item.Id === undefined)
-            {
-                if (SelectedPejabat === undefined)
-                {
-                    alert("Tentukan Ketua RW");
-                } else
-                {
-                    StrukturKelurahanService.Insert.then(function (response) {
+            try {
+                $scope.IsBusy = true;
+                if (item.Id === undefined) {
+                    if (SelectedPejabat === undefined) {
+                        alert("Tentukan Ketua RW");
+                    } else {
+                        item.Id = 0;
+                        item.PejabatId = SelectedPejabat.Id;
+                        StrukturKelurahanService.Insert(item).then(function (response) {
 
-                    });
+                            alert("Success");
+                        });
+                    }
+
+                } else {
+
                 }
-              
-            }
 
+            } catch (e) {
+                alert(e.message);
+            } finally
+            {
+                $scope.IsBusy = false;
+            }
+           
+           
           
         }
      
