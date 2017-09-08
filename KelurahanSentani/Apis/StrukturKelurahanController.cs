@@ -107,6 +107,25 @@ namespace KelurahanSentani.Apis
             }
         }
 
+        [HttpPost]
+        public HttpResponseMessage Postrt(rt value)
+        {
+            using (var db = new OcphDbContext())
+            {
+                try
+                {
+                    value.Id = db.RT.InsertAndGetLastID(value);
+
+                    return Request.CreateResponse(HttpStatusCode.OK, value);
+
+                }
+                catch (Exception ex)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, ex.Message);
+                }
+            }
+        }
+
         // PUT: api/StrukturKelurahan/5
         public HttpResponseMessage Put(int id, rw value)
         {

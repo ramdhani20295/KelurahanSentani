@@ -27,7 +27,8 @@
         function Load()
         {
             messages.push({ code: 1, message: 'Data Berhasil Ditambah' });
-            messages.push({ code: 1, message: 'Data Berhasil Diubah' });
+            messages.push({ code: 2, message: 'Data Berhasil Diubah' });
+            messages.push({ code: 3, message: 'Data Berhasil Diubah' });
             messages.push({ code: 401, message: 'Anda tidak memiliki hak akses' });
         }
 
@@ -128,15 +129,39 @@
             return deferred.promise;
         }
 
-        service.Update = function (model) {
+        service.put = function (model,selected) {
             deferred = $q.defer();
             $http({
                 method: 'put',
-                url: BaseUrl.URL + "/api/pejabat/put",
+                url: BaseUrl.URL + "/api/pejabat/put?id="+model.Id,
                 data: model
             }).then(function (response) {
-                service.collection.push(response.data);
+                selected.Nama = model.Nama;
+                selected.Alamat = model.Alamat;
+                selected.Level = model.Level;
+                selected.Jabatan = model.Jabatan;
                 alert(Helpers.getMessage(2, ""));
+                deferred.resolve(response.data);
+            }, function (error) {
+
+                alert(Helpers.getMessage(error.status, error.data.Message));
+                // deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+        service.delete = function(model)
+        {
+            deferred = $q.defer();
+            $http({
+                method: 'delete',
+                url: BaseUrl.URL + "/api/pejabat/delete?id=" + model.Id,
+                data: model
+            }).then(function (response) {
+                var index = collection.indexOf(model);
+                collection.splice(index, 1);     
+                alert(Helpers.getMessage(3, ""));
                 deferred.resolve(response.data);
             }, function (error) {
 
@@ -188,7 +213,8 @@
                 url: BaseUrl.URL + "/api/StrukturKelurahan/postrw",
                 data: model
             }).then(function (data) {
-                collection.data.push(data);
+                model.Id = data.Id;
+                collection.data.push(model);
                 deferred.resolve(data);
                
             }, function (error) {
@@ -199,6 +225,33 @@
 
             return deferred.promise;
         }
+
+
+        service.AddRT = function (rw, model) {
+            var data = {};
+            data.Id = 0;
+            data.Nama = model.Nama;
+            data.PejabatId = model.Pejabat.Id;
+            data.RWId = rw.Id;
+
+            deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: BaseUrl.URL + "/api/StrukturKelurahan/postrt",
+                data: data
+            }).then(function (result) {
+                data.Id = result.Id;
+                rw.DaftarRT.push(data);
+                alert(Helpers.getMessage(1, ""));
+                deferred.resolve(result);
+            }, function (error) {
+                alert(Helpers.getMessage(error.status, error.data.Message));
+                // deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
 
         return service;
     })
