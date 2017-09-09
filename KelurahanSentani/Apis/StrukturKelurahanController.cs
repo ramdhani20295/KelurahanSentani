@@ -107,6 +107,25 @@ namespace KelurahanSentani.Apis
             }
         }
 
+        [HttpPost]
+        public HttpResponseMessage Postrt(rt value)
+        {
+            using (var db = new OcphDbContext())
+            {
+                try
+                {
+                    value.Id = db.RT.InsertAndGetLastID(value);
+
+                    return Request.CreateResponse(HttpStatusCode.OK, value);
+
+                }
+                catch (Exception ex)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, ex.Message);
+                }
+            }
+        }
+
         // PUT: api/StrukturKelurahan/5
         public HttpResponseMessage Put(int id, rw value)
         {
@@ -120,12 +139,53 @@ namespace KelurahanSentani.Apis
             }
         }
 
+
+        public HttpResponseMessage PutRT(int id, rt value)
+        {
+            using (var db = new OcphDbContext())
+            {
+
+                try
+                {
+                    if (value != null && value.Id == id)
+                    {
+                        var result = db.RT.Update(O => new { O.Nama, O.PejabatId}, value, O => O.Id == id);
+                        if (result == true)
+                            return Request.CreateResponse(HttpStatusCode.OK, value);
+                        else
+                            throw new SystemException("Data Gagal Diubah");
+                    }
+                    else
+                        throw new SystemException("Data Gagal Diubah");
+
+                }
+                catch (Exception ex)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, ex.Message);
+                }
+            }
+
+        }
+
+
         // DELETE: api/StrukturKelurahan/5
         public HttpResponseMessage Delete(int id)
         {
             using(var db = new OcphDbContext())
             {
                 var result = db.RW.Delete(O => O.Id == id);
+                if (result)
+                    return Request.CreateResponse(HttpStatusCode.OK, "Data Berhasil Dihapus");
+                else
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Data Tidak Dapat Dihapus");
+            }
+        }
+
+        public HttpResponseMessage DeleteRT(int id)
+        {
+            using (var db = new OcphDbContext())
+            {
+                var result = db.RT.Delete(O => O.Id == id);
                 if (result)
                     return Request.CreateResponse(HttpStatusCode.OK, "Data Berhasil Dihapus");
                 else

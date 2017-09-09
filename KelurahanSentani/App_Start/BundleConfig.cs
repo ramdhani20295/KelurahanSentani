@@ -34,10 +34,11 @@ namespace KelurahanSentani
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                        "~/Content/style.default.css",
+                 "~/Content/bootstrap.css",
+                        "~/Content/style.green.css",
                           "~/Content/grasp_mobile_progress_circle-1.0.0.min.css",
                             "~/Content/custom.css",
-                              "~/Content/bootstrap.css",
+                             
                               "~/CSS/font-awesome.css"));
         }
     }

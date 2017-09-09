@@ -8,7 +8,7 @@ using DAL;
  namespace KelurahanSentani.DataModels 
 { 
      [TableName("kartukeluarga")] 
-     public class kartukeluarga:BaseNotifyProperty  
+     public class kartukeluarga:KelurahanInfo
    {
           [PrimaryKey("Id")] 
           [DbColumn("Id")] 
@@ -41,16 +41,7 @@ using DAL;
                      }
           } 
 
-          [DbColumn("KodePos")] 
-          public string KodePos 
-          { 
-               get{return _kodepos;} 
-               set{ 
-                      _kodepos=value; 
-                     OnPropertyChange("KodePos");
-                     }
-          } 
-
+        
           [PrimaryKey("RTId")] 
           [DbColumn("RTId")] 
           public int RTId 
@@ -62,12 +53,14 @@ using DAL;
                      }
           }
 
-        public List<penduduk> DaftarKeluarga { get; internal set; }
+        public List<penduduk> DaftarKeluarga { get;  set; }
+        public penduduk KepalaKeluarga { get; set; }
+        public rw RW { get;  set; }
+        public rt RT { get;  set; }
 
         private int  _id;
            private string  _nokk;
            private string  _alamat;
-           private string  _kodepos;
            private int  _rtid;
       }
 }

@@ -23,6 +23,7 @@ namespace KelurahanSentani
         }
 
         public IRepository<penduduk> Penduduk { get { return new Repository<penduduk>(this); } }
+        public IRepository<pendudukdetail> PendudukDetail { get { return new Repository<pendudukdetail>(this); } }
         public IRepository<kartukeluarga> KartuKeluarga { get { return new Repository<kartukeluarga>(this); } }
         public IRepository<kkdetail> KKDetail { get { return new Repository<kkdetail>(this); } }
         public IRepository<rw> RW { get { return new Repository<rw>(this); } }

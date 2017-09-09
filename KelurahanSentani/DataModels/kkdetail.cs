@@ -30,20 +30,10 @@ using DAL;
                      }
           } 
 
-          [PrimaryKey("Id")] 
-          [DbColumn("Id")] 
-          public int Id 
-          { 
-               get{return _id;} 
-               set{ 
-                      _id=value; 
-                     OnPropertyChange("Id");
-                     }
-          } 
+         
 
           private int  _kartukeluargaid;
            private int  _pendudukid;
-           private int  _id;
       }
 }
 

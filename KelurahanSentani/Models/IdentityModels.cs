@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using AspNet.Identity.MySQL;
+using Microsoft.Owin;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace KelurahanSentani.Models
 {
@@ -32,5 +34,23 @@ namespace KelurahanSentani.Models
             return new ApplicationDbContext("DefaultConnection");
         }
     }
+
+
+
+    public class ApplicationRoleManager : RoleManager<IdentityRole>
+    {
+        public ApplicationRoleManager(IRoleStore<IdentityRole, string> roleStore)
+            : base(roleStore)
+        {
+        }
+
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+            var appRoleManager = new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>()));
+
+            return appRoleManager;
+        }
+    }
+
 
 }
