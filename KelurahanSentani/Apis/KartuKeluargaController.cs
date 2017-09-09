@@ -13,23 +13,8 @@ namespace KelurahanSentani.Apis
         // GET: api/KartuKeluarga
         public IEnumerable<kartukeluarga> Get()
         {
-            using (var db = new OcphDbContext())
-            {
-                var listKK = db.KartuKeluarga.Select();
-                foreach(var item  in listKK)
-                {
-                    List<penduduk> peduduks = new List<penduduk>();
-                  foreach(var data in db.KKDetail.Where(O=>O.KartuKeluargaId==item.Id))
-                        {
-                        var p = db.Penduduk.Where(O => O.Id == data.PendudukId).FirstOrDefault();
-                        if (p != null)
-                            peduduks.Add(p);
-                    }
-                    item.DaftarKeluarga = peduduks;
-                }
-
-                return listKK;
-            }
+            KartuKeluargaCollection collection = new KartuKeluargaCollection();
+            return collection.GetKartuKeluarga();
         }
 
         // GET: api/KartuKeluarga/5
@@ -48,12 +33,18 @@ namespace KelurahanSentani.Apis
                             peduduks.Add(p);
                     }
                     kk.DaftarKeluarga = peduduks;
-                    return Request.CreateResponse(HttpStatusCode.OK, kk);
+                  
                 }else
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Data Tidak Ditemukan");
+                   
                 }
             }
+            KartuKeluargaCollection collection = new KartuKeluargaCollection();
+            var result = collection.GetKartuKeluargaByNoKK(NKK);
+            if(result!=null)
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            else
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Data Tidak Ditemukan");
         }
 
         // POST: api/KartuKeluarga
@@ -72,13 +63,60 @@ namespace KelurahanSentani.Apis
                             if(item.Id==0)
                             {
                                 item.Id = db.Penduduk.InsertAndGetLastID(item);
-                                db.KKDetail.Insert(new kkdetail { KartuKeluargaId = value.Id, PendudukId = item.Id });
+                               var res= db.KKDetail.Insert(new kkdetail { KartuKeluargaId = value.Id, PendudukId = item.Id });
+                                if(!res)
+                                    throw new SystemException("Data Gagal Ditambah");
+                            }
+                            else
+                            {
+                                throw new SystemException("Data Gagal Ditambah");
                             }
                         }
+                    }else
+                    {
+                        throw new SystemException("Data Gagal Ditambah");
                     }
 
                     trans.Commit();
                     return Request.CreateResponse(HttpStatusCode.OK, value);
+                }
+                catch (Exception ex)
+                {
+
+                    trans.Rollback();
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, ex.Message);
+                }
+            }
+        }
+
+        public HttpResponseMessage PostAnggota(penduduk value)
+        {
+            using (var db = new OcphDbContext())
+            {
+                var trans = db.Connection.BeginTransaction();
+                try
+                {
+                    value.Id = db.Penduduk.InsertAndGetLastID(value);
+
+                    if (value.Detail != null )
+                    {
+                        value.Detail.Id = value.Id;
+                       var isSaved= db.PendudukDetail.Insert(value.Detail);
+                        var res = db.KKDetail.Insert(new kkdetail { KartuKeluargaId = value.KartuKeluarga.Id, PendudukId = value.Id });
+                       if(value.Id<=0 || !isSaved || !res)
+                        {
+                            throw new SystemException("Data Gagal Ditambah");
+                        }
+                    }
+                    else
+                    {
+                        throw new SystemException("Data Gagal Ditambah");
+                    }
+
+                    trans.Commit();
+                    KartuKeluargaCollection collection = new KartuKeluargaCollection();
+
+                    return Request.CreateResponse(HttpStatusCode.OK, collection.GetPendudukById(value.Id));
                 }
                 catch (Exception ex)
                 {

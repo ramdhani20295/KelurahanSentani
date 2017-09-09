@@ -19,6 +19,21 @@ namespace KelurahanSentani
         Pria, Wanita
     }
 
+    public enum Hubungan
+    {
+        KepalaKeluarga,Istri,Anak,Ibu,Bapak,Famili
+    }
+
+    public enum StatusPerkawinan
+    {
+        Kawin,Belum
+    }
+
+    public enum Kewarganegaraan
+    {
+        WNI, WNA
+    }
+
 
     public enum Pendidikan
     {

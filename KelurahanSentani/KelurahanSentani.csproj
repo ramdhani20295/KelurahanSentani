@@ -219,6 +219,8 @@
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="DataModels\jenissurat.cs" />
     <Compile Include="DataModels\kartukeluarga.cs" />
+    <Compile Include="DataModels\KartuKeluargaCollection.cs" />
+    <Compile Include="DataModels\KelurahanInfo.cs" />
     <Compile Include="DataModels\kkdetail.cs" />
     <Compile Include="DataModels\pejabat.cs" />
     <Compile Include="DataModels\penduduk.cs" />

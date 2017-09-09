@@ -24,7 +24,7 @@
                                 </a>
                             </div>
                             <div class="card-block">
-                                <div ng-click="SetNoActive()"  class="list-group-item"  ng-repeat="item in Strukturs">
+                                <div ng-click="SetNoActive(item)"  class="list-group-item"  ng-repeat="item in Strukturs">
                                    <a class="btn btn-primary" data-target="#panel-{{item.Id}}" data-toggle="tab">RW {{item.Nama}}</a><span>{{item.Pejabat.Nama}}</span>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                                         <a data-target="#modal-container-UbahRT" role="button" data-toggle="modal" ng-click="SelectRT(rt)">
                                                             <i class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
                                                         </a>
-                                                        <a data-target="#" data-toggle="tooltip" title="Hapus">
+                                                        <a  data-toggle="tooltip" title="Hapus" ng-click="DeleteRT(rt,SelectedRW.DaftarRT)">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>
@@ -304,27 +304,21 @@
                                         <form role="form">
                                             <div class="form-group">
                                                 <label>
-                                                    No RW
+                                                    RW {{SelectedRW.Nama}}
                                                 </label>
-                                                <select class="form-control">
-                                                    <option>~~</option>
-                                                    <option>~~</option>
-                                                </select>
+                                               
                                             </div>
                                             <div class="form-group">
                                                 <label>
-                                                    No RT
+                                                    RT
                                                 </label>
-                                                <input type="text" class="form-control" />
+                                                <input type="text" class="form-control" ng-model="model.Nama" />
                                             </div>
                                             <div class="form-group">
                                                 <label>
                                                     Nama
                                                 </label>
-                                                <select class="form-control">
-                                                    <option>~~</option>
-                                                    <option>~~</option>
-                                                </select>
+                                                <select class="form-control" ng-model="model.Pejabat" ng-options="x.Nama for x in Pejabats"></select>
                                             </div>
                                         </form>
                                     </div>
@@ -336,7 +330,7 @@
                             <button type="button" class="btn btn-default" data-dismiss="modal">
                                 Close
                             </button>
-                            <button type="button" class="btn btn-primary">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="SaveEditRT(model)">
                                 Save changes
                             </button>
                         </div>

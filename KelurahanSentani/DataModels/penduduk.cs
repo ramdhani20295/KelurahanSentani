@@ -106,7 +106,8 @@ namespace KelurahanSentani.DataModels
                      }
           }
 
-        public kartukeluarga KartuKeluarga { get; internal set; }
+        public kartukeluarga KartuKeluarga { get; set; }
+        public pendudukdetail Detail { get; set; }
 
         private int  _id;
            private string  _nik;

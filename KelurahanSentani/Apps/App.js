@@ -35,9 +35,11 @@
         })
         .when("/kk", {
             templateUrl: "../Apps/Views/kk.html",
+            controller: "KartuKeluargaController"
         })
         .when("/kkanggota", {
             templateUrl: "../Apps/Views/kkanggota.html",
+            controller: "KartuKeluargaDetailController"
         })
         .when("/permohonan", {
             templateUrl: "../Apps/Views/permohonan.html",

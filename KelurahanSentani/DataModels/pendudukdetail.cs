@@ -22,7 +22,7 @@ using DAL;
           } 
 
           [DbColumn("StatusPerkawinan")] 
-          public string StatusPerkawinan 
+          public StatusPerkawinan StatusPerkawinan 
           { 
                get{return _statusperkawinan;} 
                set{ 
@@ -32,7 +32,7 @@ using DAL;
           } 
 
           [DbColumn("HubunganDalamKeluarga")] 
-          public string HubunganDalamKeluarga 
+          public Hubungan HubunganDalamKeluarga 
           { 
                get{return _hubungandalamkeluarga;} 
                set{ 
@@ -42,7 +42,7 @@ using DAL;
           } 
 
           [DbColumn("Kewarganegaraan")] 
-          public string Kewarganegaraan 
+          public Kewarganegaraan Kewarganegaraan 
           { 
                get{return _kewarganegaraan;} 
                set{ 
@@ -51,17 +51,28 @@ using DAL;
                      }
           } 
 
-          [DbColumn("Dokumen")] 
-          public string Dokumen 
+          [DbColumn("Paspor")] 
+          public string Paspor 
           { 
-               get{return _dokumen;} 
+               get{return _paspor;} 
                set{ 
-                      _dokumen=value; 
-                     OnPropertyChange("Dokumen");
+                      _paspor=value; 
+                     OnPropertyChange("Paspor");
                      }
-          } 
+          }
 
-          [DbColumn("Ayah")] 
+        [DbColumn("DokumenLain")]
+        public string DokumenLain
+        {
+            get { return _dokumen; }
+            set
+            {
+                _dokumen = value;
+                OnPropertyChange("DokumenLain");
+            }
+        }
+
+        [DbColumn("Ayah")] 
           public string Ayah 
           { 
                get{return _ayah;} 
@@ -82,13 +93,14 @@ using DAL;
           } 
 
           private int  _id;
-           private string  _statusperkawinan;
-           private string  _hubungandalamkeluarga;
-           private string  _kewarganegaraan;
-           private string  _dokumen;
+           private StatusPerkawinan  _statusperkawinan;
+           private Hubungan _hubungandalamkeluarga;
+           private Kewarganegaraan _kewarganegaraan;
+           private string _dokumen;
            private string  _ayah;
            private string  _ibu;
-      }
+        private string _paspor;
+    }
 }
 
 
