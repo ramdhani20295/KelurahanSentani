@@ -25,7 +25,13 @@
                             </div>
                             <div class="card-block">
                                 <div ng-click="SetNoActive()"  class="list-group-item"  ng-repeat="item in Strukturs">
-                                   <a class="btn btn-primary" data-target="#panel-{{item.Id}}" data-toggle="tab">RW {{item.Nama}}</a><span>{{item.Pejabat.Nama}}</span>
+                                    <a class="btn btn-primary" data-target="#panel-{{item.Id}}" data-toggle="tab">RW {{item.Nama}}</a><span>{{item.Pejabat.Nama}}</span>
+                                        <a data-target="#modal-container-UbahRW" role="button" data-toggle="modal">
+                                            <i class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
+                                        </a>
+                                        <a data-target="#" data-toggle="tooltip" title="Hapus">
+                                            <i class="fa fa-trash-o fa-lg"></i>
+                                        </a>
                                 </div>
                             </div>
                         </div>
@@ -80,19 +86,15 @@
                                     </div>
                                 </div>
                             </div>
-
-
                        
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-      
 
 </body>
 </html>
-
 
 <!--Tambah RW-->
 <div class="container-fluid">
