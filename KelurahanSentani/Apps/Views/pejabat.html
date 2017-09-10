@@ -113,41 +113,34 @@
                                         <div class="col-md-12">
                                             <form role="form">
                                                 <div class="form-group">
-                                                    <label>
-                                                        Nama
-                                                    </label>
-                                                    <input type="text" class="form-control" ng-model="model.Nama"/>
+                                                    <input type="text" class="form-control" placeholder="Nama" ng-model="model.Nama"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>
-                                                      Email
-                                                    </label>
-                                                    <input type="text" class="form-control" ng-model="model.Email" />
+                                                    <input type="text" class="form-control" placeholder="Email" ng-model="model.Email" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>
-                                                        Alamat
-                                                    </label>
-                                                    <input type="text" class="form-control" ng-model="model.Alamat"/>
+                                                    <textarea type="text" class="form-control" placeholder="Alamat" ng-model="model.Alamat"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>
-                                                        Level
-                                                    </label>
-                                                    <select class="form-control" ng-model="model.Level" ng-options="x for x in Levels"></select>
+                                                    <select class="form-control" ng-model="model.Level" ng-options="x for x in Levels">
+                                                        <option value="" disabled hidden selected>Level</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>
-                                                        Instansi
-                                                    </label>
-                                                    <input type="text" class="form-control"/>
+                                                    <input type="text" class="form-control" placeholder="Instansi"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Jabatan
-                                                    </label>
+                                                    
                                                     <div class="form-control">
-                                                        <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Ketua" name="optradio">Ketua</label>
-                                                        <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Sekretaris" name="optradio">Sekretaris</label>
+                                                        <label>
+                                                            Jabatan
+                                                        </label>
+                                                        <ul>
+                                                            <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Ketua" name="optradio">Ketua</label>
+                                                        </ul>
+                                                        <ul>
+                                                            <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Sekretaris" name="optradio">Sekretaris</label>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </form>
