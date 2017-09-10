@@ -30,8 +30,8 @@
         .when("/kelahiran", {
             templateUrl: "../Apps/Views/kelahiran.html",
         })
-        .when("/kematian", {
-            templateUrl: "../Apps/Views/kematian.html",
+        .when("/penduduk", {
+            templateUrl: "../Apps/Views/penduduk.html",
         })
         .when("/kk", {
             templateUrl: "../Apps/Views/kk.html",

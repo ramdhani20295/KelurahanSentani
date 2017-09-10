@@ -133,7 +133,7 @@
                                                     
                                                     <div class="form-control">
                                                         <label>
-                                                            Jabatan
+                                                            Jabatan :
                                                         </label>
                                                         <ul>
                                                             <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Ketua" name="optradio">Ketua</label>
@@ -167,7 +167,7 @@
         </div>
     </div>
 
-    <!--Tambah Pejabat-->
+    <!--Ubah Pejabat-->
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -200,7 +200,7 @@
                                                     <label>
                                                         Alamat
                                                     </label>
-                                                    <input type="text" class="form-control" ng-model="model.Alamat" />
+                                                    <textarea type="text" class="form-control" ng-model="model.Alamat" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
@@ -219,8 +219,12 @@
                                                         Jabatan
                                                     </label>
                                                     <div class="form-control">
-                                                        <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Ketua" name="optradio">Ketua</label>
-                                                        <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Sekretaris" name="optradio">Sekretaris</label>
+                                                        <ul>
+                                                            <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Ketua" name="optradio">Ketua</label>
+                                                        </ul>
+                                                        <ul>
+                                                            <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Sekretaris" name="optradio">Sekretaris</label>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </form>
