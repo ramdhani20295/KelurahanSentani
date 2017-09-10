@@ -20,7 +20,7 @@
                         <div class="card">
                             <div class="card-header d-flex align-items-center">
                                 <a data-target="#modal-container-TambahRW" role="button" data-toggle="modal">
-                                    <i class="fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah RW">RW</i>
+                                    <i class="fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah RW"> RW</i>
                                 </a>
                             </div>
                             <div class="card-block">
@@ -36,7 +36,7 @@
                                 <div class="tab-pane" ng-repeat="item in Strukturs" id="panel-{{item.Id}}">
                                     <div class="card-header d-flex align-items-center">
                                         <a data-target="#modal-container-TambahRT" role="button" data-toggle="modal" ng-click="SelectRW(item)">
-                                            <i class="fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah RT">RT</i>
+                                            <i class="fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah RT"> RT</i>
                                         </a>
                                     </div>
                                     <div class="card-block">
@@ -120,16 +120,12 @@
                                     <div class="col-md-12">
                                         <form role="form">
                                             <div class="form-group">
-                                                <label>
-                                                    No RW
-                                                </label>
-                                                <input type="text" class="form-control" ng-model="model.Nama" />
+                                                <input type="text" class="form-control" placeholder="No RW" ng-model="model.Nama" />
                                             </div>
                                             <div class="form-group">
-                                                <label>
-                                                    Nama
-                                                </label>
-                                                <select class="form-control" ng-model="SelectedJabatan" ng-options="x.Nama for x in Pejabats"></select>
+                                                <select class="form-control" ng-model="SelectedJabatan" ng-options="x.Nama for x in Pejabats">
+                                                    <option value="" disabled hidden selected>Nama</option>
+                                                </select>
                                             </div>
                                         </form>
                                     </div>
@@ -183,16 +179,12 @@
                                                 </label>
                                             </div>
                                             <div class="form-group">
-                                                <label>
-                                                    No RT
-                                                </label>
-                                                <input type="text" class="form-control" ng-model="model.Nama"/>
+                                                <input type="text" class="form-control" placeholder="No RT" ng-model="model.Nama"/>
                                             </div>
                                             <div class="form-group">
-                                                <label>
-                                                    Nama
-                                                </label>
-                                                <select class="form-control" ng-model="model.Pejabat" ng-options="x.Nama for x in Pejabats"></select>
+                                                <select class="form-control" ng-model="model.Pejabat" ng-options="x.Nama for x in Pejabats">
+                                                    <option value="" disabled hidden selected>Nama</option>
+                                                </select>
                                             </div>
                                         </form>
                                     </div>

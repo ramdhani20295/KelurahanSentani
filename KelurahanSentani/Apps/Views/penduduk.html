@@ -1,27 +1,76 @@
-﻿<!DOCTYPE html>
-
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-
+﻿<section class="forms">
     <div class="container-fluid">
+        <header>
+            <h1 class="h3 display">DAFTAR PENDUDUK</h1>
+        </header>
         <div class="row">
-            <div class="col-md-12">
 
-                <button type="button" class="btn btn-primary" href="#modal-container-708778" role="button" data-toggle="modal">
-                    Add Penduduk
-                </button>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <a data-target="#modal-container-TambahPen" role="button" data-toggle="modal">
+                            <i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah Penduduk"> Penduduk</i>
+                        </a>
+                    </div>
+                    <div class="card-block">
+                        <!--TabelPen-->
+                        <table class="table">
+                            <thead class="thead-default">
+                                <tr>
+                                    <th>
+                                        NIK
+                                    </th>
+                                    <th>
+                                        Nama Lengkap
+                                    </th>
+                                    <th>
+                                        Tempat / Tanggal Lahir
+                                    </th>
+                                    <th>
+                                        Agama
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        000
+                                    </td>
+                                    <td>
+                                        TB - Monthly
+                                    </td>
+                                    <td>
+                                        01/04/2012
+                                    </td>
+                                    <td>
+                                        Default
+                                    </td>
+                                    <td>
+                                        <a data-target="#modal-container-UbahPen" role="button" data-toggle="modal" ng-click="Edit(item)">
+                                            <i style="color:black" class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
+                                        </a>
+                                        <a ng-click="DeleteItem(item)">
+                                            <i style="color:black" class="fa fa-trash-o fa-lg" data-toggle="tooltip" title="Hapus"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 
+    <!--Tambah KK-->
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-
-                <div class="modal fade" id="modal-container-708778" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modal-container-TambahPen" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -30,7 +79,7 @@
                                     ×
                                 </button>
                                 <h4 class="modal-title" id="myModalLabel">
-                                    Modal title
+                                    Tambah Penduduk
                                 </h4>
                             </div>
                             <div class="modal-body">
@@ -39,147 +88,56 @@
                                         <div class="col-md-12">
                                             <form role="form">
                                                 <div class="form-group">
-                                                    <label>
-                                                        No Induk Kependudukan
-                                                    </label>
-                                                    <input type="text" class="form-control" />
+                                                    <input type="text" class="form-control" placeholder="NIK" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>
-                                                        No Kartu Keluarga
-                                                    </label>
-                                                    <input type="text" class="form-control" />
+                                                    <input type="text" class="form-control" placeholder="Nama Lengkap" />
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <input type="text" placeholder="Tempat Lahir" class="form-control" />
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input type="date" placeholder="" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>
-                                                        Nama
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Tempat Lahir
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Tanggal Lahir
-                                                    </label>
-                                                    <input type="date" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Jenis Kelamin
-                                                    </label>
                                                     <select class="form-control">
-                                                        <option>Laki-laki</option>
-                                                        <option>Perempuan</option>
+                                                        <option value="" disabled hidden selected>Agama</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>
-                                                        Alamat
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        No RW
-                                                    </label>
                                                     <select class="form-control">
-                                                        <option>01</option>
-                                                        <option>02</option>
-                                                        <option>03</option>
+                                                        <option value="" disabled hidden selected>Jenis Kelamin</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>
-                                                        No RT
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>01</option>
-                                                        <option>02</option>
-                                                        <option>03</option>
+                                                    <select class="form-control" ng-model="model.RW" ng-options=" ('RW '+ x.Nama) for x in Strukturs">
+                                                        <option value="" disabled hidden selected>RW</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>
-                                                        Desa/Kelurahan
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Kecamatan
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Kabupaten
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Provinsi
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Agama
-                                                    </label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Status Perkawinan
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>Kawin</option>
-                                                        <option>Belum Kawin</option>
+                                                    <select class="form-control" ng-model="model.RT" ng-options=" ('RT '+ x.Nama) for x in model.RW.DaftarRT">
+                                                        <option value="" disabled hidden selected>RT</option>
                                                     </select>
                                                 </div>
+
+                                                
                                                 <div class="form-group">
-                                                    <label>
-                                                        Status Dalam Keluarga
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>Kepala Keluarga</option>
-                                                        <option>02</option>
-                                                        <option>03</option>
+                                                    <select class="form-control" ng-model="Person.JK" ng-options="x for x in JenisKelamin">
+                                                        <option value="" disabled hidden selected>Jenis Kelamin</option>
                                                     </select>
                                                 </div>
+                                                
                                                 <div class="form-group">
-                                                    <label>
-                                                        Pendidikan
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>SD</option>
-                                                        <option>SMP</option>
-                                                        <option>SMA</option>
-                                                        <option>S1</option>
-                                                    </select>
+                                                    <input placeholder="Pekerjaan" type="text" ng-model="Person.Pekerjaan" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>
-                                                        Pekerjaan
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>Wiraswasta</option>
-                                                        <option>PNS</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Status Penduduk
-                                                    </label>
-                                                    <select class="form-control">
-                                                        <option>Tetap</option>
-                                                        <option>Sementara</option>
-                                                    </select>
+                                                    <input placeholder="Pendidikan" type="text" class="form-control" ng-model="Person.Pendidikan" />
                                                 </div>
                                             </form>
                                         </div>
@@ -191,7 +149,7 @@
                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="button" class="btn btn-primary">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="SimpanKK(model,Person)">
                                     Save changes
                                 </button>
                             </div>
@@ -206,5 +164,4 @@
     </div>
 
 
-</body>
-</html>
+</section>
