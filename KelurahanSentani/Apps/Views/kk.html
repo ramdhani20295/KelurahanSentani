@@ -25,6 +25,9 @@
                                         Kepala Keluarga
                                     </th>
                                     <th>
+                                        Alamat
+                                    </th>
+                                    <th>
                                         RW
                                     </th>
                                     <th>
@@ -36,18 +39,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="kk in KartuKeluarga">
+                                <tr ng-repeat="kk in KartuKeluarga | filter:Pagenation.Search | startFrom:Pagenation.currentPage*Pagenation.pageSize | limitTo:Pagenation.pageSize"">
                                     <td>
                                        {{kk.NoKK}}
                                     </td>
                                     <td>
-                                        TB - Monthly
+                                        {{kk.KepalaKeluarga.Nama}}
                                     </td>
                                     <td>
-                                        01/04/2012
+                                        {{kk.Alamat}}
                                     </td>
                                     <td>
-                                        Default
+                                        {{kk.RW.Nama}}
+                                    </td>
+                                    <td>
+                                        {{kk.RT.Nama}}
                                     </td>
                                     <td>
                                         <div class="dropdown">
@@ -76,6 +82,21 @@
                                 </tr>
                             </tbody>
                         </table>
+                      
+                    </div>
+                    <div class="card-footer d-flex align-items-center" ng-show="Pagenation.numberOfPages>1">
+                        <ul class="pagination">
+                            <li>
+                                <a href="" class="btn" ng-disabled="Pagenation.currentPage == 0" ng-click="Pagenation.currentPage=Pagenation.currentPage-1">Prev</a>
+                            </li>
+                            <li ng-repeat="i in Pagenation.numberOfPagesData()">
+                                <a href="" class="btn" ng-click="Pagenation.currentPage=i">{{i+1}}</a>
+                            </li>
+
+                            <li>
+                                <a href="" class="btn" ng-disabled="Pagenation.currentPage === (Pagenation.numberOfPages - 1)" ng-click="Pagenation.currentPage=Pagenation.currentPage+1">Next</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

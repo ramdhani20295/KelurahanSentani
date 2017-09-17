@@ -5,6 +5,43 @@
         return service;
     })
 
+    .factory("PagenationService", function ($filter) {
+
+        var service = {};
+        service.items = [];
+        service.Load = function (items, q, size) {
+            this.pageSize = size;
+            this.items = items;
+            this.q = q;
+            this.numberOfPages = Math.ceil(this.items.length / this.pageSize);
+            return $filter('filter')(this.items, this.q);
+        }
+        service.currentPage = 0;
+        service.pageSize = 10;
+        service.q = '';
+        service.numberOfPages = 0;
+
+
+        service.numberOfPagesData = function () {
+            var data = [];
+            for (var i = 0; i < this.numberOfPages; i++) {
+                data.push(i);
+            }
+            return data;
+        }
+
+        return service;
+
+    })
+
+    .filter('startFrom', function () {
+        return function (input, start) {
+            start = +start; //parse to int
+            return input.slice(start);
+        }
+    })
+
+
     .factory("Helpers", function ()
     {
         var service = {};
@@ -28,7 +65,7 @@
         {
             messages.push({ code: 1, message: 'Data Berhasil Ditambah' });
             messages.push({ code: 2, message: 'Data Berhasil Diubah' });
-            messages.push({ code: 3, message: 'Data Berhasil Diubah' });
+            messages.push({ code: 3, message: 'Data Berhasil DiHapus' });
             messages.push({ code: 401, message: 'Anda tidak memiliki hak akses' });
         }
 
@@ -40,6 +77,11 @@
         service.JenisKelamin= function () {
             return ['Pria', 'Wanita'];
         }
+
+        service.Pendidikan = function () {
+            return ['SD', 'SMP', 'SMA', 'S1', 'S2', 'S3'];
+        }
+
 
         service.Hubungan = function ()
         {
@@ -84,9 +126,8 @@
 
             return deferred.promise;
         }
-        service.GetPejabatRW = function ()
+        service.GetPejabatRW = function (datas)
         {
-            var datas = [];
             if (!isInstant)
             {
                this.source().then(function (response) {
@@ -102,7 +143,6 @@
             }
             else
             {
-                var datas = [];
                 angular.forEach(collection, function (value, key) {
                     if (value.Level === 'RW') {
                         datas.push(value);
@@ -110,22 +150,30 @@
                 });
                
             }
-
-            return datas;
-
+            
         }
 
-        service.GetPejabatRT = function () {
-            if (!service.isInstant)
-                service.source();
+        service.GetPejabatRT = function (datas) {
+            if (!isInstant) {
+                this.source().then(function (response) {
+                    angular.forEach(response, function (value, key) {
+                        if (value.Level === 'RT') {
+                            datas.push(value);
+                        }
+                    });
 
-            var datas = [];
-            angular.forEach(service.collection, function (value, key) {
-                if (value.Level == 'RT') {
-                    datas.push(value);
-                }
-            });
 
+                });
+
+            }
+            else {
+                angular.forEach(collection, function (value, key) {
+                    if (value.Level === 'RT') {
+                        datas.push(value);
+                    }
+                });
+
+            }
         }
 
         service.Insert = function (model)
@@ -383,6 +431,43 @@
             return deferred.promise;
         };
 
+
+        service.putperson = function (model, selected)
+        {
+            deferred = $q.defer();
+            $http({
+                method: 'put',
+                url: BaseUrl.URL + "/api/kartukeluarga/putanggota",
+                data: model
+            }).then(function (response) {
+                selected.NIK = model.NIK;
+                selected.Nama = model.Nama;
+                selected.TempatLahir = model.TempatLahir;
+                selected.TanggalLahir = model.TanggalLahir;
+                selected.Agama = model.Agama;
+                selected.JK = model.JK;
+                selected.Pekerjaan = model.Pekerjaan;
+                selected.Pendidikan = model.Pendidikan;
+
+                selected.Detail.StatusPerkawinan = model.Detail.StatusPerkawinan;
+                selected.Detail.HubunganDalamKeluarga = model.Detail.HubunganDalamKeluarga;
+                selected.Detail.Kewarganegaraan = model.Detail.Kewarganegaraan;
+                selected.Detail.Paspor = model.Detail.Paspor;
+                selected.Detail.DokumenLain = model.Detail.DokumenLain;
+                selected.Detail.Ayah = model.Detail.Ayah;
+                selected.Detail.Ibu = model.Detail.Ibu;
+
+
+                alert(Helpers.getMessage(2, ""));
+                deferred.resolve(response.data);
+            }, function (error) {
+
+                alert(Helpers.getMessage(error.status, error.data.Message));
+                // deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
 
 
         service.delete = function (model) {

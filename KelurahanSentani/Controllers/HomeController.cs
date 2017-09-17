@@ -11,6 +11,16 @@ namespace KelurahanSentani.Controllers
         [Authorize]
         public ActionResult Index()
         {
+
+            if (User.IsInRole("Administrator"))
+                return RedirectToAction("Administrator", "Home");
+            else if (User.IsInRole( "Lurah"))
+                return RedirectToAction("Lurah", "Home");
+            else if (User.IsInRole( "RW"))
+                return RedirectToAction("Rw", "Home");
+            else if (User.IsInRole("RT"))
+                return RedirectToAction("Rt", "Home");
+            else
             return View();
         }
 
@@ -21,13 +31,13 @@ namespace KelurahanSentani.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Rw")]
+        [Authorize(Roles = "RW")]
         public ActionResult rw()
         {
             return View();
         }
 
-        [Authorize(Roles = "Rt")]
+        [Authorize(Roles = "RT")]
         public ActionResult rt()
         {
             return View();

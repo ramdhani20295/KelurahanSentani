@@ -99,7 +99,7 @@ namespace KelurahanSentani.Apis
                     var data = JsonConvert.SerializeObject(model);
                     var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                     var result = await UserManager.CreateAsync(user, model.Password);
-                    string role = "Pejabat";
+                    string role = model.Level.ToString();
                     if (result.Succeeded)
                     {
                         var isExis = await AppRoleManager.RoleExistsAsync(role);

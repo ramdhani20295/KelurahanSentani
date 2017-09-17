@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
- 
- namespace KelurahanSentani.DataModels 
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
+
+namespace KelurahanSentani.DataModels 
 { 
      [TableName("pendudukdetail")] 
      public class pendudukdetail:BaseNotifyProperty  
@@ -21,8 +23,9 @@ using DAL;
                      }
           } 
 
-          [DbColumn("StatusPerkawinan")] 
-          public StatusPerkawinan StatusPerkawinan 
+          [DbColumn("StatusPerkawinan")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public StatusPerkawinan StatusPerkawinan 
           { 
                get{return _statusperkawinan;} 
                set{ 
@@ -31,8 +34,9 @@ using DAL;
                      }
           } 
 
-          [DbColumn("HubunganDalamKeluarga")] 
-          public Hubungan HubunganDalamKeluarga 
+          [DbColumn("HubunganDalamKeluarga")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Hubungan HubunganDalamKeluarga 
           { 
                get{return _hubungandalamkeluarga;} 
                set{ 
@@ -41,8 +45,9 @@ using DAL;
                      }
           } 
 
-          [DbColumn("Kewarganegaraan")] 
-          public Kewarganegaraan Kewarganegaraan 
+          [DbColumn("Kewarganegaraan")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Kewarganegaraan Kewarganegaraan 
           { 
                get{return _kewarganegaraan;} 
                set{ 

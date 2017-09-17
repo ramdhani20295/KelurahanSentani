@@ -42,7 +42,7 @@ namespace KelurahanSentani
 
     public enum LevelStruktur
     {
-        RT, RW, Kelurahan
+        RT, RW, Lurah
     }
     public enum JenisJabatan
     {

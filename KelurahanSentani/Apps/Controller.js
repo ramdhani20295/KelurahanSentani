@@ -3,7 +3,7 @@
         $scope.TambahTitle = "Tambah Pejabat";
         $scope.IsNew = true;
         $scope.Pejabats = [];
-        $scope.Levels = ["Kelurahan", "RW", "RT"];
+        $scope.Levels = ["Lurah", "RW", "RT"];
         $scope.JenisJabatans = ["Ketua", "Sekretaris"];
 
         PejabatService.source().then(function (data) {
@@ -56,16 +56,23 @@
     
     .controller("StrukturKelurahanController", function ($scope, StrukturKelurahanService,PejabatService,$window) {
         $scope.Strukturs = [];
-        $scope.Pejabats = [];
+        $scope.PejabatRW = [];
+        $scope.PejabatRT = [];
         $scope.IsBusy = false;
-        
 
-        StrukturKelurahanService.source().then(function (response) {
-            $scope.Strukturs = response.data;
-            $scope.Pejabats = PejabatService.GetPejabatRW();
-            
-        });
+        $scope.Init = function()
+        {
+            StrukturKelurahanService.source().then(function (response) {
+                $scope.Strukturs = response.data;
+                PejabatService.source().then(function (response) {
+                    PejabatService.GetPejabatRW($scope.PejabatRW);
+                    PejabatService.GetPejabatRT($scope.PejabatRT);
+                });
+            });
 
+        }
+
+      
         $scope.SetNoActive = function (item) {
             $scope.SelectedRW = item;
             $(document).ready(function () {
@@ -144,15 +151,17 @@
 
     })
 
-    .controller("KartuKeluargaController", function ($scope, StrukturKelurahanService, KartuKeluargaService, $window,Helpers,$rootScope) {
+    .controller("KartuKeluargaController", function ($scope, StrukturKelurahanService, KartuKeluargaService, $window, Helpers, $rootScope, PagenationService) {
         $scope.Strukturs = [];
         $scope.IsBusy = false;
         $scope.Kepercayaan = Helpers.Kepercayaan();
         $scope.JenisKelamin = Helpers.JenisKelamin();
         $scope.KartuKeluarga = [];
+        $scope.Pagenation = PagenationService;
+        $scope.Search = '';
 
         KartuKeluargaService.source().then(function (response) {
-            $scope.KartuKeluarga = response;
+            $scope.KartuKeluarga = $scope.Pagenation.Load(response, $scope.Search, 10); 
             StrukturKelurahanService.source().then(function (response) {
                 $scope.Strukturs = response.data;
             });
@@ -208,6 +217,7 @@
         $scope.JenisKelamin = Helpers.JenisKelamin();
         $scope.Kewarganegaraan = Helpers.Kewarganegaraan();
         $scope.Hubungan = Helpers.Hubungan();
+        $scope.Pendidikan = Helpers.Pendidikan();
         $scope.StatusPerkawinan = Helpers.StatusPerkawinan();
         $scope.KartuKeluarga = $rootScope.SelectedKK;
 
@@ -215,18 +225,18 @@
         {
             KartuKeluargaService.postanggota(model, $scope.KartuKeluarga ).then(function (response) { })
         }
+        $scope.SelectPerson = function(item)
+        {
+            $scope.SelectedPerson = item;
+            $scope.Person = angular.copy(item);
+            $scope.Person.TanggalLahir = new Date(item.TanggalLahir);
+
+        }
+        $scope.SimpanEditAnggota = function (person)
+        {
+            KartuKeluargaService.putperson(person, $scope.SelectedPerson).then(function (response) { });
+        }
 
     })
-
-
-
-
-
-
-
-
-
-
-
 
     ;

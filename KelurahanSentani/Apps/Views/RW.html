@@ -4,12 +4,8 @@
     <title></title>
     <meta charset="utf-8" />
 </head>
-<body>
-   
-    
-   
-
-        <section class="forms">
+<body >
+        <section class="forms" ng-init="Init()">
             <div class="container-fluid">
                 <header>
                     <h1 class="h3 display">STRUKTUR KELURAHAN</h1>
@@ -132,7 +128,7 @@
                                                 <label>
                                                     Nama
                                                 </label>
-                                                <select class="form-control" ng-model="SelectedJabatan" ng-options="x.Nama for x in Pejabats"></select>
+                                                <select class="form-control" ng-model="SelectedJabatan" ng-options="x.Nama for x in PejabatRW"></select>
                                             </div>
                                         </form>
                                     </div>
@@ -195,7 +191,7 @@
                                                 <label>
                                                     Nama
                                                 </label>
-                                                <select class="form-control" ng-model="model.Pejabat" ng-options="x.Nama for x in Pejabats"></select>
+                                                <select class="form-control" ng-model="model.Pejabat" ng-options="x.Nama for x in PejabatRT"></select>
                                             </div>
                                         </form>
                                     </div>

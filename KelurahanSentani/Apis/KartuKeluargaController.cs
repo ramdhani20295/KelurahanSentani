@@ -147,6 +147,34 @@ namespace KelurahanSentani.Apis
 
         }
 
+        public HttpResponseMessage PutAnggota(penduduk penduduk)
+        {
+            using (var db = new OcphDbContext())
+            {
+                var trans = db.Connection.BeginTransaction();
+                try
+                {
+                    var isUpdatePenduduk = db.Penduduk.Update(O => new { O.Agama, O.JK, O.Nama, O.NIK, O.Pekerjaan, O.Pendidikan, O.TanggalLahir, O.TempatLahir }, penduduk, O => O.Id == penduduk.Id);
+                    var isUpdateDetail = db.PendudukDetail.Update(O => new { O.Ayah, O.DokumenLain, O.HubunganDalamKeluarga, O.Ibu, O.Kewarganegaraan, O.Paspor, O.StatusPerkawinan }, penduduk.Detail, O => O.Id == penduduk.Id);
+                    if (!isUpdateDetail || !isUpdatePenduduk)
+                    {
+                        throw new SystemException("Data Gagal Diubah");
+                    }
+                   
+                    trans.Commit();
+                    KartuKeluargaCollection collection = new KartuKeluargaCollection();
+
+                    return Request.CreateResponse(HttpStatusCode.OK,penduduk);
+                }
+                catch (Exception ex)
+                {
+
+                    trans.Rollback();
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, ex.Message);
+                }
+            }
+        }
+
         // DELETE: api/KartuKeluarga/5
         public HttpResponseMessage Delete(int id)
         {

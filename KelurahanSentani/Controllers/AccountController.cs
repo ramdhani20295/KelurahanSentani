@@ -100,7 +100,7 @@ namespace KelurahanSentani.Controllers
                 return Url.Action("Administrator", "Home");
             else if (await UserManager.IsInRoleAsync(user.Id, "Lurah"))
                 return Url.Action("Lurah", "Home");
-            else if (await UserManager.IsInRoleAsync(user.Id, "Rw"))
+            else if (await UserManager.IsInRoleAsync(user.Id, "RW"))
                 return Url.Action("Rw", "Home");
             else
                 return Url.Action("Rt", "Home");
