@@ -1,7 +1,7 @@
 ﻿<section class="forms">
     <div class="container-fluid">
         <header>
-            <h1 class="h3 display">DAFTAR PINDAH</h1>
+            <h1 class="h3 display">DAFTAR DATA PINDAH</h1>
         </header>
         <div class="row">
 
@@ -9,15 +9,18 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
                         <a data-target="#modal-container-TambahPindah" role="button" data-toggle="modal">
-                            <i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah Pindah"> Perpindahan</i>
+                            <i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah Data Pindah"> Data Perpindahan</i>
                         </a>
                     </div>
                     <div class="card-block">
 
-                        <!--TabelPindah-->
+                        <!--Tabel Pindah-->
                         <table class="table">
                             <thead class="thead-default">
                                 <tr>
+                                    <th>
+                                        No
+                                    </th>
                                     <th>
                                         Nomor KK
                                     </th>
@@ -40,6 +43,7 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -70,7 +74,7 @@
                                                         ×
                                                     </button>
                                                     <h4 class="modal-title" id="myModalLabel">
-                                                        Tambah Pindah
+                                                        Tambah Data Pindah
                                                     </h4>
                                                 </div>
                                                 <div class="modal-body">
@@ -84,7 +88,28 @@
                                                                     <div class="form-group">
                                                                         <textarea type="text" class="form-control" placeholder="Alamat Baru" />
                                                                     </div>
-
+                                                                    <div class="table-bordered">
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th></th>
+                                                                                    <th>NIK</th>
+                                                                                    <th>Nama</th>
+                                                                                    <th>Status Keluarga</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <div class="checkbox">
+                                                                                            <label><input type="checkbox" value=""></label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </thead>
+                                                                        </table>
+                                                                    </div>
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -109,11 +134,11 @@
                             </div>
                         </div>
 
-                        <!--Ubah Permohonan-->
+                        <!--Ubah Pindah-->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="modal fade" id="modal-container-UbahPermohonan" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="modal-container-UbahPindah" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -122,7 +147,7 @@
                                                         ×
                                                     </button>
                                                     <h4 class="modal-title" id="myModalLabel">
-                                                        Ubah Permohonan
+                                                        Ubah Pindah
                                                     </h4>
                                                 </div>
                                                 <div class="modal-body">
@@ -131,25 +156,33 @@
                                                             <div class="col-md-12">
                                                                 <form role="form">
                                                                     <div class="form-group">
-                                                                        <input type="text" placeholder="Nomor Permohonan" class="form-control" />
+                                                                        <input type="text" placeholder="Nomor KK" class="form-control" />
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input type="text" class="form-control" placeholder="NIK" />
+                                                                        <textarea type="text" class="form-control" placeholder="Alamat Baru" />
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <select class="form-control" ng-model="model.RT" ng-options=" ('RT '+ x.Nama) for x in model.RW.DaftarRT">
-                                                                            <option value="" disabled hidden selected>RT</option>
-                                                                        </select>
+                                                                    <div class="table-bordered">
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th></th>
+                                                                                    <th>NIK</th>
+                                                                                    <th>Nama</th>
+                                                                                    <th>Status Keluarga</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <div class="checkbox">
+                                                                                            <label><input type="checkbox" value=""></label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </thead>
+                                                                        </table>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <textarea type="text" class="form-control" placeholder="Isi"></textarea>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <select class="form-control">
-                                                                            <option value="" disabled hidden selected>Jenis Surat</option>
-                                                                        </select>
-                                                                    </div>
-
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -173,3 +206,4 @@
                                 </div>
                             </div>
                         </div>
+

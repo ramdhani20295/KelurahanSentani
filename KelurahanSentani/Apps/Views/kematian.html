@@ -1,25 +1,28 @@
 ﻿<section class="forms">
     <div class="container-fluid">
         <header>
-            <h1 class="h3 display">DAFTAR PERMOHONAN</h1>
+            <h1 class="h3 display">DAFTAR DATA KEMATIAN</h1>
         </header>
         <div class="row">
 
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <a data-target="#modal-container-TambahPermohonan" role="button" data-toggle="modal">
-                            <i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah Permohonan"> Permohonan</i>
+                        <a data-target="#modal-container-TambahKematian" role="button" data-toggle="modal">
+                            <i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah Data Kematian"> Data Kematian</i>
                         </a>
                     </div>
                     <div class="card-block">
 
-                        <!--TabelPermohonan-->
+                        <!--Tabel Kematian-->
                         <table class="table">
                             <thead class="thead-default">
                                 <tr>
                                     <th>
-                                        Nomor Permohonan
+                                        No
+                                    </th>
+                                    <th>
+                                        Nomor KK
                                     </th>
                                     <th>
                                         NIK
@@ -28,19 +31,10 @@
                                         Nama
                                     </th>
                                     <th>
-                                        Tempat/Tanggal Lahir
+                                        Tanggal Kematian
                                     </th>
                                     <th>
-                                        Jenis Kelamin
-                                    </th>
-                                    <th>
-                                        Agama
-                                    </th>
-                                    <th>
-                                        Alamat
-                                    </th>
-                                    <th>
-                                        RT/RW
+                                        Sebab Kematian
                                     </th>
                                     <th>
                                         Action
@@ -55,10 +49,8 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td>
-                                        <a data-target="#modal-container-UbahPermohonan" role="button" data-toggle="modal" ng-click="Edit(item)">
+                                        <a data-target="#modal-container-UbahKematian" role="button" data-toggle="modal" ng-click="Edit(item)">
                                             <i style="color:black" class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
                                         </a>
                                         <a ng-click="DeleteItem(item)">
@@ -69,11 +61,11 @@
                             </tbody>
                         </table>
 
-                        <!--Tambah Permohonan-->
+                        <!--Tambah Kematian-->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="modal fade" id="modal-container-TambahPermohonan" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="modal-container-TambahKematian" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -82,7 +74,7 @@
                                                         ×
                                                     </button>
                                                     <h4 class="modal-title" id="myModalLabel">
-                                                        Tambah Permohonan
+                                                        Tambah Data Kematian
                                                     </h4>
                                                 </div>
                                                 <div class="modal-body">
@@ -91,25 +83,36 @@
                                                             <div class="col-md-12">
                                                                 <form role="form">
                                                                     <div class="form-group">
-                                                                        <input type="text" placeholder="Nomor Permohonan" class="form-control" />
+                                                                        <input type="text" placeholder="Nomor KK" class="form-control" />
+                                                                    </div>
+                                                                    <div class="table-bordered">
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th></th>
+                                                                                    <th>NIK</th>
+                                                                                    <th>Nama</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <div class="checkbox">
+                                                                                            <label><input type="checkbox" value=""></label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </thead>
+                                                                        </table>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input type="text" class="form-control" placeholder="NIK" />
+                                                                        Telah Meninggal Pada :
+                                                                        <input type="Date" placeholder="Tanggal Kematian" class="form-control" />
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select class="form-control" ng-model="model.RT" ng-options=" ('RT '+ x.Nama) for x in model.RW.DaftarRT">
-                                                                            <option value="" disabled hidden selected>RT</option>
-                                                                        </select>
+                                                                        <textarea type="text" class="form-control" placeholder="Sebab Kematian" />
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <textarea type="text" class="form-control" placeholder="Isi"></textarea>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <select class="form-control">
-                                                                            <option value="" disabled hidden selected>Jenis Surat</option>
-                                                                        </select>
-                                                                    </div>
-
+                                                                    
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -134,11 +137,11 @@
                             </div>
                         </div>
 
-                        <!--Ubah Permohonan-->
+                        <!--Ubah Kematian-->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="modal fade" id="modal-container-UbahPermohonan" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="modal-container-UbahKematian" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -147,7 +150,7 @@
                                                         ×
                                                     </button>
                                                     <h4 class="modal-title" id="myModalLabel">
-                                                        Ubah Permohonan
+                                                        Ubah Data Kematian
                                                     </h4>
                                                 </div>
                                                 <div class="modal-body">
@@ -156,23 +159,34 @@
                                                             <div class="col-md-12">
                                                                 <form role="form">
                                                                     <div class="form-group">
-                                                                        <input type="text" placeholder="Nomor Permohonan" class="form-control" />
+                                                                        <input type="text" placeholder="Nomor KK" class="form-control" />
+                                                                    </div>
+                                                                    <div class="table-bordered">
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th></th>
+                                                                                    <th>NIK</th>
+                                                                                    <th>Nama</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <div class="checkbox">
+                                                                                            <label><input type="checkbox" value=""></label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </thead>
+                                                                        </table>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input type="text" class="form-control" placeholder="NIK" />
+                                                                        Telah Meninggal Pada :
+                                                                        <input type="Date" placeholder="Tanggal Kematian" class="form-control" />
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select class="form-control" ng-model="model.RT" ng-options=" ('RT '+ x.Nama) for x in model.RW.DaftarRT">
-                                                                            <option value="" disabled hidden selected>RT</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <textarea type="text" class="form-control" placeholder="Isi"></textarea>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <select class="form-control">
-                                                                            <option value="" disabled hidden selected>Jenis Surat</option>
-                                                                        </select>
+                                                                        <textarea type="text" class="form-control" placeholder="Sebab Kematian" />
                                                                     </div>
 
                                                                 </form>
