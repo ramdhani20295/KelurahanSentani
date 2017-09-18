@@ -15,8 +15,14 @@
             templateUrl: "../Apps/Views/rw.html",
             controller:"StrukturKelurahanController"
         })
-        .when("/surat", {
-            templateUrl: "../Apps/Views/surat.html",
+        .when("/pindah", {
+            templateUrl: "../Apps/Views/pindah.html",
+        })
+        .when("/kematian", {
+            templateUrl: "../Apps/Views/kematian.html",
+        })
+        .when("/umum", {
+            templateUrl: "../Apps/Views/umum.html",
         })
         .when("/kependudukan", {
             templateUrl: "../Apps/Views/kependudukan.html",
