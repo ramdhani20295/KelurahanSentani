@@ -1,23 +1,449 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="utf-8" />
-</head>
-<body>
-    <h2>
-        Daftar Permohonan
-    </h2>
-
+﻿<section class="forms">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#modal-container-TambahPermohonan" role="button" data-toggle="modal">
-                    <i aria-hidden="true" data-toggle="tooltip" title="Tambah Peermohonan" class="fa fa-plus">Permohonan</i>
-                </a>
-            </div>
-        </div>
-    </div>
+        <header>
+            <h1 class="h3 display">DAFTAR PERMOHONAN</h1>
+        </header>
+        <div class="row" ng-init="Aksi='Belum'">
 
-</body>
-</html>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <a data-target="#modal-container-TambahPermohonan" role="button" data-toggle="modal">
+                            <i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah Data Permohonan"> Data Permohonan</i>
+                        </a>
+                    </div>
+                    <div class="card-block">
+
+                        <!--Tabel Permohonan-->
+                        <table class="table">
+                            <thead class="thead-default">
+                                <tr>
+                                    <th>
+                                        No
+                                    </th>
+                                    <th>
+                                        Nomor KK
+                                    </th>
+                                    <th>
+                                        NIK
+                                    </th>
+                                    <th>
+                                        Nama
+                                    </th>
+                                    <th>
+                                        Tanggal buat
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    
+                                    <td>
+                                        <a data-target="#modal-container-CreateSUmum" role="button" data-toggle="modal">
+                                            <i style="color:black" class="fa fa-file-o fa-fw" aria-hidden="true" data-toggle="tooltip" title="Buat Surat"></i>
+                                        </a>
+                                        <a data-target="#modal-container-DetailPermohonan" role="button" data-toggle="modal">
+                                            <i style="color:black" class="fa fa-file-text-o" aria-hidden="true" data-toggle="tooltip" title="Detail"></i>
+                                        </a>
+                                        <a data-target="#modal-container-UbahPermohonan" role="button" data-toggle="modal" ng-click="Edit(item)">
+                                            <i style="color:black" class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
+                                        </a>
+                                        <a ng-click="DeleteItem(item)">
+                                            <i style="color:black" class="fa fa-trash-o fa-lg" data-toggle="tooltip" title="Hapus"></i>
+                                        </a>
+                                    </td>
+                                    <td align="center">
+                                        <a data-target="" role="button" data-toggle="modal">
+                                            <i style="color:black" class="fa fa-square-o fa-2x" ng-show="Aksi==='Belum'" ng-click="Aksi='Ya'" aria-hidden="true" data-toggle="tooltip" title=""></i>
+                                            <i style="color:green" class="fa fa-check-square-o fa-2x" ng-show="Aksi==='Ya'" ng-click="Aksi='Tidak'" aria-hidden="true" data-toggle="tooltip" title=""></i>
+                                            <i style="color:Red" class="fa fa-window-close-o fa-2x" aria-hidden="true" ng-show="Aksi==='Tidak'" ng-click="Aksi='Belum'" data-toggle="tooltip" title=""></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!--Tambah Permohonan-->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="modal fade" id="modal-container-TambahPermohonan" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        ×
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                        Tambah Data Permohonan
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <form role="form">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control">
+                                                                            <option value="" disabled hidden selected>Jenis Surat</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control">
+                                                                            <option value="" disabled hidden selected>Nomor KK</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control">
+                                                                            <option value="" disabled hidden selected>Anggota KK</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea type="text" class="form-control" placeholder="Maksud/Keperluan" />
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Ubah Permohonan-->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="modal fade" id="modal-container-UbahPermohonan" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        ×
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                        Ubah Data Permohonan
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <form role="form">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control">
+                                                                            <option value="" disabled hidden selected>Jenis Surat</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control">
+                                                                            <option value="" disabled hidden selected>Nomor KK</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control">
+                                                                            <option value="" disabled hidden selected>Anggota KK</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea type="text" class="form-control" placeholder="Maksud/Keperluan" />
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Detail Permohonan-->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="modal fade" id="modal-container-DetailPermohonan" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        ×
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                        Ubah Data Permohonan
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <form role="form">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control">
+                                                                            <option value="" disabled hidden selected>Jenis Surat</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control">
+                                                                            <option value="" disabled hidden selected>Nomor KK</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control">
+                                                                            <option value="" disabled hidden selected>Anggota KK</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea type="text" class="form-control" placeholder="Maksud/Keperluan" />
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Create S Pindah-->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="modal fade" id="modal-container-CreateSPindah" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        ×
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                        Tambah Data Pindah
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <form role="form">
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Nomor Surat" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Nomor KK" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Anggota KK" class="form-control" />
+                                                                    </div>
+                                                                    <div class="table-bordered">
+                                                                        <textarea type="text" class="form-control" placeholder="Alamat Baru" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        Tanggal Buat
+                                                                        <input type="date" placeholder="Tanggal Buat" class="form-control" />
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Create S Kematian-->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="modal fade" id="modal-container-CreateSKematian" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        ×
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                        Tambah Data Kematian
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <form role="form">
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Nomor Surat" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Nomor KK" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Anggota KK" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        Tanggal Buat :
+                                                                        <input type="Date" placeholder="Tanggal Buat" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        Telah Meninggal Pada :
+                                                                        <input type="Date" placeholder="Tanggal Kematian" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea type="text" class="form-control" placeholder="Sebab Kematian" />
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Create S Umum-->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="modal fade" id="modal-container-CreateSUmum" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        ×
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                        Tambah Data Umum
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <form role="form">
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Nomor Surat" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Nomor KK" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Anggota KK" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        Tanggal Buat
+                                                                        <input type="date" placeholder="Tanggal Buat" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea type="text" class="form-control" placeholder="Maksud/Keperluan" />
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>

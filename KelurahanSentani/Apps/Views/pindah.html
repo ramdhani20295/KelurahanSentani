@@ -1,0 +1,209 @@
+﻿<section class="forms">
+    <div class="container-fluid">
+        <header>
+            <h1 class="h3 display">DAFTAR DATA PINDAH</h1>
+        </header>
+        <div class="row">
+            
+            <div class="col-lg-12">
+                <div class="card"><!--
+                    <div class="card-header d-flex align-items-center">
+                        <a data-target="#modal-container-TambahPindah" role="button" data-toggle="modal">
+                            <i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah Data Pindah"> Data Perpindahan</i>
+                        </a>
+                    </div>-->
+                    <div class="card-block">
+            
+                        <!--Tabel Pindah-->
+                        <table class="table">
+                            <thead class="thead-default">
+                                <tr>
+                                    <th>
+                                        No
+                                    </th>
+                                    <th>
+                                        Nomor KK
+                                    </th>
+                                    <th>
+                                        NIK
+                                    </th>
+                                    <th>
+                                        Nama
+                                    </th>
+                                    <th>
+                                        Alamat Lama
+                                    </th>
+                                    <th>
+                                        Alamat Baru
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <a data-target="#modal-container-UbahPindah" role="button" data-toggle="modal" ng-click="Edit(item)">
+                                            <i style="color:black" class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
+                                        </a>
+                                        <a ng-click="DeleteItem(item)">
+                                            <i style="color:black" class="fa fa-trash-o fa-lg" data-toggle="tooltip" title="Hapus"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!--Tambah Pindah-->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="modal fade" id="modal-container-TambahPindah" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        ×
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                        Tambah Data Pindah
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <form role="form">
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Nomor KK" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea type="text" class="form-control" placeholder="Alamat Baru" />
+                                                                    </div>
+                                                                    <div class="table-bordered">
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th></th>
+                                                                                    <th>NIK</th>
+                                                                                    <th>Nama</th>
+                                                                                    <th>Status Keluarga</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <div class="checkbox">
+                                                                                            <label><input type="checkbox" value=""></label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </thead>
+                                                                        </table>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Ubah Pindah-->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="modal fade" id="modal-container-UbahPindah" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        ×
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                        Ubah Pindah
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <form role="form">
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Nomor KK" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea type="text" class="form-control" placeholder="Alamat Baru" />
+                                                                    </div>
+                                                                    <div class="table-bordered">
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th></th>
+                                                                                    <th>NIK</th>
+                                                                                    <th>Nama</th>
+                                                                                    <th>Status Keluarga</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <div class="checkbox">
+                                                                                            <label><input type="checkbox" value=""></label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </thead>
+                                                                        </table>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
