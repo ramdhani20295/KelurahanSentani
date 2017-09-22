@@ -51,7 +51,17 @@ namespace KelurahanSentani.Controllers
                 _userManager = value;
             }
         }
-
+        public ApplicationRoleManager AppRoleManager
+        {
+            get
+            {
+                return _appRoleManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _appRoleManager = value;
+            }
+        }
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -170,9 +180,12 @@ namespace KelurahanSentani.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                var role = "Administrator";
                 if (result.Succeeded)
                 {
-
+                   var roleExists= await AppRoleManager.RoleExistsAsync(role);
+                    if (!roleExists)
+                        await AppRoleManager.CreateAsync(new AspNet.Identity.MySQL.IdentityRole { Name = role });
                     await UserManager.AddToRoleAsync(user.Id, "Administrator");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
@@ -445,6 +458,7 @@ namespace KelurahanSentani.Controllers
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
+        private ApplicationRoleManager _appRoleManager;
 
         private IAuthenticationManager AuthenticationManager
         {
