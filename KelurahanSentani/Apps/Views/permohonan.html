@@ -135,9 +135,20 @@
                                                                             <option value="" disabled hidden selected>Nama Penduduk</option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <input type="email" placeholder="Email" class="form-control" />
+
+                                                                    <div ng-click="showOptions= !showOptions">Pilih</div>
+                                                                    <div ng-show="showOptions">
+                                                                        <label class="form-control" ng-repeat="option in DaftarKeluargas">{{option.Nama}}<input type="checkbox" class="form-control" ng-model="selected[$index]" ng-change="update()" /><br /></label>
                                                                     </div>
+
+
+                                                                    <div class="form-group">
+                                                                        <input type="email" required placeholder="Email" class="form-control" />
+                                                                    </div>
+                                                                    <div class="table-bordered" ng-show="model.JenisSurat==='Pindah'">
+                                                                        <textarea type="text" class="form-control" placeholder="Alamat Baru" />
+                                                                    </div>
+
                                                                     <div class="form-group">
                                                                         <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" />
                                                                     </div>
