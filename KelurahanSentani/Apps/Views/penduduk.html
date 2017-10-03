@@ -1,4 +1,26 @@
-﻿<section class="forms">
+﻿
+<style>
+    input[type=text] {
+        width: 130px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+        background-image: url('../../img/search.png');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+        input[type=text]:focus {
+            width: 100%;
+        }
+</style>
+
+<section class="forms">
     <div class="container-fluid">
         <header>
             <h1 class="h3 display">DAFTAR PENDUDUK</h1>
@@ -8,9 +30,9 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <a role="button" data-toggle="modal">
-                            <input type="text" class="form-control" placeholder="Search" name="search" class="form-control" />
-                        </a>
+                        <form>
+                            <input class="fa fa-search" type="text" name="search" placeholder="Search.." class="form-control">
+                        </form>
                     </div>
                     <!--<div class="card-header d-flex align-items-center">
                         <a data-target="#modal-container-TambahPen" role="button" data-toggle="modal">
