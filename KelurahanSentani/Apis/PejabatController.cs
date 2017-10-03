@@ -16,39 +16,15 @@ namespace KelurahanSentani.Apis
             [Authorize(Roles ="Administrator")]
         public HttpResponseMessage Get()
         {
-            using (var db = new OcphDbContext())
-            {
-                var result = db.Pejabat.Select();
-                foreach (var item in result)
-                {
-                    if(item.Level== LevelStruktur.RW)
-                    {
-                        item.Instansi = db.RW.Where(O => O.Id == item.InstansiID).FirstOrDefault();
-                    }else if(item.Level== LevelStruktur.RT)
-                    {
-                        item.Instansi = db.RT.Where(O => O.Id == item.InstansiID).FirstOrDefault();
-                    }
-                }
-                return Request.CreateResponse(HttpStatusCode.OK, result.ToList());
-            }
+            var coll = new Collections.PejabatCollection();
+            return Request.CreateResponse(HttpStatusCode.OK, coll.Get());
         }
 
         // GET: api/Penduduk/5
         public HttpResponseMessage Get(int id)
         {
-            using (var db = new OcphDbContext())
-            {
-                var item = db.Pejabat.Where(O => O.Id==id).FirstOrDefault();
-                if (item!=null &&item.Level == LevelStruktur.RW)
-                {
-                    item.Instansi = db.RW.Where(O => O.Id == item.InstansiID).FirstOrDefault();
-                }
-                else if (item != null &&item.Level == LevelStruktur.RT)
-                {
-                    item.Instansi = db.RT.Where(O => O.Id == item.InstansiID).FirstOrDefault();
-                }
-                return Request.CreateResponse(HttpStatusCode.OK, item);
-            }
+            var coll = new Collections.PejabatCollection();
+            return Request.CreateResponse(HttpStatusCode.OK, coll.GetPejabatById(id));
         }
 
         // POST: api/Penduduk

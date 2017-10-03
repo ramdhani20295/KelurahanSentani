@@ -1,7 +1,7 @@
 ﻿angular.module("app.service", [])
     .factory("BaseUrl", function () {
         var service = {};
-        service.URL = "http://localhost:52814";
+        service.URL = "";
         return service;
     })
 
@@ -42,7 +42,7 @@
     })
 
 
-    .factory("Helpers", function ()
+    .factory("Helpers", function ($http,$q)
     {
         var service = {};
         var messages = [];
@@ -92,6 +92,26 @@
         }
         service.Kewarganegaraan = function () {
             return ['WNI', 'WNA'];
+        }
+
+
+        service.JenisSurat = ["Umum","Kematian","Pindah"];
+
+        service.MyRole = function () {
+            var role = null;
+            deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: "/api/account/myroles",
+            }).then(function (response) {
+                role = response.data;
+                // With the data succesfully returned, we can resolve promise and we can access it in controller
+                deferred.resolve(role);
+            }, function (error) {
+                deferred.resolve(role);
+            });
+
+            return deferred.promise;
         }
         return service;
 
@@ -489,6 +509,130 @@
 
             return deferred.promise;
         }
+
+        return service;
+    })
+
+    .factory("PermohonanService", function ($http, $q, BaseUrl, Helpers) {
+        var service = {};
+        var isInstant = false;
+        var collection = [];
+        service.source = function () {
+            deferred = $q.defer();
+            if (!isInstant) {
+                $http({
+                    method: 'GET',
+                    url: BaseUrl.URL + "/api/permohonan/get",
+                }).then(function (response) {
+                    // With the data succesfully returned, we can resolve promise and we can access it in controller
+                    collection = response.data;
+                    deferred.resolve(collection);
+                    isInstant = true;
+                }, function (error) {
+                    alert(Helpers.getMessage(error.status, error.data.Message));
+                    // deferred.reject(error);
+                });
+
+            } else {
+                deferred.resolve(collection);
+            }
+
+            return deferred.promise;
+        }
+
+
+
+        service.Insert = function (model) {
+            deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: BaseUrl.URL + "/api/permohonan/post",
+                data: model
+            }).then(function (response) {
+                collection.push(response.data);
+                alert(Helpers.getMessage(1, ""));
+                deferred.resolve(response.data);
+            }, function (error) {
+
+                alert(Helpers.getMessage(error.status, error.data.Message));
+                // deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+        service.Approved = function (model,action) {
+            deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: BaseUrl.URL + "/api/persetujuan/post",
+                data: model
+            }).then(function (response) {
+                collection.push(response.data);
+                alert(Helpers.getMessage(1, ""));
+                deferred.resolve(response.data);
+            }, function (error) {
+
+                alert(Helpers.getMessage(error.status, error.data.Message));
+                // deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+       
+        return service;
+    })
+
+    .factory("SuratService", function ($http, $q, BaseUrl, Helpers) {
+        var service = {};
+        var isInstant = false;
+        var isInstantUmum = false;
+        var collectionUmum = [];
+
+        service.sourceumum = function ()
+        {
+            deferred = $q.defer();
+            if (!isInstantUmum) {
+                $http({
+                    method: 'GET',
+                    url: BaseUrl.URL + "/api/surat/Umum",
+                }).then(function (response) {
+                    // With the data succesfully returned, we can resolve promise and we can access it in controller
+                    collectionUmum = response.data;
+                    deferred.resolve(collectionUmum);
+                    isInstantUmum = true;
+                }, function (error) {
+                    alert(Helpers.getMessage(error.status, error.data.Message));
+                    // deferred.reject(error);
+                });
+
+            } else {
+                deferred.resolve(collection);
+            }
+
+            return deferred.promise;
+        }
+
+
+        service.SaveToUmum= function (model) {
+            deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: BaseUrl.URL + "/api/surat/umum",
+                data: model
+            }).then(function (response) {
+                alert(Helpers.getMessage(1, ""));
+                deferred.resolve(response.data);
+            }, function (error) {
+
+                alert(Helpers.getMessage(error.status, error.data.Message));
+                // deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+        
 
         return service;
     })

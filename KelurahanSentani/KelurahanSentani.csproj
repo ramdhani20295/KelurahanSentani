@@ -203,10 +203,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Apis\AccountController.cs" />
+    <Compile Include="Apis\ApiHelper.cs" />
+    <Compile Include="Apis\Collections\PejabatCollection.cs" />
+    <Compile Include="Apis\Collections\SuratCollection.cs" />
     <Compile Include="Apis\KartuKeluargaController.cs" />
     <Compile Include="Apis\PejabatController.cs" />
     <Compile Include="Apis\PendudukController.cs" />
+    <Compile Include="Apis\PermohonanController.cs" />
+    <Compile Include="Apis\PersetujuanController.cs" />
     <Compile Include="Apis\StrukturKelurahanController.cs" />
+    <Compile Include="Apis\SuratController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -217,25 +223,30 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TestController.cs" />
-    <Compile Include="DataModels\jenissurat.cs" />
+    <Compile Include="DataModels\anggotapindah.cs" />
     <Compile Include="DataModels\kartukeluarga.cs" />
-    <Compile Include="DataModels\KartuKeluargaCollection.cs" />
-    <Compile Include="DataModels\KelurahanInfo.cs" />
+    <Compile Include="DataModels\kematian.cs" />
     <Compile Include="DataModels\kkdetail.cs" />
     <Compile Include="DataModels\pejabat.cs" />
     <Compile Include="DataModels\penduduk.cs" />
     <Compile Include="DataModels\pendudukdetail.cs" />
+    <Compile Include="DataModels\permohonan.cs" />
     <Compile Include="DataModels\persetujuan.cs" />
+    <Compile Include="DataModels\pindah.cs" />
     <Compile Include="DataModels\roles.cs" />
     <Compile Include="DataModels\rt.cs" />
     <Compile Include="DataModels\rw.cs" />
     <Compile Include="DataModels\surat.cs" />
+    <Compile Include="DataModels\table1.cs" />
+    <Compile Include="DataModels\umum.cs" />
     <Compile Include="EnumCollection.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\KartuKeluargaCollection.cs" />
+    <Compile Include="Models\KelurahanInfo.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -305,6 +316,7 @@
     <Content Include="js\jquery.cookie.js" />
     <Content Include="js\jquery.nicescroll.min.js" />
     <Content Include="js\jquery.validate.min.js" />
+    <Content Include="js\ngAutocomplete.js" />
     <Content Include="js\tether.min.js" />
     <Content Include="js\waterbubble.min.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
@@ -1168,6 +1180,8 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Shared\_LayoutRT.cshtml" />
     <Content Include="Views\Shared\_LayoutRW.cshtml" />
+    <Content Include="Views\Shared\_LayoutLurah.cshtml" />
+    <Content Include="Views\Home\Lurah.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

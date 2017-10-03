@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 
 namespace KelurahanSentani.DataModels 
 { 
@@ -95,9 +95,10 @@ namespace KelurahanSentani.DataModels
                      }
           } 
 
+
           [DbColumn("Pendidikan")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public Pendidikan Pendidikan 
+        public  Pendidikan Pendidikan 
           { 
                get{return _pendidikan;} 
                set{ 
@@ -106,18 +107,18 @@ namespace KelurahanSentani.DataModels
                      }
           }
 
-        public kartukeluarga KartuKeluarga { get; set; }
         public pendudukdetail Detail { get; set; }
+        public kartukeluarga KartuKeluarga { get; set; }
 
         private int  _id;
            private string  _nik;
            private string  _nama;
            private string  _tempatlahir;
            private DateTime  _tanggallahir;
-           private Kepercayaan  _agama;
-           private Kelamin  _jk;
+           private Kepercayaan _agama;
+           private Kelamin _jk;
            private string  _pekerjaan;
-           private Pendidikan  _pendidikan;
+           private Pendidikan _pendidikan;
       }
 }
 

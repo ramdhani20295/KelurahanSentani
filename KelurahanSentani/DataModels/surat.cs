@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
- 
- namespace KelurahanSentani.DataModels 
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
+
+namespace KelurahanSentani.DataModels 
 { 
      [TableName("surat")] 
      public class surat:BaseNotifyProperty  
@@ -18,16 +20,6 @@ using DAL;
                set{ 
                       _id=value; 
                      OnPropertyChange("Id");
-                     }
-          } 
-
-          [DbColumn("JenisSuratID")] 
-          public int JenisSuratID 
-          { 
-               get{return _jenissuratid;} 
-               set{ 
-                      _jenissuratid=value; 
-                     OnPropertyChange("JenisSuratID");
                      }
           } 
 
@@ -51,16 +43,6 @@ using DAL;
                      }
           } 
 
-          [DbColumn("PersonID")] 
-          public int PersonID 
-          { 
-               get{return _personid;} 
-               set{ 
-                      _personid=value; 
-                     OnPropertyChange("PersonID");
-                     }
-          } 
-
           [DbColumn("BerlakuHingga")] 
           public DateTime BerlakuHingga 
           { 
@@ -71,13 +53,47 @@ using DAL;
                      }
           } 
 
-          private int  _id;
-           private int  _jenissuratid;
+          [DbColumn("PermohonanId")] 
+          public int PermohonanId 
+          { 
+               get{return _permohonanid;} 
+               set{ 
+                      _permohonanid=value; 
+                     OnPropertyChange("PermohonanId");
+                     }
+          } 
+
+          [DbColumn("UserId")] 
+          public string AdminUserId 
+          { 
+               get{return _AdminId;} 
+               set{ 
+                      _AdminId=value; 
+                     OnPropertyChange("UserId");
+                     }
+          }
+
+
+        [DbColumn("JenisSurat")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public JenisSurat JenisSurat
+        {
+            get { return _jenissurat; }
+            set
+            {
+                _jenissurat = value;
+                OnPropertyChange("JenisSurat");
+            }
+        }
+
+        private int  _id;
            private string  _nosurat;
            private DateTime  _tanggalbuat;
-           private int  _personid;
            private DateTime  _berlakuhingga;
-      }
+           private int  _permohonanid;
+           private string  _AdminId;
+        private JenisSurat _jenissurat;
+    }
 }
 
 

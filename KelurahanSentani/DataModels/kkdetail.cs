@@ -30,8 +30,6 @@ using DAL;
                      }
           } 
 
-         
-
           private int  _kartukeluargaid;
            private int  _pendudukid;
       }

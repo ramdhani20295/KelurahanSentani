@@ -29,6 +29,11 @@ namespace KelurahanSentani
         public IRepository<rw> RW { get { return new Repository<rw>(this); } }
         public IRepository<rt> RT { get { return new Repository<rt>(this); } }
         public IRepository<pejabat> Pejabat { get { return new Repository<pejabat>(this); } }
+        public IRepository<permohonan> Permohonan { get { return new Repository<permohonan>(this); } }
+        public IRepository<persetujuan> Persetujuan { get { return new Repository<persetujuan>(this); } }
+        public IRepository<surat> Surat{ get { return new Repository<surat>(this); } }
+        public IRepository<umum> Umum{ get { return new Repository<umum>(this); } }
+
 
 
 

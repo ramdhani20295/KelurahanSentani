@@ -27,11 +27,10 @@ using DAL;
                get{return _norw;} 
                set{ 
                       _norw=value; 
-                     OnPropertyChange("NoRW");
+                     OnPropertyChange("Nama");
                      }
           } 
 
-          [PrimaryKey("PejabatId")] 
           [DbColumn("PejabatId")] 
           public int PejabatId 
           { 
@@ -42,8 +41,9 @@ using DAL;
                      }
           }
 
-       public List<rt> DaftarRT { get; set; }
-        public pejabat Pejabat { get; internal set; }
+        public pejabat Pejabat { get;  set; }
+        public List<rt> DaftarRT { get;  set; }
+      //  public object Nama { get; internal set; }
 
         private int  _id;
            private string  _norw;

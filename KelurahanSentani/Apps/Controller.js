@@ -239,4 +239,105 @@
 
     })
 
+    .controller("PermohonanController", function ($scope,Helpers, PermohonanService, KartuKeluargaService,SuratService) {
+        $scope.Permohonans = [];
+        $scope.KartuKeluargas = [];
+        $scope.Helpers = Helpers;
+        $scope.Actions = ['Setuju', 'Batalkan'];
+        $scope.MyRole = "";
+        $scope.Init = function ()
+        {
+            PermohonanService.source().then(function (response) {
+                $scope.Permohonans = response;
+
+                Helpers.MyRole().then(function (response) {
+                    $scope.MyRole = response;
+                    KartuKeluargaService.source().then(function (response) {
+                        $scope.KartuKeluargas = response;
+                    });
+                });
+               
+            });
+        }
+
+        $scope.Selected = function (item)
+        {
+            angular.forEach($scope.KartuKeluargas, function (value, key) {
+                if (value.NoKK == item)
+                {
+                    $scope.KKSelected = value;
+                    $scope.DaftarKeluargas = value.DaftarKeluarga;
+                }
+            })
+        }
+        $scope.Insert = function (model) {
+            var data = {};
+            data.PendudukId = model.Penduduk.Id;
+            data.RTId = $scope.KKSelected.RTId;
+            data.Isi = model.Isi;
+            data.JenisSurat = model.JenisSurat;
+            data.Id = 0;
+            PermohonanService.Insert(data).then(function () {
+
+            });
+        }
+
+        $scope.ChangePersetujuan = function(item,action)
+        {
+            if (action === "Setuju")
+            {
+                PermohonanService.Approved(item, action).then(function (response) {
+                    item.StatusPersetujuan.IAproved = true;
+                });
+            } else {
+
+            }
+               
+        }
+
+        $scope.BuatSurat = function(item)
+        {
+            $scope.model = {};
+            $scope.model.Surat = {};
+            $scope.model.Surat.JenisSurat = item.JenisSurat;
+            $scope.model.Surat.TanggalBuat = new Date();
+            $scope.model.Surat.BerlakuHingga = new Date();
+            $scope.model.Keterangan = item.Isi;
+            $scope.model.Penduduk = item.Penduduk;
+            $scope.model.NIK = item.Penduduk.NIK;
+            $scope.model.Surat.PermohonanId = item.Id;
+        }
+
+
+        $scope.SimpanSurat = function(model)
+        {
+            switch (model.Surat.JenisSurat) {
+                case "Umum":
+                    SuratService.SaveToUmum(model).then(function (response) { });
+                    break;
+                case "Pindah":
+                    SuratService.SaveToPindah(model).then(function (response) { });
+                    break
+                default:
+            }
+        }
+
+
+    })
+    .controller("SuratUmumController", function ($scope, Helpers, SuratService) {
+        $scope.Helpers = Helpers;
+        $scope.Surats = [];
+        $scope.Init = function () {
+            SuratService.sourceumum().then(function (response) {
+                $scope.Surats = response;
+                Helpers.MyRole().then(function (response) {
+                    $scope.MyRole = response;
+                });
+            });
+        };
+    })
+
+
+
+
     ;

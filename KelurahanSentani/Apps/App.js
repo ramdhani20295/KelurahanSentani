@@ -1,4 +1,4 @@
-﻿angular.module('app', ['app.service','app.controller','ngRoute'])
+﻿angular.module('app', ['app.service', 'app.controller', 'ngRoute', 'ngAutocomplete'])
 .config(function ($routeProvider) {
     $routeProvider
         .when("/", {
@@ -23,6 +23,7 @@
         })
         .when("/umum", {
             templateUrl: "../Apps/Views/umum.html",
+            controller:"SuratUmumController"
         })
         .when("/kependudukan", {
             templateUrl: "../Apps/Views/kependudukan.html",
@@ -49,6 +50,7 @@
         })
         .when("/permohonan", {
             templateUrl: "../Apps/Views/permohonan.html",
+            controller: "PermohonanController"
         })
     ;
 })

@@ -23,9 +23,8 @@ namespace KelurahanSentani.DataModels
                      }
           } 
 
-          [DbColumn("StatusPerkawinan")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public StatusPerkawinan StatusPerkawinan 
+          [DbColumn("StatusPerkawinan")] 
+          public string StatusPerkawinan 
           { 
                get{return _statusperkawinan;} 
                set{ 
@@ -45,9 +44,8 @@ namespace KelurahanSentani.DataModels
                      }
           } 
 
-          [DbColumn("Kewarganegaraan")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public Kewarganegaraan Kewarganegaraan 
+          [DbColumn("Kewarganegaraan")] 
+          public string Kewarganegaraan 
           { 
                get{return _kewarganegaraan;} 
                set{ 
@@ -56,28 +54,7 @@ namespace KelurahanSentani.DataModels
                      }
           } 
 
-          [DbColumn("Paspor")] 
-          public string Paspor 
-          { 
-               get{return _paspor;} 
-               set{ 
-                      _paspor=value; 
-                     OnPropertyChange("Paspor");
-                     }
-          }
-
-        [DbColumn("DokumenLain")]
-        public string DokumenLain
-        {
-            get { return _dokumen; }
-            set
-            {
-                _dokumen = value;
-                OnPropertyChange("DokumenLain");
-            }
-        }
-
-        [DbColumn("Ayah")] 
+          [DbColumn("Ayah")] 
           public string Ayah 
           { 
                get{return _ayah;} 
@@ -97,15 +74,35 @@ namespace KelurahanSentani.DataModels
                      }
           } 
 
+          [DbColumn("Paspor")] 
+          public string Paspor 
+          { 
+               get{return _paspor;} 
+               set{ 
+                      _paspor=value; 
+                     OnPropertyChange("Paspor");
+                     }
+          } 
+
+          [DbColumn("DokumenLain")] 
+          public string DokumenLain 
+          { 
+               get{return _dokumenlain;} 
+               set{ 
+                      _dokumenlain=value; 
+                     OnPropertyChange("DokumenLain");
+                     }
+          } 
+
           private int  _id;
-           private StatusPerkawinan  _statusperkawinan;
-           private Hubungan _hubungandalamkeluarga;
-           private Kewarganegaraan _kewarganegaraan;
-           private string _dokumen;
+           private string  _statusperkawinan;
+           private Hubungan  _hubungandalamkeluarga;
+           private string  _kewarganegaraan;
            private string  _ayah;
            private string  _ibu;
-        private string _paspor;
-    }
+           private string  _paspor;
+           private string  _dokumenlain;
+      }
 }
 
 

@@ -1,19 +1,17 @@
 ﻿<section class="forms">
-    <div class="container-fluid">
+    <div class="container-fluid" ng-init="Init()">
         <header>
             <h1 class="h3 display">DAFTAR PERMOHONAN</h1>
         </header>
         <div class="row" ng-init="Aksi='Belum'">
-
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <a data-target="#modal-container-TambahPermohonan" role="button" data-toggle="modal">
+                        <a ng-show="MyRole==='RT'" data-target="#modal-container-TambahPermohonan" role="button" data-toggle="modal">
                             <i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah Data Permohonan"> Data Permohonan</i>
                         </a>
                     </div>
                     <div class="card-block">
-
                         <!--Tabel Permohonan-->
                         <table class="table">
                             <thead class="thead-default">
@@ -22,16 +20,22 @@
                                         No
                                     </th>
                                     <th>
-                                        Nomor KK
-                                    </th>
-                                    <th>
                                         NIK
                                     </th>
                                     <th>
                                         Nama
                                     </th>
                                     <th>
+                                        Jenis Surat
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
                                         Tanggal buat
+                                    </th>
+                                    <th>
+                                        Persetujuan
                                     </th>
                                     <th>
                                         Action
@@ -39,34 +43,57 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
+                                <tr ng-repeat="item in Permohonans">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.Penduduk.NIK}}</td>
+                                    <td>{{item.Penduduk.Nama}}</td>
+                                    <td>{{item.JenisSurat}}</td>
                                     <td>
-                                        <a data-target="#modal-container-CreateSUmum" role="button" data-toggle="modal">
+                                        <div ng-show="item.Status==='Batal'">
+                                            <i style="color:Red" class="fa fa-window-close-o fa-2x" aria-hidden="true" ng-show="item.Status==='Batal'" ng-click="Aksi='Belum'" data-toggle="tooltip" title=""></i>
+                                        </div>
+                                        <div ng-show="item.Status==='Selesai'">
+                                            <i style="color:green" class="fa fa-check-square-o fa-2x" ng-show="item.Status==='Selesai'" aria-hidden="true" data-toggle="tooltip" title=""></i>
+                                        </div>
+                                        <div class="form-group" ng-show="item.Status==='Menunggu'">
+                                            <i style="color:#806e0e" class="fa fa-clock-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="Menunggu Persetujuan"></i>
+                                        </div>
+                                    </td>
+                                    <td>{{item.Tanggal|date}}</td>
+                                    <td style="align-content:center">
+                                        <div ng-show="!item.StatusPersetujuan.IsCompleted">
+                                            <div class="form-group" ng-show="item.StatusPersetujuan.IAproved===false && MyRole!='Administrator'">
+                                                <select ng-model="model.Action" ng-options="x for x in Actions" ng-change="ChangePersetujuan(item,model.Action)">
+                                                </select>
+                                            </div>
+                                            <div class="form-group" ng-show="item.StatusPersetujuan.IAproved===true && MyRole!='Administrator'">
+                                                <i style="color:#806e0e" class="fa fa-check-square-o fa-2x" aria-hidden="true" data-toggle="tooltip" title=""></i>
+                                            </div>
+                                            <div class="form-group" ng-show="MyRole==='Administrator'">
+                                                <i style="color:#806e0e" class="fa fa-clock-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="Menunggu Persetujuan"></i>
+                                            </div>
+                                        </div>
+                                        <div ng-show="item.StatusPersetujuan.IsCompleted">
+                                            <i style="color:green" class="fa fa-check-square-o fa-2x"  aria-hidden="true" data-toggle="tooltip" title=""></i>
+                                        </div>
+
+
+                                    </td>
+                                    <td>
+                                        <a ng-show="MyRole==='Administrator' && item.StatusPersetujuan.IsCompleted && item.Status==='Menunggu' " data-target="#modal-container-CreateSUmum" ng-click="BuatSurat(item)" role="button" data-toggle="modal">
                                             <i style="color:black" class="fa fa-file-o fa-fw" aria-hidden="true" data-toggle="tooltip" title="Buat Surat"></i>
                                         </a>
                                         <a data-target="#modal-container-DetailPermohonan" role="button" data-toggle="modal">
                                             <i style="color:black" class="fa fa-file-text-o" aria-hidden="true" data-toggle="tooltip" title="Detail"></i>
                                         </a>
-                                        <a data-target="#modal-container-UbahPermohonan" role="button" data-toggle="modal" ng-click="Edit(item)">
+                                        <a ng-show="MyRole==='RT'" data-target="#modal-container-UbahPermohonan" role="button" data-toggle="modal" ng-click="Edit(item)">
                                             <i style="color:black" class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
                                         </a>
                                         <a ng-click="DeleteItem(item)">
                                             <i style="color:black" class="fa fa-trash-o fa-lg" data-toggle="tooltip" title="Hapus"></i>
                                         </a>
                                     </td>
-                                    <td align="center">
-                                        <a data-target="" role="button" data-toggle="modal">
-                                            <i style="color:black" class="fa fa-square-o fa-2x" ng-show="Aksi==='Belum'" ng-click="Aksi='Ya'" aria-hidden="true" data-toggle="tooltip" title=""></i>
-                                            <i style="color:green" class="fa fa-check-square-o fa-2x" ng-show="Aksi==='Ya'" ng-click="Aksi='Tidak'" aria-hidden="true" data-toggle="tooltip" title=""></i>
-                                            <i style="color:Red" class="fa fa-window-close-o fa-2x" aria-hidden="true" ng-show="Aksi==='Tidak'" ng-click="Aksi='Belum'" data-toggle="tooltip" title=""></i>
-                                        </a>
-                                    </td>
+                                   
                                 </tr>
                             </tbody>
                         </table>
@@ -93,22 +120,23 @@
                                                             <div class="col-md-12">
                                                                 <form role="form">
                                                                     <div class="form-group">
-                                                                        <select class="form-control">
+                                                                        <select class="form-control" ng-model="model.JenisSurat" ng-options="x for x in Helpers.JenisSurat">
                                                                             <option value="" disabled hidden selected>Jenis Surat</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select class="form-control">
-                                                                            <option value="" disabled hidden selected>Nomor KK</option>
+                                                                        <input list="companies" class="form-control" ng-model="nokk" ng-change="Selected(nokk)">
+                                                                        <datalist id="companies">
+                                                                            <select class="form-control" ng-model="model.KK" ng-options="kk.KepalaKeluarga.Nama for kk in KartuKeluargas track by kk.NoKK"></select>
+                                                                        </datalist>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" ng-model="model.Penduduk" ng-options=" (x.Nama) for x in DaftarKeluargas">
+                                                                            <option value="" disabled hidden selected>Nama Penduduk</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select class="form-control">
-                                                                            <option value="" disabled hidden selected>Anggota KK</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <textarea type="text" class="form-control" placeholder="Maksud/Keperluan" />
+                                                                        <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" />
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -120,7 +148,7 @@
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">
                                                         Close
                                                     </button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="Insert(model)">
                                                         Save changes
                                                     </button>
                                                 </div>
@@ -147,7 +175,7 @@
                                                         ×
                                                     </button>
                                                     <h4 class="modal-title" id="myModalLabel">
-                                                        Ubah Data Permohonan
+                                                        Tambah Data Permohonan
                                                     </h4>
                                                 </div>
                                                 <div class="modal-body">
@@ -156,22 +184,23 @@
                                                             <div class="col-md-12">
                                                                 <form role="form">
                                                                     <div class="form-group">
-                                                                        <select class="form-control">
+                                                                        <select class="form-control" ng-model="model.JenisSurat" ng-options="x for x in Helpers.JenisSurat">
                                                                             <option value="" disabled hidden selected>Jenis Surat</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select class="form-control">
-                                                                            <option value="" disabled hidden selected>Nomor KK</option>
+                                                                        <input list="companies" class="form-control" ng-model="nokk" ng-change="Selected(nokk)">
+                                                                        <datalist id="companies">
+                                                                            <select class="form-control" ng-model="model.KK" ng-options="kk.KepalaKeluarga.Nama for kk in KartuKeluargas track by kk.NoKK"></select>
+                                                                        </datalist>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" ng-model="model.Penduduk" ng-options=" (x.Nama) for x in DaftarKeluargas">
+                                                                            <option value="" disabled hidden selected>Nama Penduduk</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select class="form-control">
-                                                                            <option value="" disabled hidden selected>Anggota KK</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <textarea type="text" class="form-control" placeholder="Maksud/Keperluan" />
+                                                                        <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" />
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -183,7 +212,7 @@
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">
                                                         Close
                                                     </button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="Insert(model)">
                                                         Save changes
                                                     </button>
                                                 </div>
@@ -409,20 +438,29 @@
                                                             <div class="col-md-12">
                                                                 <form role="form">
                                                                     <div class="form-group">
-                                                                        <input type="text" placeholder="Nomor Surat" class="form-control" />
+                                                                        <input type="text" ng-model="model.Surat.NoSurat" placeholder="Nomor Surat" class="form-control" />
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input type="text" placeholder="Nomor KK" class="form-control" />
+                                                                        <input type="text" placeholder="NIK"  ng-model="model.Penduduk.NIK" class="form-control" />
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input type="text" placeholder="Anggota KK" class="form-control" />
+                                                                        <input type="text" placeholder="Nama" ng-model="model.Penduduk.Nama" class="form-control" />
+                                                                    </div>
+                                                                  
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" ng-model="model.Surat.JenisSurat" ng-options="x for x in Helpers.JenisSurat">
+                                                                            <option value="" disabled hidden selected>Jenis Surat</option>
+                                                                        </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        Tanggal Buat
-                                                                        <input type="date" placeholder="Tanggal Buat" class="form-control" />
+                                                                        Berlaku Hingga
+                                                                        <input type="date" ng-model="model.Surat.BerlakuHingga" placeholder="Tanggal Buat" class="form-control" />
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <textarea type="text" class="form-control" placeholder="Maksud/Keperluan" />
+                                                                        <textarea type="text" class="form-control" ng-model="model.Kop" placeholder="KOP SURAT" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea type="text" class="form-control" ng-model="model.Keterangan" placeholder="Maksud/Keperluan" />
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -434,7 +472,7 @@
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">
                                                         Close
                                                     </button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="SimpanSurat(model)">
                                                         Save changes
                                                     </button>
                                                 </div>
@@ -447,3 +485,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

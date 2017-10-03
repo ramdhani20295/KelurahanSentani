@@ -25,11 +25,12 @@ namespace KelurahanSentani
                               "~/js/front.js",
                           "~/js/grasp_mobile_progress_circle-1.0.0.min.js",
                             "~/js/jquery.nicescroll.min.js",
-
+                          
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                      "~/Scripts/angular.js",
+                       "~/js/ngAutocomplete.js",
                     "~/Scripts/angular-route.js","~/Apps/App.js","~/Apps/Service.js", "~/Apps/Controller.js"));
 
 

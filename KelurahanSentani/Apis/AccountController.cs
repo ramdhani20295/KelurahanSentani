@@ -1,7 +1,5 @@
-﻿using KelurahanSentani.DataModels;
-using KelurahanSentani.Models;
+﻿using KelurahanSentani.Models;
 using Microsoft.AspNet.Identity.Owin;
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -9,6 +7,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web;
 using Newtonsoft.Json;
+using Microsoft.AspNet.Identity;
+using System.Linq;
 
 namespace KelurahanSentani.Apis
 {
@@ -30,6 +30,15 @@ namespace KelurahanSentani.Apis
 
         public AccountController()
         {
+        }
+
+        [Authorize]
+        [HttpGet]
+        public HttpResponseMessage MyRoles()
+        {
+            var uid = User.Identity.GetUserId();
+            var role = UserManager.GetRoles(uid).FirstOrDefault();
+           return Request.CreateResponse(HttpStatusCode.OK, role);
         }
 
         public ApplicationSignInManager SignInManager

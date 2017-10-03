@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace KelurahanSentani.DataModels 
 { 
@@ -43,9 +43,9 @@ namespace KelurahanSentani.DataModels
                      }
           } 
 
-          [DbColumn("Level")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public LevelStruktur Level 
+          [DbColumn("Level")] 
+          [JsonConverter(typeof(StringEnumConverter))]
+          public LevelStruktur Level 
           { 
                get{return _level;} 
                set{ 
@@ -64,9 +64,8 @@ namespace KelurahanSentani.DataModels
                      }
           } 
 
-          [DbColumn("Jabatan")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public JenisJabatan Jabatan 
+          [DbColumn("Jabatan")] 
+          public string Jabatan 
           { 
                get{return _jabatan;} 
                set{ 
@@ -76,7 +75,7 @@ namespace KelurahanSentani.DataModels
           } 
 
           [DbColumn("Status")] 
-          public bool Status 
+          public string Status 
           { 
                get{return _status;} 
                set{ 
@@ -95,15 +94,15 @@ namespace KelurahanSentani.DataModels
                      }
           }
 
-        public object Instansi { get; internal set; }
+        public object Instansi { get; set; }
 
         private int  _id;
            private string  _nama;
            private string  _alamat;
            private LevelStruktur  _level;
            private int  _instansiid;
-           private JenisJabatan  _jabatan;
-           private bool  _status;
+           private string  _jabatan;
+           private string  _status;
            private string  _usersid;
       }
 }

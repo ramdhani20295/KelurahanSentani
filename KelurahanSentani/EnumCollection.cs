@@ -42,10 +42,20 @@ namespace KelurahanSentani
 
     public enum LevelStruktur
     {
-        RT, RW, Lurah
+        RT, RW, Kelurahan
     }
     public enum JenisJabatan
     {
         Ketua, Sekertaris
     }
+    public enum JenisSurat
+    {
+        Umum,Kematian,Pindah
+    }
+
+    public enum StatusPermohonan
+    {
+        Menunggu,Selesai,Batal
+    }
+
 }

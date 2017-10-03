@@ -21,16 +21,6 @@ using DAL;
                      }
           } 
 
-          [DbColumn("IdSurat")] 
-          public int IdSurat 
-          { 
-               get{return _idsurat;} 
-               set{ 
-                      _idsurat=value; 
-                     OnPropertyChange("IdSurat");
-                     }
-          } 
-
           [DbColumn("IdPejabat")] 
           public int IdPejabat 
           { 
@@ -41,9 +31,22 @@ using DAL;
                      }
           } 
 
-          private int  _id;
-           private int  _idsurat;
+          [DbColumn("PermohonanId")] 
+          public int PermohonanId 
+          { 
+               get{return _permohonanid;} 
+               set{ 
+                      _permohonanid=value; 
+                     OnPropertyChange("PermohonanId");
+                     }
+          }
+
+        public pejabat Pejabat { get;  set; }
+        public permohonan Permohonan { get;  set; }
+
+        private int  _id;
            private int  _idpejabat;
+           private int  _permohonanid;
       }
 }
 

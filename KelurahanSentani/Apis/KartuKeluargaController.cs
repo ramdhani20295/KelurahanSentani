@@ -1,4 +1,5 @@
 ﻿using KelurahanSentani.DataModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,11 @@ namespace KelurahanSentani.Apis
     public class KartuKeluargaController : ApiController
     {
         // GET: api/KartuKeluarga
+        [Authorize]
         public IEnumerable<kartukeluarga> Get()
         {
-            KartuKeluargaCollection collection = new KartuKeluargaCollection();
+            var uid = User.Identity.GetUserId();
+            KartuKeluargaCollection collection = new KartuKeluargaCollection(uid);
             return collection.GetKartuKeluarga();
         }
 
