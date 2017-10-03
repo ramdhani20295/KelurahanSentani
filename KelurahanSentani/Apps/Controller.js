@@ -337,6 +337,18 @@
         };
     })
 
+    .controller("SuratKematianController", function ($scope, Helpers, SuratService) {
+        $scope.Helpers = Helpers;
+        $scope.Surats = [];
+        $scope.Init = function () {
+            SuratService.sourceumum().then(function (response) {
+                $scope.Surats = response;
+                Helpers.MyRole().then(function (response) {
+                    $scope.MyRole = response;
+                });
+            });
+        };
+    })
 
 
 
