@@ -33,7 +33,7 @@ namespace KelurahanSentani.Apis
                                       join d in db.Penduduk.Select() on c.PendudukId equals d.Id
                                       select new permohonan
                                       {
-                                          Id = c.Id,
+                                          Id = c.Id, EmailPemohon=c.EmailPemohon,
                                           Isi = c.Isi,
                                           PendudukId = c.PendudukId,
                                           JenisSurat = c.JenisSurat,
@@ -53,6 +53,7 @@ namespace KelurahanSentani.Apis
                                       select new permohonan
                                       {
                                           Id = c.Id,
+                                          EmailPemohon = c.EmailPemohon,
                                           Isi = c.Isi,
                                           PendudukId = c.PendudukId,
                                           JenisSurat = c.JenisSurat,
@@ -71,6 +72,7 @@ namespace KelurahanSentani.Apis
                                       select new permohonan
                                       {
                                           Id = c.Id,
+                                          EmailPemohon = c.EmailPemohon,
                                           Isi = c.Isi,
                                           PendudukId = c.PendudukId,
                                           JenisSurat = c.JenisSurat,
@@ -100,6 +102,7 @@ namespace KelurahanSentani.Apis
                                   select new permohonan
                                   {
                                       Id = c.Id,
+                                      EmailPemohon = c.EmailPemohon,
                                       Isi = c.Isi,
                                       PendudukId = c.PendudukId,
                                       JenisSurat = c.JenisSurat,
@@ -172,7 +175,7 @@ namespace KelurahanSentani.Apis
             {
                 try
                 {
-                   if( db.Permohonan.Update(O=>new {O.Isi, O.JenisSurat,O.NomorPermohonan,O.PendudukId  },data,O=>O.Id==data.Id))
+                   if( db.Permohonan.Update(O=>new {O.Isi, O.JenisSurat,O.NomorPermohonan,O.PendudukId,O.EmailPemohon  },data,O=>O.Id==data.Id))
                     {
                         return Request.CreateResponse(HttpStatusCode.OK, data);
                     }
