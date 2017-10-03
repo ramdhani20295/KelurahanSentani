@@ -86,6 +86,15 @@ namespace KelurahanSentani.DataModels
             }
         }
 
+
+        [DbColumn("EmailPemohon")]
+        public string EmailPemohon
+        {
+            get { return _emailPemohon; }
+            set { _emailPemohon = value;
+                OnPropertyChange("EmailPemohon");
+            }
+        }
       
         [DbColumn("Tanggal")]
         public DateTime Tanggal
@@ -105,6 +114,7 @@ namespace KelurahanSentani.DataModels
            private string  _isi;
            private JenisSurat  _jenissurat;
         private DateTime tanggal;
+        private string _emailPemohon;
     }
 }
 
