@@ -317,7 +317,10 @@
                     break;
                 case "Pindah":
                     SuratService.SaveToPindah(model).then(function (response) { });
-                    break
+                    break;
+                case "Pindah":
+                    SuratService.SaveToKematian(model).then(function (response) { });
+                    break;
                 default:
             }
         }

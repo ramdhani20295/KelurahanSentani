@@ -68,9 +68,11 @@ using DAL;
                       _sebabkematian=value; 
                      OnPropertyChange("sebabkematian");
                      }
-          } 
+          }
 
-          private int  _surat_id;
+        public surat Surat { get; set; }
+
+        private int  _surat_id;
            private string  _nokk;
            private string  _nik;
            private string  _tmptkematian;

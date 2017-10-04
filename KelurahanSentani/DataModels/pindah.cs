@@ -49,9 +49,11 @@ using DAL;
                       _suratid=value; 
                      OnPropertyChange("SuratId");
                      }
-          } 
+          }
 
-          private string  _nokk;
+        public surat Surat { get; set; }
+
+        private string  _nokk;
            private string  _alamatbaru;
            private string  _nik;
            private int  _suratid;

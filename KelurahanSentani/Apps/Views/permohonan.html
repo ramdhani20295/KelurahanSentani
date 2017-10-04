@@ -136,7 +136,10 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input type="email" required placeholder="Email" class="form-control" />
+                                                                        <input type="email" required placeholder="Email" ng-model="model.EmailPermohonan" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" />
                                                                     </div>
                                                                     <!--
                                                                     </div>
@@ -147,20 +150,7 @@
                                                                         </div>
                                                                     </div>
                                                                     -->
-                                                                    
-                                                                    <div class="form-group" ng-show="model.JenisSurat==='Pindah'">
-                                                                        <textarea type="text" class="form-control" placeholder="Alamat Baru" />
-                                                                    </div>
-                                                                    <div class="form-group" ng-show="model.JenisSurat==='Umum'">
-                                                                        <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" />
-                                                                    </div>
-                                                                    <div class="form-group" ng-show="model.JenisSurat==='Kematian'">
-                                                                        Telah Meninggal Pada :
-                                                                        <input type="Date" placeholder="Tanggal Kematian" class="form-control" />
-                                                                    </div>
-                                                                    <div class="form-group" ng-show="model.JenisSurat==='Kematian'">
-                                                                        <textarea type="text" class="form-control" placeholder="Sebab Kematian" />
-                                                                    </div>
+                                                                 
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -484,6 +474,26 @@
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <textarea type="text" class="form-control" ng-model="model.Keterangan" placeholder="Maksud/Keperluan" />
+                                                                    </div>
+
+                                                                    <div class="form-group" ng-show="model.JenisSurat==='Pindah'">
+                                                                        <div class="table-bordered" ng-show="model.JenisSurat==='Pindah'">
+                                                                            <div ng-click="showOptions= !showOptions">Pilih</div>
+                                                                            <div ng-show="showOptions">
+                                                                                <label ng-repeat="option in DaftarKeluargas">{{option.Nama}}<input type="checkbox" ng-model="selected[$index]" ng-change="update()" /><br /></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <textarea type="text" class="form-control" placeholder="Alamat Baru" />
+                                                                    </div>
+                                                                    <div class="form-group" ng-show="model.JenisSurat==='Umum'">
+
+                                                                    </div>
+                                                                    <div class="form-group" ng-show="model.JenisSurat==='Kematian'">
+                                                                        Telah Meninggal Pada :
+                                                                        <input type="Date" placeholder="Tanggal Kematian" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group" ng-show="model.JenisSurat==='Kematian'">
+                                                                        <textarea type="text" class="form-control" placeholder="Sebab Kematian" />
                                                                     </div>
                                                                 </form>
                                                             </div>

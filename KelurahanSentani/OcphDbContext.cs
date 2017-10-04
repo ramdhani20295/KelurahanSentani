@@ -33,8 +33,8 @@ namespace KelurahanSentani
         public IRepository<persetujuan> Persetujuan { get { return new Repository<persetujuan>(this); } }
         public IRepository<surat> Surat{ get { return new Repository<surat>(this); } }
         public IRepository<umum> Umum{ get { return new Repository<umum>(this); } }
-
-
+        public IRepository<pindah> Pindah { get { return new Repository<pindah>(this); } }
+        public IRepository<kematian> Kematian{ get { return new Repository<kematian>(this); } }
 
 
         public IDbConnection Connection
