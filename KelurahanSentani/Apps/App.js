@@ -20,6 +20,7 @@
         })
         .when("/kematian", {
             templateUrl: "../Apps/Views/kematian.html",
+            controller:"SuratKematianController"
         })
         .when("/umum", {
             templateUrl: "../Apps/Views/umum.html",

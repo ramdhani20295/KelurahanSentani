@@ -607,6 +607,8 @@
         var isInstant = false;
         var isInstantUmum = false;
         var collectionUmum = [];
+        var isInstantKematian = false;
+        var collectionKematian = [];
 
         service.sourceumum = function ()
         {
@@ -627,6 +629,29 @@
 
             } else {
                 deferred.resolve(collectionUmum);
+            }
+
+            return deferred.promise;
+        }
+
+        service.sourcekematian = function () {
+            deferred = $q.defer();
+            if (!isInstantKematian) {
+                $http({
+                    method: 'GET',
+                    url: BaseUrl.URL + "/api/surat/Kematian",
+                }).then(function (response) {
+                    // With the data succesfully returned, we can resolve promise and we can access it in controller
+                    collectionKematian = response.data;
+                    deferred.resolve(collectionKematian);
+                    isInstantKematian = true;
+                }, function (error) {
+                    alert(Helpers.getMessage(error.status, error.data.Message));
+                    // deferred.reject(error);
+                });
+
+            } else {
+                deferred.resolve(collectionKematian);
             }
 
             return deferred.promise;

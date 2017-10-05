@@ -71,6 +71,7 @@ using DAL;
           }
 
         public surat Surat { get; set; }
+        public penduduk Penduduk { get; set; }
 
         private int  _surat_id;
            private string  _nokk;

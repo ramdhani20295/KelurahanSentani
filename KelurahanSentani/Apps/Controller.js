@@ -277,6 +277,9 @@
                 }
             })
         }
+
+        $scope.DataPindah = [];
+
         $scope.Insert = function (model) {
             var data = {};
             data.PendudukId = model.Penduduk.Id;
@@ -285,6 +288,13 @@
             data.JenisSurat = model.JenisSurat;
             data.Id = 0;
             data.EmailPemohon = model.EmailPemohon;
+            
+            if (data.JenisSurat === 'Pindah')
+            {
+                PermohonanService.InsertPindah(data).then(function () {
+
+                });
+            } else
             PermohonanService.Insert(data).then(function () {
 
             });
@@ -319,7 +329,6 @@
             $scope.model.Surat.PermohonanId = item.Id;
         }
 
-
         $scope.SimpanSurat = function(model)
         {
             switch (model.Surat.JenisSurat) {
@@ -329,16 +338,15 @@
                 case "Pindah":
                     SuratService.SaveToPindah(model).then(function (response) { });
                     break;
-                case "Pindah":
+                case "Kematian":
                     SuratService.SaveToKematian(model).then(function (response) { });
                     break;
                 default:
             }
         }
-
-
     })
-    .controller("SuratUmumController", function ($scope, Helpers, SuratService) {
+
+    .controller("SuratUmumController", function ($scope, Helpers, SuratService,$rootScope) {
         $scope.Helpers = Helpers;
         $scope.Surats = [];
         $scope.Init = function () {
@@ -349,13 +357,18 @@
                 });
             });
         };
+
+        $scope.Print = function (item)
+        {
+            $rootScope.SuratUmum = item;
+        }
     })
 
     .controller("SuratKematianController", function ($scope, Helpers, SuratService) {
         $scope.Helpers = Helpers;
         $scope.Surats = [];
         $scope.Init = function () {
-            SuratService.sourceumum().then(function (response) {
+            SuratService.sourcekematian().then(function (response) {
                 $scope.Surats = response;
                 Helpers.MyRole().then(function (response) {
                     $scope.MyRole = response;
