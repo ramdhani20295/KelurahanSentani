@@ -13,7 +13,7 @@ namespace KelurahanSentani.Apis
         // GET: api/Pejabat
         // GET: api/Penduduk
 
-            [Authorize(Roles ="Administrator")]
+            [Authorize(Roles ="Administrator,Lurah")]
         public HttpResponseMessage Get()
         {
             var coll = new Collections.PejabatCollection();

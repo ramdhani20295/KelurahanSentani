@@ -80,7 +80,7 @@
 
                                     </td>
                                     <td>
-                                        <a ng-show="MyRole==='Administrator'" data-target="#modal-container-CreateSUmum" ng-click="BuatSurat(item)" role="button" data-toggle="modal">
+                                        <a ng-show="MyRole==='Administrator' && item.StatusPersetujuan.IsCompleted && item.Status==='Menunggu' " data-target="#modal-container-CreateSUmum" ng-click="BuatSurat(item)" role="button" data-toggle="modal">
                                             <i style="color:black" class="fa fa-file-o fa-fw" aria-hidden="true" data-toggle="tooltip" title="Buat Surat"></i>
                                         </a>
                                         <a data-target="#modal-container-DetailPermohonan" role="button" data-toggle="modal">
@@ -138,25 +138,16 @@
                                                                     <div class="form-group">
                                                                         <input type="email" required placeholder="Email" class="form-control" ng-model="model.EmailPemohon"/>
                                                                     </div>
-                                                                    <!--
+                                                                 
+                                                                    
+                                                                    <div>
+                                                                        <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" />
                                                                     </div>
-                                                                    <div class="table-bordered" ng-show="model.JenisSurat==='Pindah'">
+                                                                    <div class="table-bordered" ng-show="model.Surat.JenisSurat==='Pindah'">
                                                                         <div ng-click="showOptions= !showOptions">Pilih</div>
                                                                         <div ng-show="showOptions">
                                                                             <label class="form-control" ng-repeat="option in DaftarKeluargas">{{option.Nama}}<input type="checkbox" class="form-control" ng-model="selected[$index]" ng-change="update()" /><br /></label>
                                                                         </div>
-                                                                    </div>
-                                                                    class="form-group" ng-show="model.JenisSurat==='Pindah'"
-                                                                    -->
-                                                                    
-                                                                    <div>
-                                                                        <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" data-toggle="tooltip" data-original-title="" />
-                                                                    </div>
-                                                                    <div class="form-group" ng-show="model.JenisSurat==='Kematian'">
-                                                                        <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" data-toggle="tooltip" title="Tempat Kematian, Tanggal Kematian & Sebab Kematian" />
-                                                                    </div>
-                                                                    <div class="form-group" ng-show="model.JenisSurat==='Pindah'">
-                                                                        <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" data-toggle="tooltip" title="Nama-Nama Yang Anggota KK Yang Pindah & Alamat Baru" />
                                                                     </div>
                                                                     
                                                                 </form>
@@ -221,9 +212,6 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input type="email" required placeholder="Email" class="form-control" ng-model="model.EmailPemohon" />
-                                                                    </div>
-                                                                    <div class="form-group">
                                                                         <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" />
                                                                     </div>
                                                                 </form>
@@ -263,44 +251,33 @@
                                                         ×
                                                     </button>
                                                     <h4 class="modal-title" id="myModalLabel">
-                                                        Detail Data Permohonan
+                                                        Ubah Data Permohonan
                                                     </h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="container-fluid">
                                                         <div class="row">
                                                             <div class="col-md-12">
-
-                                                                <table>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <th>Jenis Surat</th>
-                                                                            <td>:</td>
-                                                                            <td></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Nomor KK</th>
-                                                                            <td>:</td>
-                                                                            <td></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>NIK</th>
-                                                                            <td>:</td>
-                                                                            <td></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Nama</th>
-                                                                            <td>:</td>
-                                                                            <td></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Maksud/Keperluan</th>
-                                                                            <td>:</td>
-                                                                            <td></td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-
+                                                                <form role="form">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control">
+                                                                            <option value="" disabled hidden selected>Jenis Surat</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control">
+                                                                            <option value="" disabled hidden selected>Nomor KK</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control">
+                                                                            <option value="" disabled hidden selected>Anggota KK</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea type="text" class="form-control" placeholder="Maksud/Keperluan" />
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -309,6 +286,9 @@
 
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">
                                                         Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                        Save changes
                                                     </button>
                                                 </div>
                                             </div>
@@ -461,7 +441,7 @@
                                                         ×
                                                     </button>
                                                     <h4 class="modal-title" id="myModalLabel">
-                                                        Tambah Data Umum
+                                                        Buat Surat 
                                                     </h4>
                                                 </div>
                                                 <div class="modal-body">
@@ -484,17 +464,40 @@
                                                                             <option value="" disabled hidden selected>Jenis Surat</option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        Berlaku Hingga
-                                                                        <input type="date" ng-model="model.Surat.BerlakuHingga" placeholder="Tanggal Buat" class="form-control" />
+                                                                   
+                                                                    <div class="table-bordered" ng-show="model.Surat.JenisSurat==='Pindah'">
+                                                                        <div ng-click="showOptions= !showOptions">Pilih</div>
+                                                                        <div ng-show="showOptions">
+                                                                            <label class="form-control" ng-repeat="option in DaftarKeluargas">{{option.Nama}}<input type="checkbox" class="form-control" ng-model="selected[$index]" ng-change="update()" /><br /></label>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <textarea type="text" class="form-control" ng-model="model.Kop" placeholder="KOP SURAT" />
+
+                                                                    <div class="table-bordered" ng-show="model.Surat.JenisSurat==='Kematian'">
+                                                                        <div class="form-group">
+                                                                            Tanggal Kematian
+                                                                            <input type="date" ng-model="model.tglkematian" placeholder="Tanggal Kematian" class="form-control" />
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <textarea type="text" class="form-control" ng-model="model.tempatkematian" placeholder="Tempat Kematian" />
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <textarea type="text" class="form-control" ng-model="model.sebabkematian" placeholder="Sebab Kematian" />
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <textarea type="text" class="form-control" ng-model="model.Keterangan" placeholder="Maksud/Keperluan" />
+                                                                    <div class="table-bordered" ng-show="model.Surat.JenisSurat==='Umum'">
+                                                                        <div class="form-group">
+                                                                            Berlaku Hingga
+                                                                            <input type="date" ng-model="model.Surat.BerlakuHingga" placeholder="Tanggal Buat" class="form-control" />
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <textarea type="text" class="form-control" ng-model="model.Keterangan" placeholder="Maksud/Keperluan" />
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <textarea type="text" class="form-control" ng-model="model.Kop" placeholder="KOP SURAT" />
+                                                                        </div>
                                                                     </div>
-                                                                </form>
+                                                                    
+</form>
                                                             </div>
                                                         </div>
                                                     </div>

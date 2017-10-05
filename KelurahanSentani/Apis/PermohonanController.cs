@@ -115,7 +115,7 @@ namespace KelurahanSentani.Apis
                         foreach (var item in result)
                         {
                             if (item.Status == StatusPermohonan.Menunggu)
-                                item.StatusPersetujuan = ApiHelper.CekPersetujuan(item.Id, pejabat.Level);
+                                item.StatusPersetujuan = ApiHelper.CekPersetujuan(item.Id);
                             else if (item.Status == StatusPermohonan.Selesai)
                             {
                                 item.StatusPersetujuan = new PersetujuanCompleted { IAproved = true, IsCompleted = true };
@@ -125,7 +125,7 @@ namespace KelurahanSentani.Apis
 
                   
 
-                    return Request.CreateResponse(HttpStatusCode.OK, result.ToList());
+                    return Request.CreateResponse(HttpStatusCode.OK, result.OrderByDescending(O=>O.Tanggal).ToList());
                 }
             }
             catch (Exception ex)
@@ -152,6 +152,7 @@ namespace KelurahanSentani.Apis
             {
                 try
                 {
+                    data.Tanggal = DateTime.Now;
                     data.Id= db.Permohonan.InsertAndGetLastID(data);
                     if(data.Id>0)
                     {

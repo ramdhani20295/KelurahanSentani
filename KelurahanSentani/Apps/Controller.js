@@ -1,14 +1,17 @@
 ﻿angular.module("app.controller", [])
-    .controller("PejabatController", function ($scope, PejabatService,$window) {
+    .controller("PejabatController", function ($scope, PejabatService,$window,Helpers) {
         $scope.TambahTitle = "Tambah Pejabat";
         $scope.IsNew = true;
         $scope.Pejabats = [];
         $scope.Levels = ["Lurah", "RW", "RT"];
         $scope.JenisJabatans = ["Ketua", "Sekretaris"];
-
+        $scope.MyRole = "";
         PejabatService.source().then(function (data) {
             try {
                 $scope.Pejabats = data;
+                Helpers.MyRole().then(function (response) {
+                    $scope.MyRole = response;
+                });
             } catch (e) {
                 alert(e.Message);
             }
@@ -159,11 +162,15 @@
         $scope.KartuKeluarga = [];
         $scope.Pagenation = PagenationService;
         $scope.Search = '';
+        $scope.MyRole = '';
 
         KartuKeluargaService.source().then(function (response) {
             $scope.KartuKeluarga = $scope.Pagenation.Load(response, $scope.Search, 10); 
             StrukturKelurahanService.source().then(function (response) {
                 $scope.Strukturs = response.data;
+                Helpers.MyRole().then(function (response) {
+                    $scope.MyRole = response;
+                });
             });
         });
       
@@ -270,6 +277,9 @@
                 }
             })
         }
+
+        $scope.DataPindah = [];
+
         $scope.Insert = function (model) {
             var data = {};
             data.PendudukId = model.Penduduk.Id;
@@ -277,6 +287,14 @@
             data.Isi = model.Isi;
             data.JenisSurat = model.JenisSurat;
             data.Id = 0;
+            data.EmailPemohon = model.EmailPemohon;
+            
+            if (data.JenisSurat === 'Pindah')
+            {
+                PermohonanService.InsertPindah(data).then(function () {
+
+                });
+            } else
             PermohonanService.Insert(data).then(function () {
 
             });
@@ -290,7 +308,10 @@
                     item.StatusPersetujuan.IAproved = true;
                 });
             } else {
-
+                item.Status = "Batal";
+                PermohonanService.Unapproved(item, action).then(function (response) {
+                    item.StatusPersetujuan.IAproved = false;
+                });
             }
                
         }
@@ -308,7 +329,6 @@
             $scope.model.Surat.PermohonanId = item.Id;
         }
 
-
         $scope.SimpanSurat = function(model)
         {
             switch (model.Surat.JenisSurat) {
@@ -318,16 +338,15 @@
                 case "Pindah":
                     SuratService.SaveToPindah(model).then(function (response) { });
                     break;
-                case "Pindah":
+                case "Kematian":
                     SuratService.SaveToKematian(model).then(function (response) { });
                     break;
                 default:
             }
         }
-
-
     })
-    .controller("SuratUmumController", function ($scope, Helpers, SuratService) {
+
+    .controller("SuratUmumController", function ($scope, Helpers, SuratService,$rootScope) {
         $scope.Helpers = Helpers;
         $scope.Surats = [];
         $scope.Init = function () {
@@ -338,13 +357,18 @@
                 });
             });
         };
+
+        $scope.Print = function (item)
+        {
+            $rootScope.SuratUmum = item;
+        }
     })
 
     .controller("SuratKematianController", function ($scope, Helpers, SuratService) {
         $scope.Helpers = Helpers;
         $scope.Surats = [];
         $scope.Init = function () {
-            SuratService.sourceumum().then(function (response) {
+            SuratService.sourcekematian().then(function (response) {
                 $scope.Surats = response;
                 Helpers.MyRole().then(function (response) {
                     $scope.MyRole = response;
@@ -352,6 +376,24 @@
             });
         };
     })
+
+    .controller("PendudukController", function ($scope,Helpers, KartuKeluargaService, StrukturKelurahanService, PagenationService) {
+        $scope.Pagenation = PagenationService;
+        $scope.KartuKeluarga = [];
+        $scope.Strukturs = [];
+        $scope.MyRole = '';
+        $scope.Search = '';
+        KartuKeluargaService.source().then(function (response) {
+            $scope.KartuKeluarga = $scope.Pagenation.Load(response, $scope.Search, 10);
+            StrukturKelurahanService.source().then(function (response) {
+                $scope.Strukturs = response.data;
+                Helpers.MyRole().then(function (response) {
+                    $scope.MyRole = response;
+                });
+            });
+        });
+    })
+
 
 
 

@@ -45,7 +45,7 @@ namespace KelurahanSentani.Apis.Collections
                              join b in db.Surat.Select() on a.surat_Id equals b.Id
                              join c in db.Penduduk.Select() on a.NIK equals c.NIK
                              select new kematian { NIK = a.NIK, Surat = b,  NoKK=a.NoKK, sebabkematian=a.sebabkematian, surat_Id=a.surat_Id, tglkematian=a.tglkematian,
-                              tmptkematian=a.tmptkematian};
+                              tmptkematian=a.tmptkematian, Penduduk=c};
 
                 return result.ToList();
             }

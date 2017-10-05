@@ -20,6 +20,7 @@
         })
         .when("/kematian", {
             templateUrl: "../Apps/Views/kematian.html",
+            controller:"SuratKematianController"
         })
         .when("/umum", {
             templateUrl: "../Apps/Views/umum.html",
@@ -39,6 +40,7 @@
         })
         .when("/penduduk", {
             templateUrl: "../Apps/Views/penduduk.html",
+            controller:"PendudukController"
         })
         .when("/kk", {
             templateUrl: "../Apps/Views/kk.html",

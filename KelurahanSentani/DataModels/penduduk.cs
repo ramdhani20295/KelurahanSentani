@@ -107,6 +107,10 @@ namespace KelurahanSentani.DataModels
                      }
           }
 
+
+        public string TTL { get {
+                return string.Format("{0},{1}",this.TempatLahir,this.TanggalLahir.ToShortDateString());
+            } }
         public pendudukdetail Detail { get; set; }
         public kartukeluarga KartuKeluarga { get; set; }
 
