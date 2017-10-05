@@ -1,19 +1,20 @@
-﻿<section class="forms">
+﻿<section class="forms" ng-init="Init()">
     <div class="container-fluid">
         <header>
             <h1 class="h3 display">DAFTAR DATA PINDAH</h1>
         </header>
         <div class="row">
-            
+
             <div class="col-lg-12">
-                <div class="card"><!--
+                <div class="card">
+                    <!--
                     <div class="card-header d-flex align-items-center">
                         <a data-target="#modal-container-TambahPindah" role="button" data-toggle="modal">
                             <i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah Data Pindah"> Data Perpindahan</i>
                         </a>
                     </div>-->
                     <div class="card-block">
-            
+
                         <!--Tabel Pindah-->
                         <table class="table">
                             <thead class="thead-default">
@@ -42,18 +43,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                <tr ng-repeat="item in Surats">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.Surat.NoSurat}}</td>
+                                    <td>{{item.Penduduk.NIK}}</td>
+                                    <td>{{item.Penduduk.Nama}}</td>
+                                    <td>{{item.Kop}}</td>
                                     <td>
-                                        <a data-target="#modal-container-UbahPindah" role="button" data-toggle="modal" ng-click="Edit(item)">
-                                            <i style="color:black" class="fa fa-pencil fa-lg" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
+                                        <a data-target="#modal-container-UbahSUmum" role="button" data-toggle="modal" ng-click="Edit(item)">
+                                            <i style="color:black" class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
                                         </a>
-                                        <a>
+                                        <a href="#!ReportUmum" ng-click="Print(item)">
                                             <i style="color:black" class="fa fa-print fa-lg" data-toggle="tooltip" title="Print"></i>
                                         </a>
                                         <a ng-click="DeleteItem(item)">
@@ -209,4 +209,10 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
 

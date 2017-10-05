@@ -53,6 +53,7 @@ using DAL;
             }
         }
 
+        public penduduk Penduduk { get;  set; }
 
         private int  _idanggotapindah;
            private int  _surat_id;

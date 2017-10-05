@@ -246,7 +246,7 @@
 
     })
 
-    .controller("PermohonanController", function ($scope,Helpers, PermohonanService, KartuKeluargaService,SuratService) {
+    .controller("PermohonanController", function ($scope,$http,Helpers, PermohonanService, KartuKeluargaService,SuratService) {
         $scope.Permohonans = [];
         $scope.KartuKeluargas = [];
         $scope.Helpers = Helpers;
@@ -291,6 +291,7 @@
             data.Isi = model.Isi;
             data.JenisSurat = model.JenisSurat;
             data.Id = 0;
+            data.PendudukId = model.Penduduk.Id;
             data.EmailPemohon = model.EmailPemohon;
             
             if (data.JenisSurat === 'Pindah')
@@ -307,7 +308,7 @@
                 });
             } else
             {
-                data.PendudukId = model.Penduduk.Id;
+               
                 PermohonanService.Insert(data).then(function () {
 
                 });
@@ -331,6 +332,7 @@
                
         }
 
+        $scope.DaftarKeluargas = [];
         $scope.BuatSurat = function(item)
         {
             $scope.model = {};
@@ -342,6 +344,22 @@
             $scope.model.Penduduk = item.Penduduk;
             $scope.model.NIK = item.Penduduk.NIK;
             $scope.model.Surat.PermohonanId = item.Id;
+            if (item.JenisSurat=='Pindah')
+            {
+                $http({
+                    method: 'GET',
+                    url: "/api/permohonan/GetAnggotaByPermohonan?id=" + item.Id,
+                }).then(function (response) {
+                    // With the data succesfully returned, we can resolve promise and we can access it in controller
+                    $scope.DaftarKeluargas = response.data;
+                }, function (error) {
+                    // deferred.reject(error);
+                });
+            }
+
+
+
+
         }
 
         $scope.SimpanSurat = function(model)
@@ -384,6 +402,18 @@
         $scope.Surats = [];
         $scope.Init = function () {
             SuratService.sourcekematian().then(function (response) {
+                $scope.Surats = response;
+                Helpers.MyRole().then(function (response) {
+                    $scope.MyRole = response;
+                });
+            });
+        };
+    })
+    .controller("SuratPindahController", function ($scope, Helpers, SuratService) {
+        $scope.Helpers = Helpers;
+        $scope.Surats = [];
+        $scope.Init = function () {
+            SuratService.sourcepindah().then(function (response) {
                 $scope.Surats = response;
                 Helpers.MyRole().then(function (response) {
                     $scope.MyRole = response;
