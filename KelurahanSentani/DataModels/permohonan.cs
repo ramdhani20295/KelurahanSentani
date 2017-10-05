@@ -106,6 +106,8 @@ namespace KelurahanSentani.DataModels
         public penduduk Penduduk { get; set; }
         public PersetujuanCompleted StatusPersetujuan { get;  set; }
 
+        public List<anggotapindah> DataPindah { get; set; }
+
         private StatusPermohonan status;
         private int  _id;
            private string  _nomorpermohonan;

@@ -35,7 +35,7 @@ namespace KelurahanSentani
         public IRepository<umum> Umum{ get { return new Repository<umum>(this); } }
         public IRepository<pindah> Pindah { get { return new Repository<pindah>(this); } }
         public IRepository<kematian> Kematian{ get { return new Repository<kematian>(this); } }
-
+        public IRepository<anggotapindah> AnggotaPindah{ get { return new Repository<anggotapindah>(this); } }
 
         public IDbConnection Connection
         {

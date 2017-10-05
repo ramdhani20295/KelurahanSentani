@@ -54,6 +54,7 @@
             templateUrl: "../Apps/Views/permohonan.html",
             controller: "PermohonanController"
         })
+        
     ;
 })
 

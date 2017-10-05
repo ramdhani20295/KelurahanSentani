@@ -154,8 +154,17 @@ namespace KelurahanSentani.Apis
                 {
                     data.Tanggal = DateTime.Now;
                     data.Id= db.Permohonan.InsertAndGetLastID(data);
+                   
                     if(data.Id>0)
                     {
+                        if (data.DataPindah != null)
+                        {
+                            foreach (var item in data.DataPindah)
+                            {
+                                db.AnggotaPindah.Insert(item);
+                            }
+                                
+                        }
                         return Request.CreateResponse(HttpStatusCode.OK, data);
                     }else
                         return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Data gagal ditambah");

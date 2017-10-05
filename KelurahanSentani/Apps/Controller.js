@@ -274,15 +274,19 @@
                 {
                     $scope.KKSelected = value;
                     $scope.DaftarKeluargas = value.DaftarKeluarga;
+
+                    angular.forEach($scope.DaftarKeluargas, function (value1, key1) {
+                        value1.Selected = false;
+
+                    })
+
                 }
             })
         }
 
-        $scope.DataPindah = [];
-
         $scope.Insert = function (model) {
             var data = {};
-            data.PendudukId = model.Penduduk.Id;
+           
             data.RTId = $scope.KKSelected.RTId;
             data.Isi = model.Isi;
             data.JenisSurat = model.JenisSurat;
@@ -291,13 +295,24 @@
             
             if (data.JenisSurat === 'Pindah')
             {
-                PermohonanService.InsertPindah(data).then(function () {
+                data.DataPindah = [];
+                angular.forEach($scope.DaftarKeluargas, function (value, key) {
+                    if (value.Selected === true)
+                    {
+                        data.DataPindah.push(value);
+                    }
+                })
+                PermohonanService.Insert(data).then(function () {
 
                 });
             } else
-            PermohonanService.Insert(data).then(function () {
+            {
+                data.PendudukId = model.Penduduk.Id;
+                PermohonanService.Insert(data).then(function () {
 
-            });
+                });
+            }
+          
         }
 
         $scope.ChangePersetujuan = function(item,action)

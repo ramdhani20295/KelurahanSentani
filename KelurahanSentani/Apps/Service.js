@@ -693,6 +693,24 @@
 
             return deferred.promise;
         }
+
+        service.SaveToPindah = function (model) {
+            deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: BaseUrl.URL + "/api/surat/pindah",
+                data: model
+            }).then(function (response) {
+                alert(Helpers.getMessage(1, ""));
+                deferred.resolve(response.data);
+            }, function (error) {
+
+                alert(Helpers.getMessage(error.status, error.data.Message));
+                // deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
         
 
         return service;

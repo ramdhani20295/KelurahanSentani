@@ -21,13 +21,13 @@ using DAL;
                      }
           } 
 
-          [DbColumn("surat_id")] 
+          [DbColumn("suratid")] 
           public int surat_id 
           { 
                get{return _surat_id;} 
                set{ 
                       _surat_id=value; 
-                     OnPropertyChange("surat_id");
+                     OnPropertyChange("suratid");
                      }
           } 
 
@@ -39,12 +39,26 @@ using DAL;
                       _nik=value; 
                      OnPropertyChange("NIK");
                      }
-          } 
+          }
 
-          private int  _idanggotapindah;
+
+        [DbColumn("PermohonanId")]
+        public int PermohonanId
+        {
+            get { return _permohonanId; }
+            set
+            {
+                _permohonanId = value;
+                OnPropertyChange("PermohonanId");
+            }
+        }
+
+
+        private int  _idanggotapindah;
            private int  _surat_id;
            private string  _nik;
-      }
+        private int _permohonanId;
+    }
 }
 
 
