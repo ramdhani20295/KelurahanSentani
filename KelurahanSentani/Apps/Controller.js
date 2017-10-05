@@ -1,14 +1,17 @@
 ﻿angular.module("app.controller", [])
-    .controller("PejabatController", function ($scope, PejabatService,$window) {
+    .controller("PejabatController", function ($scope, PejabatService,$window,Helpers) {
         $scope.TambahTitle = "Tambah Pejabat";
         $scope.IsNew = true;
         $scope.Pejabats = [];
         $scope.Levels = ["Lurah", "RW", "RT"];
         $scope.JenisJabatans = ["Ketua", "Sekretaris"];
-
+        $scope.MyRole = "";
         PejabatService.source().then(function (data) {
             try {
                 $scope.Pejabats = data;
+                Helpers.MyRole().then(function (response) {
+                    $scope.MyRole = response;
+                });
             } catch (e) {
                 alert(e.Message);
             }
@@ -159,11 +162,15 @@
         $scope.KartuKeluarga = [];
         $scope.Pagenation = PagenationService;
         $scope.Search = '';
+        $scope.MyRole = '';
 
         KartuKeluargaService.source().then(function (response) {
             $scope.KartuKeluarga = $scope.Pagenation.Load(response, $scope.Search, 10); 
             StrukturKelurahanService.source().then(function (response) {
                 $scope.Strukturs = response.data;
+                Helpers.MyRole().then(function (response) {
+                    $scope.MyRole = response;
+                });
             });
         });
       
@@ -277,6 +284,7 @@
             data.Isi = model.Isi;
             data.JenisSurat = model.JenisSurat;
             data.Id = 0;
+            data.EmailPemohon = model.EmailPemohon;
             PermohonanService.Insert(data).then(function () {
 
             });
@@ -290,7 +298,10 @@
                     item.StatusPersetujuan.IAproved = true;
                 });
             } else {
-
+                item.Status = "Batal";
+                PermohonanService.Unapproved(item, action).then(function (response) {
+                    item.StatusPersetujuan.IAproved = false;
+                });
             }
                
         }
@@ -352,6 +363,24 @@
             });
         };
     })
+
+    .controller("PendudukController", function ($scope,Helpers, KartuKeluargaService, StrukturKelurahanService, PagenationService) {
+        $scope.Pagenation = PagenationService;
+        $scope.KartuKeluarga = [];
+        $scope.Strukturs = [];
+        $scope.MyRole = '';
+        $scope.Search = '';
+        KartuKeluargaService.source().then(function (response) {
+            $scope.KartuKeluarga = $scope.Pagenation.Load(response, $scope.Search, 10);
+            StrukturKelurahanService.source().then(function (response) {
+                $scope.Strukturs = response.data;
+                Helpers.MyRole().then(function (response) {
+                    $scope.MyRole = response;
+                });
+            });
+        });
+    })
+
 
 
 

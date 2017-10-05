@@ -568,7 +568,6 @@
                 url: BaseUrl.URL + "/api/persetujuan/post",
                 data: model
             }).then(function (response) {
-                collection.push(response.data);
                 alert(Helpers.getMessage(1, ""));
                 deferred.resolve(response.data);
             }, function (error) {
@@ -579,6 +578,25 @@
 
             return deferred.promise;
         }
+
+        service.Unapproved = function (model, action) {
+            deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: BaseUrl.URL + "/api/persetujuan/Unapproved",
+                data: model
+            }).then(function (response) {
+                alert(Helpers.getMessage(1, ""));
+                deferred.resolve(response.data);
+            }, function (error) {
+
+                alert(Helpers.getMessage(error.status, error.data.Message));
+                // deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
 
        
         return service;
@@ -608,7 +626,7 @@
                 });
 
             } else {
-                deferred.resolve(collection);
+                deferred.resolve(collectionUmum);
             }
 
             return deferred.promise;

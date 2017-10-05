@@ -39,6 +39,7 @@
         })
         .when("/penduduk", {
             templateUrl: "../Apps/Views/penduduk.html",
+            controller:"PendudukController"
         })
         .when("/kk", {
             templateUrl: "../Apps/Views/kk.html",

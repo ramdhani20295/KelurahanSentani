@@ -41,13 +41,26 @@ using DAL;
                      }
           }
 
+
+        [DbColumn("Setuju")]
+        public bool Setuju
+        {
+            get { return _setuju; }
+            set
+            {
+                _setuju= value;
+                OnPropertyChange("Setuju");
+            }
+        }
+
         public pejabat Pejabat { get;  set; }
         public permohonan Permohonan { get;  set; }
 
         private int  _id;
            private int  _idpejabat;
            private int  _permohonanid;
-      }
+        private bool _setuju;
+    }
 }
 
 
