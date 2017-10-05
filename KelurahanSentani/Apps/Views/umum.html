@@ -15,6 +15,77 @@
                     </div>-->
                     <div class="card-block">
 
+                        <!--Ubah S Umum-->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="modal fade" id="modal-container-UbahSUmum" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        ×
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                        Ubah Surat Umum
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <form role="form">
+                                                                    <div class="form-group">
+                                                                        <input type="text" ng-model="model.Surat.NoSurat" placeholder="Nomor Surat" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="NIK" ng-model="model.Penduduk.NIK" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Nama" ng-model="model.Penduduk.Nama" class="form-control" />
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" ng-model="model.Surat.JenisSurat" ng-options="x for x in Helpers.JenisSurat">
+                                                                            <option value="" disabled hidden selected>Jenis Surat</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        Berlaku Hingga
+                                                                        <input type="date" ng-model="model.Surat.BerlakuHingga" placeholder="Tanggal Buat" class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea type="text" class="form-control" ng-model="model.Kop" placeholder="KOP SURAT" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea type="text" class="form-control" ng-model="model.Keterangan" placeholder="Maksud/Keperluan" />
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="SimpanSurat(model)">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
                         <!--Tabel Umum-->
                         <table class="table">
                             <thead class="thead-default">
@@ -47,8 +118,11 @@
                                     <td>{{item.Penduduk.Nama}}</td>
                                     <td>{{item.Kop}}</td>
                                     <td>
-                                        <a data-target="#modal-container-UbahUmum" role="button" data-toggle="modal" ng-click="Edit(item)">
+                                        <a data-target="#modal-container-UbahSUmum" role="button" data-toggle="modal" ng-click="Edit(item)">
                                             <i style="color:black" class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
+                                        </a>
+                                        <a>
+                                            <i style="color:black" class="fa fa-print fa-lg" data-toggle="tooltip" title="Print"></i>
                                         </a>
                                         <a ng-click="DeleteItem(item)">
                                             <i style="color:black" class="fa fa-trash-o fa-lg" data-toggle="tooltip" title="Hapus"></i>
