@@ -54,7 +54,10 @@
             templateUrl: "../Apps/Views/permohonan.html",
             controller: "PermohonanController"
         })
-        
+        .when("/ReportUmum", {
+            templateUrl: "../Apps/Views/ReportUmum.html",
+            controller:
+        })
     ;
 })
 
