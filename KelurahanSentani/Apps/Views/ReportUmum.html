@@ -1,22 +1,18 @@
-﻿<!DOCTYPE html>
+﻿<section class="forms" ng-init="Init()">
+    <header>
+        <center>
+            <img src="../../img/Kop Kantor Sentani.png" width="800 px" />
+            <h2><u>SURAT KETERANGAN</u></h2>
+        </center>
+    </header>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <center>
-        <img src="../../img/Kop Kantor Sentani.png" width="800px" />
-        <h2><u>SURAT KETERANGAN</u></h2>
-    </center>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
     Yang bertanda tangan dibawah ini :
     <table>
         <tbody>
             <tr>
                 <th align="left">Nama</th>
                 <td>:</td>
-                <td></td>
+                <td>{{Data.NamaLurah}}</td>
             </tr>
             <tr>
                 <th align="left">NIP</th>
@@ -38,7 +34,7 @@
             <tr>
                 <th align="left">Nomor KK</th>
                 <td>:</td>
-                <td></td>
+                <td>{{Data.NIK}}</td>
             </tr>
             <tr>
                 <th align="left">NIK</th>
@@ -96,7 +92,7 @@
                 <td></td>
             </tr>
         </tbody>
-    </table> 
+    </table>
     <br />
     <br />
     <table>
@@ -115,5 +111,4 @@
             </tr>
         </tbody>
     </table>
-</body>
-</html>
+    </section>

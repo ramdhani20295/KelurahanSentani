@@ -56,7 +56,7 @@
         })
         .when("/ReportUmum", {
             templateUrl: "../Apps/Views/ReportUmum.html",
-            controller:
+            controller: "ReportUmumController"
         })
     ;
 })

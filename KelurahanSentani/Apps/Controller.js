@@ -408,6 +408,13 @@
             });
         });
     })
+    .controller("ReportUmumController", function ($scope, $rootScope) {
+        $scope.Data = {};
+        $scope.Init = function ()
+        {
+            $scope.Data = $rootScope.SuratUmum;
+        }
+        });
 
 
 
