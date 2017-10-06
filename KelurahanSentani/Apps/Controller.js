@@ -426,7 +426,7 @@
         }
     })
 
-    .controller("SuratKematianController", function ($scope, Helpers, SuratService) {
+    .controller("SuratKematianController", function ($scope, Helpers, SuratService, $rootScope) {
         $scope.Helpers = Helpers;
         $scope.Surats = [];
         $scope.Init = function () {
@@ -437,6 +437,10 @@
                 });
             });
         };
+        $scope.Print = function (item)
+        {
+            $rootScope.SuratKematian = item;
+        }
     })
     .controller("SuratPindahController", function ($scope, Helpers, SuratService) {
         $scope.Helpers = Helpers;
@@ -491,4 +495,33 @@
             });
             $scope.Data = $rootScope.SuratUmum;
         }
+    })
+
+    .controller("ReportKematianController", function ($scope, $http, $rootScope, PejabatService) {
+        $scope.Data = {};
+        $scope.PejabatLurah = {};
+        $scope.DataPenduduk = {};
+        $scope.Init = function () {
+            PejabatService.source().then(function (response) {
+                angular.forEach(response, function (value, key) {
+                    if (value.Level == "Kelurahan") {
+                        $scope.PejabatLurah = value;
+                    }
+                });
+                $http({
+                    method: 'GET',
+                    url: "/api/penduduk/Get?NIK=" + $scope.Data.NIK,
+                }).then(function (response) {
+                    $scope.DataPenduduk = response.data;
+                    // With the data succesfully returned, we can resolve promise and we can access it in controller
+                }, function (error) {
+                });
+            });
+            $scope.Data = $rootScope.SuratKematian;
+        }
     });
+
+
+
+
+    ;

@@ -13,42 +13,42 @@
                 <tr>
                     <th align="left">Nama</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td>{{Data.Penduduk.Nama}}</td>
                 </tr>
                 <tr>
                     <th align="left">Tempat / Tanggal Lahir</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td>{{Data.Penduduk.TTL}}</td>
                 </tr>
                 <tr>
                     <th align="left">Jenis Kelamin</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td>{{Data.Penduduk.JK}}</td>
                 </tr>
                 <tr>
                     <th align="left">Kewarganegaraan</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td>{{DataPenduduk.Detail.Kewarganegaraan}}</td>
                 </tr>
                 <tr>
                     <th align="left">Agama</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td>{{Data.Penduduk.Agama}}</td>
                 </tr>
                 <tr>
                     <th align="left">Status Perkawinan</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td>{{DataPenduduk.Detail.StatusPerkawinan}}</td>
                 </tr>
                 <tr>
                     <th align="left">Pekerjaan</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td>{{DataPenduduk.Pekerjaan}}</td>
                 </tr>
                 <tr>
                     <th align="left">Alamat</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td>{{DataPenduduk.KartuKeluarga.Alamat}}</td>
                 </tr>
                 <tr>
                     <th align="left">RT / RW</th>
@@ -65,17 +65,17 @@
                 <tr>
                     <th align="left">Hari / Tanggal</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td><span style="font-size:13px; color:black" ng-bind="Data.tglkematian | date:'EEEE, dd-MM-yyyy'"></span></td>
                 </tr>
                 <tr>
                     <th align="left">Tempat Kematian</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td>{{Data.tmptkematian}}</td>
                 </tr>
                 <tr>
                     <th align="left">Sebab Kematian</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td>{{Data.sebabkematian}}</td>
                 </tr>
             </tbody>
         </table>
@@ -92,7 +92,7 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4">
-                    Sentani, Tanggal/Bulan/Tahun
+                    Sentani, <span style="font-size:13px; color:black" ng-bind="Data.Surat.TanggalBuat | date:'dd MMMM yyyy'"></span>
                 </div>
             </div>
         </div>
@@ -109,9 +109,9 @@
                         <br />
                         <br />
                         <br />
-                        <u>Nama</u>
+                        <u>{{PejabatLurah.Nama}}</u>
                         <br />
-                        NIP
+                        NIP. {{}}
                     </center>
 
                 </div>
