@@ -20,15 +20,6 @@ using DAL;
                      }
           } 
 
-          [DbColumn("NoKK")] 
-          public string NoKK 
-          { 
-               get{return _nokk;} 
-               set{ 
-                      _nokk=value; 
-                     OnPropertyChange("NoKK");
-                     }
-          } 
 
           [DbColumn("NIK")] 
           public string NIK 

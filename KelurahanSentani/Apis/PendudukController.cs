@@ -22,8 +22,22 @@ namespace KelurahanSentani.Apis
                 foreach(var item in result)
                 {
                     var kkdetail = db.KKDetail.Where(O => O.PendudukId == item.Id).FirstOrDefault();
-                    if(kkdetail!=null)
-                        item.KartuKeluarga = db.KartuKeluarga.Where(O => O.Id == kkdetail.KartuKeluargaId).FirstOrDefault();
+                    if (kkdetail != null)
+                        item.KartuKeluarga = (from a in db.KartuKeluarga.Where(O => O.Id == kkdetail.KartuKeluargaId)
+                                              join rt in db.RT.Select() on a.RTId equals rt.Id
+                                              join rw in db.RW.Select() on rt.RWId equals rw.Id
+                                              select new kartukeluarga
+                                              {
+                                                  Alamat = a.Alamat,
+                                                  DaftarKeluarga = a.DaftarKeluarga,
+                                                  Id = a.Id,
+                                                  KepalaKeluarga = a.KepalaKeluarga,
+                                                  NoKK = a.NoKK,
+                                                  RT = rt,
+                                                  RTId = a.RTId,
+                                                  RW = rw,
+                                                  Tanggal = a.Tanggal
+                                              }).FirstOrDefault();
                 }
                 return Request.CreateResponse(HttpStatusCode.OK, result.ToList());
             }
