@@ -442,7 +442,7 @@
             $rootScope.SuratKematian = item;
         }
     })
-    .controller("SuratPindahController", function ($scope, Helpers, SuratService) {
+    .controller("SuratPindahController", function ($scope, Helpers, SuratService,$rootScope) {
         $scope.Helpers = Helpers;
         $scope.Surats = [];
         $scope.Init = function () {
@@ -453,6 +453,11 @@
                 });
             });
         };
+
+        $scope.Print=function(item)
+        {
+            $rootScope.SuratPindah = item;
+        }
     })
 
     .controller("PendudukController", function ($scope,Helpers, KartuKeluargaService, StrukturKelurahanService, PagenationService) {
@@ -526,6 +531,7 @@
         $scope.PejabatLurah = {};
         $scope.DataPenduduk = {};
         $scope.Init = function () {
+            $scope.Data = $rootScope.SuratPindah;
             PejabatService.source().then(function (response) {
                 angular.forEach(response, function (value, key) {
                     if (value.Level == "Kelurahan") {
@@ -541,7 +547,7 @@
                 }, function (error) {
                 });
             });
-            $scope.Data = $rootScope.SuratPindah;
+           
         }
     });
 
