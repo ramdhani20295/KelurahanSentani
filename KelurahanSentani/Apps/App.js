@@ -17,6 +17,7 @@
         })
         .when("/pindah", {
             templateUrl: "../Apps/Views/pindah.html",
+            controller: "SuratPindahController"
         })
         .when("/kematian", {
             templateUrl: "../Apps/Views/kematian.html",

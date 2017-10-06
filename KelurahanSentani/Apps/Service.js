@@ -609,6 +609,8 @@
         var collectionUmum = [];
         var isInstantKematian = false;
         var collectionKematian = [];
+        var isInstantPindah = false;
+        var collectionPindah = [];
 
         service.sourceumum = function ()
         {
@@ -656,6 +658,31 @@
 
             return deferred.promise;
         }
+
+        service.sourcepindah = function () {
+            deferred = $q.defer();
+            if (!isInstantPindah) {
+                $http({
+                    method: 'GET',
+                    url: BaseUrl.URL + "/api/surat/pindah",
+                }).then(function (response) {
+                    // With the data succesfully returned, we can resolve promise and we can access it in controller
+                    collectionPindah= response.data;
+                    deferred.resolve(collectionPindah);
+                    isInstantPindah= true;
+                }, function (error) {
+                    alert(Helpers.getMessage(error.status, error.data.Message));
+                    // deferred.reject(error);
+                });
+
+            } else {
+                deferred.resolve(collectionPindah);
+            }
+
+            return deferred.promise;
+        }
+
+
 
 
         service.SaveToUmum= function (model) {

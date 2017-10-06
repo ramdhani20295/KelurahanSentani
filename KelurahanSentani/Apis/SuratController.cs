@@ -18,10 +18,7 @@ namespace KelurahanSentani.Apis
         }
 
         // GET: api/Surat/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+       
 
         // POST: api/Surat
         public void Post([FromBody]string value)
@@ -131,6 +128,7 @@ namespace KelurahanSentani.Apis
                                 pindah.SuratId = pindah.Surat.Id;
                                 if (db.Pindah.Insert(pindah) && db.Permohonan.Update(O => new { O.Status }, mohonan, O => O.Id == mohonan.Id))
                                 {
+                                    db.AnggotaPindah.Update(O => new { O.surat_id }, new anggotapindah { surat_id = pindah.SuratId }, O => O.PermohonanId == mohonan.Id);
                                     trans.Commit();
                                     return Request.CreateResponse(HttpStatusCode.OK, pindah);
                                 }

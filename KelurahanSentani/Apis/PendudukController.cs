@@ -34,7 +34,22 @@ namespace KelurahanSentani.Apis
         {
             using (var db = new OcphDbContext())
             {
-                var result = db.Penduduk.Where(O=>O.NIK==NIK).FirstOrDefault();
+                var result = (from a in db.Penduduk.Where(O => O.NIK == NIK)
+                             join b in db.PendudukDetail.Select() on a.Id equals b.Id
+                             select new penduduk
+                             {
+                                 Agama = a.Agama,
+                                 Detail = b,
+                                 Id = a.Id,
+                                 JK = a.JK,
+                                 Nama = a.Nama,
+                                 NIK = a.NIK,
+                                 Pekerjaan = a.Pekerjaan,
+                                 Pendidikan = a.Pendidikan,
+                                 TanggalLahir = a.TanggalLahir,
+                                 TempatLahir = a.TempatLahir
+                             }).FirstOrDefault();
+
                if(result!=null)
                 {
                     var kkdetail = db.KKDetail.Where(O => O.PendudukId == result.Id).FirstOrDefault();

@@ -150,6 +150,7 @@ namespace KelurahanSentani.Apis
 
             using (var db = new OcphDbContext())
             {
+                var trans = db.Connection.BeginTransaction();
                 try
                 {
                     data.Tanggal = DateTime.Now;
@@ -161,18 +162,19 @@ namespace KelurahanSentani.Apis
                         {
                             foreach (var item in data.DataPindah)
                             {
+                                item.PermohonanId = data.Id;
                                 db.AnggotaPindah.Insert(item);
                             }
-                                
                         }
+                        trans.Commit();
                         return Request.CreateResponse(HttpStatusCode.OK, data);
                     }else
-                        return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Data gagal ditambah");
+                       throw new SystemException("Data gagal ditambah");
 
                 }
                 catch (Exception ex)
                 {
-
+                    trans.Rollback();
                     return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
                 }
             }
@@ -222,6 +224,25 @@ namespace KelurahanSentani.Apis
 
                     return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
                 }
+            }
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetAnggotaByPermohonan(int id)
+        {
+            using (var db = new OcphDbContext())
+            {
+                var result = from a in db.AnggotaPindah.Where(O => O.PermohonanId == id)
+                             join b in db.Penduduk.Select() on a.NIK equals b.NIK
+                             select new anggotapindah
+                             {
+                                 NIK = a.NIK,
+                                 idAnggotaPindah = a.idAnggotaPindah,
+                                 PermohonanId = a.PermohonanId,
+                                 surat_id = a.surat_id,
+                                 Penduduk = b
+                             };
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
         }
     }
