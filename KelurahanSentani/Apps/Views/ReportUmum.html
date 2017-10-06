@@ -2,113 +2,157 @@
     <header>
         <center>
             <img src="../../img/Kop Kantor Sentani.png" width="800 px" />
-            <h2><u>SURAT KETERANGAN</u></h2>
+            <h2 style="margin-top:20px"><u>SURAT KETERANGAN</u></h2>
+            <h5>Nomor: {{Data.Surat.NoSurat}}</h5>
         </center>
     </header>
-
-    Yang bertanda tangan dibawah ini :
-    <table>
-        <tbody>
-            <tr>
-                <th align="left">Nama</th>
-                <td>:</td>
-                <td>{{Data.NamaLurah}}</td>
-            </tr>
-            <tr>
-                <th align="left">NIP</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th align="left">Jabatan</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-    <br />
-    <br />
-    Dengan ini menerangkan bahwa :
-    <table>
-        <tbody>
-            <tr>
-                <th align="left">Nomor KK</th>
-                <td>:</td>
-                <td>{{Data.NIK}}</td>
-            </tr>
-            <tr>
-                <th align="left">NIK</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th align="left">Nama</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th align="left">Jenis Kelamin</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th align="left">Tempat / Tanggal Lahir</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th align="left">Alamat</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th align="left">Agama</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th align="left">Kewarganegaraan</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th align="left">Pekerjaan</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th align="left">Pendidikan terakhir</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th align="left">Status Perkawinan</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th align="left">Keperluan</th>
-                <td>:</td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-    <br />
-    <br />
-    <table>
-        <tbody>
-            <tr>
-                <td>1.</td>
-                <td>Bahwa nama tersebut diatas adalah benar Penduduk Kelurahan </td>
-            </tr>
-            <tr>
-                <td>2.</td>
-                <td>Sepanjang yang dapat kami ketahui sampai dengan surat ini diperbuat bahwa nama tersebut diatas benar berkelakuan baik.</td>
-            </tr>
-            <tr>
-                <td>3.</td>
-                <td>Surat Keterangan ini berlaku selama 3 bulan</td>
-            </tr>
-        </tbody>
-    </table>
+    <div style="margin-left:100px;margin-right:75px">
+        Yang bertanda tangan dibawah ini :
+        <table>
+            <tbody>
+                <tr>
+                    <th align="left">Nama</th>
+                    <td>:</td>
+                    <td>{{PejabatLurah.Nama}}</td>
+                </tr>
+                <tr>
+                    <th align="left">NIP</th>
+                    <td>:</td>
+                    <td>{{PejabatLurah.NIP}}</td>
+                </tr>
+                <tr>
+                    <th align="left">Jabatan</th>
+                    <td>:</td>
+                    <td>{{PejabatLurah.Jabatan}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <br />
+        Dengan ini menerangkan bahwa :
+        <table>
+            <tbody>
+                <tr>
+                    <th align="left">Nomor KK</th>
+                    <td>:</td>
+                    <td>{{DataPenduduk.KartuKeluarga.NoKK}}</td>
+                </tr>
+                <tr>
+                    <th align="left">NIK</th>
+                    <td>:</td>
+                    <td>{{DataPenduduk.NIK}}</td>
+                </tr>
+                <tr>
+                    <th align="left">Nama</th>
+                    <td>:</td>
+                    <td>{{DataPenduduk.Nama}}</td>
+                </tr>
+                <tr>
+                    <th align="left">Jenis Kelamin</th>
+                    <td>:</td>
+                    <td>{{DataPenduduk.JK}}</td>
+                </tr>
+                <tr>
+                    <th align="left">Tempat / Tanggal Lahir</th>
+                    <td>:</td>
+                    <td>{{DataPenduduk.TTL}}</td>
+                </tr>
+                <tr>
+                    <th align="left">Alamat</th>
+                    <td>:</td>
+                    <td>{{DataPenduduk.KartuKeluarga.Alamat}}</td>
+                </tr>
+                <tr>
+                    <th align="left">Agama</th>
+                    <td>:</td>
+                    <td>{{DataPenduduk.Agama}}</td>
+                </tr>
+                <tr>
+                    <th align="left">Kewarganegaraan</th>
+                    <td>:</td>
+                    <td>{{DataPenduduk.Detail.Kewarganegaraan}}</td>
+                </tr>
+                <tr>
+                    <th align="left">Pekerjaan</th>
+                    <td>:</td>
+                    <td>{{DataPenduduk.Pekerjaan}}</td>
+                </tr>
+                <tr>
+                    <th align="left">Pendidikan terakhir</th>
+                    <td>:</td>
+                    <td>{{DataPenduduk.Pendidikan}}</td>
+                </tr>
+                <tr>
+                    <th align="left">Status Perkawinan</th>
+                    <td>:</td>
+                    <td>{{DataPenduduk.Detail.StatusPerkawinan}}</td>
+                </tr>
+                <tr>
+                    <th align="left">Keperluan</th>
+                    <td>:</td>
+                    <td>{{Data.Keterangan}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <br />
+        <table>
+            <tbody>
+                <tr>
+                    <td>1.</td>
+                    <td>Bahwa nama tersebut diatas adalah benar Penduduk Kelurahan Sentani Kota.</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Sepanjang yang dapat kami ketahui sampai dengan surat ini diperbuat bahwa nama tersebut diatas benar berkelakuan baik.</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Surat Keterangan ini berlaku selama hingga <span style="font-size:13px; color:black" ng-bind="Data.Surat.BerlakuHingga | date:'dd-MM-yyyy'"></span>.</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>Berhubungan dengan maksud yang bersangkutan diminta agar wewenang dapat memberikan fasilitas seperlunya.</td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td>Demikian surat keterangan ini diperbuat untuk dapat diperlukan seperlunya.</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <br />
+        <div class="form-group row card-block">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        Sentani, Tanggal/Bulan/Tahun
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <center>
+                            Ketua Kelurahan Sentani Kota
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <u>Nama</u>
+                            <br />
+                            NIP
+                        </center>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
