@@ -86,6 +86,8 @@ namespace KelurahanSentani.DataModels
             }
         }
 
+        public object DataSurat { get; set; }
+
         private int  _id;
            private string  _nosurat;
            private DateTime  _tanggalbuat;

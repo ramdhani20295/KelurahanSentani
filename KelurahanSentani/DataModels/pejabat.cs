@@ -21,9 +21,20 @@ namespace KelurahanSentani.DataModels
                       _id=value; 
                      OnPropertyChange("Id");
                      }
-          } 
+          }
 
-          [DbColumn("Nama")] 
+        [DbColumn("NIP")]
+        public string NIP
+        {
+            get { return _nip; }
+            set
+            {
+                _nip = value;
+                OnPropertyChange("NIP");
+            }
+        }
+
+        [DbColumn("Nama")] 
           public string Nama 
           { 
                get{return _nama;} 
@@ -104,7 +115,8 @@ namespace KelurahanSentani.DataModels
            private string  _jabatan;
            private string  _status;
            private string  _usersid;
-      }
+        private string _nip;
+    }
 }
 
 

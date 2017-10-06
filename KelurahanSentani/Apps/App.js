@@ -55,10 +55,10 @@
             templateUrl: "../Apps/Views/permohonan.html",
             controller: "PermohonanController"
         })
-        .when("/ReportUmum", {
+        .when("/ReportUmum/:Id", {
             templateUrl: "../Apps/Views/ReportUmum.html",
             controller: "ReportUmumController"
-        })
+        })  
 })
 
 .controller("RedController", function ($scope) {

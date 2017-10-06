@@ -10,16 +10,7 @@ using DAL;
      [TableName("pindah")] 
      public class pindah:BaseNotifyProperty  
    {
-          [DbColumn("NoKK")] 
-          public string NoKK 
-          { 
-               get{return _nokk;} 
-               set{ 
-                      _nokk=value; 
-                     OnPropertyChange("NoKK");
-                     }
-          } 
-
+         
           [DbColumn("Alamatbaru")] 
           public string Alamatbaru 
           { 

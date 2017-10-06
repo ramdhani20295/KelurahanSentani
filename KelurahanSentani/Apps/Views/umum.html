@@ -121,7 +121,7 @@
                                         <a data-target="#modal-container-UbahSUmum" role="button" data-toggle="modal" ng-click="Edit(item)">
                                             <i style="color:black" class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
                                         </a>
-                                        <a href="#!ReportUmum" ng-click="Print(item)">
+                                        <a href="#!ReportUmum/{{item.Surat.Id}}?Jenis={{item.Surat.JenisSurat}}" ng-click="Print(item)">
                                             <i style="color:black" class="fa fa-print fa-lg" data-toggle="tooltip" title="Print"></i>
                                         </a>
                                         <a ng-click="DeleteItem(item)">

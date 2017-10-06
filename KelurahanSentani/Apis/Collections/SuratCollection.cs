@@ -32,7 +32,7 @@ namespace KelurahanSentani.Apis.Collections
                              join c in db.Penduduk.Select() on a.NIK equals c.NIK
                              join d in db.KKDetail.Select() on c.Id equals d.PendudukId
                              join f in db.KartuKeluarga.Select() on d.KartuKeluargaId equals f.Id
-                             select new pindah { NIK = a.NIK,   Surat = b, SuratId = a.SuratId,  Alamatbaru=a.Alamatbaru, NoKK=a.NoKK,Penduduk=c, KartuKeluarga=f};
+                             select new pindah { NIK = a.NIK,   Surat = b, SuratId = a.SuratId,  Alamatbaru=a.Alamatbaru, Penduduk=c, KartuKeluarga=f};
 
                 return result.ToList();
             }

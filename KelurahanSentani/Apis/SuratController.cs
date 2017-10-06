@@ -12,9 +12,48 @@ namespace KelurahanSentani.Apis
     public class SuratController : ApiController
     {
         // GET: api/Surat
-        public IEnumerable<string> Get()
+        public surat Get(int Id,JenisSurat Jenis)
         {
-            return new string[] { "value1", "value2" };
+            using (var db = new OcphDbContext())
+            {
+                var result = db.Surat.Where(O => O.Id == Id).FirstOrDefault();
+                if (result != null && Jenis == JenisSurat.Kematian)
+                {
+                    var data = db.Kematian.Where(O => O.surat_Id == Id).FirstOrDefault();
+                    if (data != null)
+                        data.Penduduk = new Collections.PendudukCollection().GetPendudukByNIK(data.NIK);
+                    result.DataSurat = data;
+                }
+                else if (result != null && Jenis == JenisSurat.Umum)
+                {
+                    var data = db.Umum.Where(O => O.SuratId == Id).FirstOrDefault();
+                    if (data != null)
+                        data.Penduduk = new Collections.PendudukCollection().GetPendudukByNIK(data.NIK);
+                    result.DataSurat = data;
+                } else if (result != null && Jenis == JenisSurat.Pindah)
+                {
+                    var data = db.Pindah.Where(O => O.SuratId == Id).FirstOrDefault();
+                    if (data != null)
+                    {
+                        data.Penduduk = new Collections.PendudukCollection().GetPendudukByNIK(data.NIK);
+                        data.AnggotaPindah = from a in db.AnggotaPindah.Where(O => O.surat_id == data.SuratId)
+                                             join b in db.Penduduk.Select() on a.NIK equals b.NIK
+                                             select new anggotapindah
+                                             {
+                                                 idAnggotaPindah = a.idAnggotaPindah,
+                                                 NIK = a.NIK,
+                                                 Penduduk = b,
+                                                 PermohonanId = a.PermohonanId,
+                                                 surat_id = a.surat_id
+                                             };
+                        result.DataSurat = data;
+                    }
+
+                } else
+                    throw new SystemException("Data Tidak Ditemukan");
+
+                return result;
+            }
         }
 
         // GET: api/Surat/5

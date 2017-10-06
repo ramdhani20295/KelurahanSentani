@@ -16,62 +16,15 @@ namespace KelurahanSentani.Apis
         // GET: api/Penduduk
         public HttpResponseMessage Get()
         {
-            using (var db = new OcphDbContext())
-            {
-                var result = db.Penduduk.Select();
-                foreach(var item in result)
-                {
-                    var kkdetail = db.KKDetail.Where(O => O.PendudukId == item.Id).FirstOrDefault();
-                    if (kkdetail != null)
-                        item.KartuKeluarga = (from a in db.KartuKeluarga.Where(O => O.Id == kkdetail.KartuKeluargaId)
-                                              join rt in db.RT.Select() on a.RTId equals rt.Id
-                                              join rw in db.RW.Select() on rt.RWId equals rw.Id
-                                              select new kartukeluarga
-                                              {
-                                                  Alamat = a.Alamat,
-                                                  DaftarKeluarga = a.DaftarKeluarga,
-                                                  Id = a.Id,
-                                                  KepalaKeluarga = a.KepalaKeluarga,
-                                                  NoKK = a.NoKK,
-                                                  RT = rt,
-                                                  RTId = a.RTId,
-                                                  RW = rw,
-                                                  Tanggal = a.Tanggal
-                                              }).FirstOrDefault();
-                }
-                return Request.CreateResponse(HttpStatusCode.OK, result.ToList());
-            }
+            var result = new Collections.PendudukCollection().Get();
+            return Request.CreateResponse(HttpStatusCode.OK, result.ToList());
         }
 
         // GET: api/Penduduk/5
         public HttpResponseMessage Get(string NIK)
         {
-            using (var db = new OcphDbContext())
-            {
-                var result = (from a in db.Penduduk.Where(O => O.NIK == NIK)
-                             join b in db.PendudukDetail.Select() on a.Id equals b.Id
-                             select new penduduk
-                             {
-                                 Agama = a.Agama,
-                                 Detail = b,
-                                 Id = a.Id,
-                                 JK = a.JK,
-                                 Nama = a.Nama,
-                                 NIK = a.NIK,
-                                 Pekerjaan = a.Pekerjaan,
-                                 Pendidikan = a.Pendidikan,
-                                 TanggalLahir = a.TanggalLahir,
-                                 TempatLahir = a.TempatLahir
-                             }).FirstOrDefault();
-
-               if(result!=null)
-                {
-                    var kkdetail = db.KKDetail.Where(O => O.PendudukId == result.Id).FirstOrDefault();
-                    if (kkdetail != null)
-                        result.KartuKeluarga = db.KartuKeluarga.Where(O => O.Id == kkdetail.KartuKeluargaId).FirstOrDefault();
-                }
-                return Request.CreateResponse(HttpStatusCode.OK, result);
-            }
+            var result = new Collections.PendudukCollection().GetPendudukByNIK(NIK);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // POST: api/Penduduk
