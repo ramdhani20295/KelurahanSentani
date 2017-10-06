@@ -3,37 +3,37 @@
         <center>
             <img src="../../img/Kop Kantor Sentani.png" style="width:800px" />
             <h2 style="margin-top:20px"><u>SURAT KETERANGAN PINDAH</u></h2>
-            <h5>Nomor: {{Data.Surat.NoSurat}}</h5>
+            <h5>Nomor: {{Surat.NoSurat}}</h5>
         </center>
     </header>
         <div style="margin-left:100px;margin-right:75px">
         Yang bertanda tangan dibawah ini Kepala Kelurahan Sentani Kota menerangkan dengan sesungguhnya bahwa :
-        <table>
+        <table class="table" style="width:700px">
             <tbody>
                 <tr>
                     <th align="left">Nomor KK</th>
                     <td>:</td>
-                    <td>{{Data.KartuKeluarga.NoKK}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.KartuKeluarga.NoKK}}</td>
                 </tr>
                 <tr>
                     <th align="left">NIK</th>
                     <td>:</td>
-                    <td>{{Data.Penduduk.NIK}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.NIK}}</td>
                 </tr>
                 <tr>
-                    <th align="left">Nama Kepala Keluarga</th>
+                    <th align="left">Nama Pemohon</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.Nama}}</td>
                 </tr>
                 <tr>
                     <th align="left">Alamat Sekarang</th>
                     <td>:</td>
-                    <td>{{Data.KartuKeluarga.Alamat}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.KartuKeluarga.Alamat}}</td>
                 </tr>
                 <tr>
                     <th align="left">Alamat Tujuan Pindah</th>
                     <td>:</td>
-                    <td>{{Data.Pindah.Alamatbaru}}</td>
+                    <td>{{Surat.DataSurat.Alamatbaru}}</td>
                 </tr>
                 <tr>
                     <th align="left">Nama Anggota Yang Pindah</th>
@@ -42,40 +42,42 @@
                 </tr>
             </tbody>
         </table>
+            <table class="table" style="margin:20px;width:700px">
+                <thead>
+                    <tr>
+                        <th>NIK</th>
+                        <th>Nama</th>
+                        <th>Jenis Kelamin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in Surat.DataSurat.AnggotaPindah">
+                        <td>{{item.Penduduk.NIK}}</td>
+                        <td>{{item.Penduduk.Nama}}</td>
+                        <td>{{item.Penduduk.JK}}</td>
+                    </tr>
+                </tbody>
+            </table>
         <br />
         <br />
         Demikian Surat Keterangan Pindah ini dibuat untuk dipergunakan sebagaimana mestinya.
+           
     </div>
     <div class="form-group row card-block">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                 </div>
                 <div class="col-md-4">
                 </div>
-                <div class="col-md-4">
-                    Sentani, <span style="font-size:13px; color:black" ng-bind="Data.Surat.TanggalBuat | date:'dd MMMM yyyy'"></span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <center>
-                        Ketua Kelurahan Sentani Kota
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <u>{{PejabatLurah.Nama}}</u>
-                        <br />
-                        NIP. {{}}
-                    </center>
+                        <h5> Sentani, {{Surat.TanggalBuat|date}}</h5>
+                        <h5> Ketua Kelurahan Sentani Kota</h5>
 
+                        <h4 style="margin-top:50px">{{PejabatLurah.Nama}}</h4>
+                        <h5 style="text-decoration:overline">NIP {{PejabatLurah.NIP}}</h5>
+                    </center>
                 </div>
             </div>
         </div>

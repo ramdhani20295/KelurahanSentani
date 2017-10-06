@@ -1,7 +1,11 @@
 ﻿using KelurahanSentani.DataModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace KelurahanSentani.Apis
@@ -61,6 +65,37 @@ namespace KelurahanSentani.Apis
                     model.IsCompleted = true;
             }
             return model;
+        }
+
+        public static Task SendEmailAsync(IdentityMessage message)
+        {
+            // Plug in your email service here to send an email.
+            try
+            {
+                string email = "ocph23.test@gmail.com";
+                string password = "Sony@7777";
+                var loginInfo = new NetworkCredential(email, password);
+                var msg = new MailMessage();
+                var smtpClient = new SmtpClient("smtp.gmail.com", 587);
+
+                msg.From = new MailAddress(email);
+                msg.To.Add(new MailAddress(message.Destination));
+                msg.Subject = message.Subject;
+                msg.Body = message.Body;
+                msg.IsBodyHtml = true;
+
+                smtpClient.EnableSsl = true;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = loginInfo;
+                smtpClient.Send(msg);
+            }
+            catch (Exception ex)
+            {
+
+                throw new SystemException(ex.Message);
+            }
+
+            return Task.FromResult(0);
         }
     }
 

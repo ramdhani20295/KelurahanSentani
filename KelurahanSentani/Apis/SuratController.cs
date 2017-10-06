@@ -102,6 +102,15 @@ namespace KelurahanSentani.Apis
                                 if (db.Umum.Insert(umum) && db.Permohonan.Update(O => new { O.Status }, mohonan, O => O.Id == mohonan.Id))
                                 {
                                     trans.Commit();
+                                   var link = string.Format("{0}/Home/Report#!/ReportUmum/{1}?Jenis={2}", Request.RequestUri.GetLeftPart(UriPartial.Authority), umum.SuratId,umum.Surat.JenisSurat);
+                                  //  var link = Url.Link("Default", new { controller = "Home/Report#!/ReportUmum/", umum.SuratId, Jenis = umum.Surat.JenisSurat });
+                                    string surat = string.Format(@"<p><img src='https://farm5.staticflickr.com/4492/36827170234_9be15289f8_z_d.jpg' width='640' height='124' /></p>
+                                                                <p> Dear, &nbsp;</p>
+                                                                <p> Permohonan Surat Anda telah kami proses & nbsp;</p>
+                                                                <p> <a href = '{0}'> Cetak / Lihat Surat </a></p>
+                                                                <p> Terima Kasih ,</p>
+                                                                <p> Salam </p> ",link);
+                                    ApiHelper.SendEmailAsync(new IdentityMessage { Destination = mohonan.EmailPemohon, Subject = "Pembuatan Surat", Body = surat });
                                     return Request.CreateResponse(HttpStatusCode.OK, umum);
                                 }
                                 else
@@ -169,6 +178,15 @@ namespace KelurahanSentani.Apis
                                 {
                                     db.AnggotaPindah.Update(O => new { O.surat_id }, new anggotapindah { surat_id = pindah.SuratId }, O => O.PermohonanId == mohonan.Id);
                                     trans.Commit();
+                                    var link = string.Format("{0}/Home/Report#!/ReportPindah/{1}?Jenis={2}", Request.RequestUri.GetLeftPart(UriPartial.Authority), pindah.SuratId, pindah.Surat.JenisSurat);
+                                    //  var link = Url.Link("Default", new { controller = "Home/Report#!/ReportUmum/", umum.SuratId, Jenis = umum.Surat.JenisSurat });
+                                    string surat = string.Format(@"<p><img src='https://farm5.staticflickr.com/4492/36827170234_9be15289f8_z_d.jpg' width='640' height='124' /></p>
+                                                                <p> Dear, &nbsp;</p>
+                                                                <p> Permohonan Surat Anda telah kami proses & nbsp;</p>
+                                                                <p> <a href = '{0}'> Cetak / Lihat Surat </a></p>
+                                                                <p> Terima Kasih ,</p>
+                                                                <p> Salam </p> ", link);
+                                    ApiHelper.SendEmailAsync(new IdentityMessage { Destination = mohonan.EmailPemohon, Subject = "Pembuatan Surat", Body = surat });
                                     return Request.CreateResponse(HttpStatusCode.OK, pindah);
                                 }
                                 else
@@ -237,6 +255,15 @@ namespace KelurahanSentani.Apis
                                 if (db.Kematian.Insert(kematian) && db.Permohonan.Update(O => new { O.Status }, mohonan, O => O.Id == mohonan.Id))
                                 {
                                     trans.Commit();
+                                    var link = string.Format("{0}/Home/Report#!/ReportKematian/{1}?Jenis={2}", Request.RequestUri.GetLeftPart(UriPartial.Authority), kematian.surat_Id, kematian.Surat.JenisSurat);
+                                    //  var link = Url.Link("Default", new { controller = "Home/Report#!/ReportUmum/", umum.SuratId, Jenis = umum.Surat.JenisSurat });
+                                    string surat = string.Format(@"<p><img src='https://farm5.staticflickr.com/4492/36827170234_9be15289f8_z_d.jpg' width='640' height='124' /></p>
+                                                                <p> Dear, &nbsp;</p>
+                                                                <p> Permohonan Surat Anda telah kami proses & nbsp;</p>
+                                                                <p> <a href = '{0}'> Cetak / Lihat Surat </a></p>
+                                                                <p> Terima Kasih ,</p>
+                                                                <p> Salam </p> ", link);
+                                    ApiHelper.SendEmailAsync(new IdentityMessage { Destination = mohonan.EmailPemohon, Subject = "Pembuatan Surat", Body = surat });
                                     return Request.CreateResponse(HttpStatusCode.OK, kematian);
                                 }
                                 else

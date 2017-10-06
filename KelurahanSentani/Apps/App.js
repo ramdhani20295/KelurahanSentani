@@ -59,9 +59,13 @@
             templateUrl: "../Apps/Views/ReportUmum.html",
             controller: "ReportUmumController"
         })  
-        .when("/ReportPindah", {
+        .when("/ReportPindah/:Id", {
             templateUrl: "../Apps/Views/ReportPindah.html",
             controller: "ReportPindahController"
+        })
+        .when("/ReportKematian/:Id", {
+            templateUrl: "../Apps/Views/ReportKematian.html",
+            controller: "ReportKematianController"
         })
 })
 
