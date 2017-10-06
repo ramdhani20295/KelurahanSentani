@@ -1,7 +1,7 @@
 ﻿<section class="forms" ng-init="Init()">
     <header>
         <center>
-            <img src="../../img/Kop Kantor Sentani.png" width="800 px" />
+            <img src="../../img/Kop Kantor Sentani.png" style="width:800px" />
             <h2 style="margin-top:20px"><u>SURAT KETERANGAN</u></h2>
             <h5>Nomor: {{Data.Surat.NoSurat}}</h5>
         </center>
@@ -130,12 +130,14 @@
                     <div class="col-md-4">
                     </div>
                     <div class="col-md-4">
-                        Sentani, Tanggal/Bulan/Tahun
+                        Sentani, <span style="font-size:13px; color:black" ng-bind="Data.Surat.TanggalBuat | date:'dd MMMM yyyy'"></span>
                     </div>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="row">
+                    <div class="col-md-4">
+                    </div>
                     <div class="col-md-4">
                     </div>
                     <div class="col-md-4">
@@ -145,14 +147,14 @@
                             <br />
                             <br />
                             <br />
-                            <u>Nama</u>
+                            <u>{{PejabatLurah.Nama}}</u>
                             <br />
-                            NIP
+                            NIP. {{}}
                         </center>
-                    </div>
-                    <div class="col-md-4">
+
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </section>
