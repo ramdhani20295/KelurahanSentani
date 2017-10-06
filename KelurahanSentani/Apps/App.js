@@ -59,6 +59,10 @@
             templateUrl: "../Apps/Views/ReportUmum.html",
             controller: "ReportUmumController"
         })  
+        .when("/ReportPindah", {
+            templateUrl: "../Apps/Views/ReportPindah.html",
+            controller: "ReportPindahController"
+        })
 })
 
 .controller("RedController", function ($scope) {
