@@ -561,6 +561,26 @@
             return deferred.promise;
         }
 
+        service.Update = function (model) {
+            deferred = $q.defer();
+            $http({
+                method: 'put',
+                url: BaseUrl.URL + "/api/permohonan/put",
+                data: model
+            }).then(function (response) {
+                alert(Helpers.getMessage(1, ""));
+                deferred.resolve(response.data);
+            }, function (error) {
+
+                alert(Helpers.getMessage(error.status, error.data.Message));
+                // deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+
+
         service.Approved = function (model,action) {
             deferred = $q.defer();
             $http({

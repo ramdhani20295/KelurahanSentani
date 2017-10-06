@@ -333,6 +333,7 @@
         }
 
         $scope.DaftarKeluargas = [];
+
         $scope.BuatSurat = function(item)
         {
             $scope.model = {};
@@ -377,6 +378,32 @@
                 default:
             }
         }
+
+        $scope.Edit = function(item)
+        {
+            $scope.model = angular.copy(item);
+        }
+
+        $scope.Detail = function (item) {
+            $scope.model =item;
+        }
+
+        $scope.Update = function (data) {
+            if (data.JenisSurat === 'Pindah') {
+                data.DataPindah = [];
+                angular.forEach($scope.DaftarKeluargas, function (value, key) {
+                    if (value.Selected === true) {
+                        data.DataPindah.push(value);
+                    }
+                });
+               
+            } 
+            PermohonanService.Update(data).then(function () {
+
+            });
+        }
+
+
     })
 
     .controller("SuratUmumController", function ($scope, Helpers, SuratService,$rootScope) {

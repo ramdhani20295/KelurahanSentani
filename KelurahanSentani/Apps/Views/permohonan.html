@@ -172,7 +172,7 @@
                             </div>
                         </div>
 
-                        <!--Ubah Permohonan-->
+                        <!--edit -->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
@@ -185,7 +185,7 @@
                                                         ×
                                                     </button>
                                                     <h4 class="modal-title" id="myModalLabel">
-                                                        Tambah Data Permohonan
+                                                        Edit  Permohonan
                                                     </h4>
                                                 </div>
                                                 <div class="modal-body">
@@ -194,22 +194,26 @@
                                                             <div class="col-md-12">
                                                                 <form role="form">
                                                                     <div class="form-group">
-                                                                        <select class="form-control" ng-model="model.JenisSurat" ng-options="x for x in Helpers.JenisSurat">
-                                                                            <option value="" disabled hidden selected>Jenis Surat</option>
-                                                                        </select>
+                                                                        <label class="form-control">Jenis Surat : {{model.JenisSurat}}</label>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input list="companies" class="form-control" ng-model="nokk" ng-change="Selected(nokk)">
-                                                                        <datalist id="companies">
-                                                                            <select class="form-control" ng-model="model.KK" ng-options="kk.KepalaKeluarga.Nama for kk in KartuKeluargas track by kk.NoKK"></select>
-                                                                        </datalist>
+                                                                        <label class="form-control">Nama Pemohon : {{model.Penduduk.Nama}}</label>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select class="form-control" ng-model="model.Penduduk" ng-options=" (x.Nama) for x in DaftarKeluargas">
-                                                                            <option value="" disabled hidden selected>Nama Penduduk</option>
-                                                                        </select>
+                                                                        <label class="form-control">NIK : {{model.Penduduk.NIK}}</label>
                                                                     </div>
+                                                                  
+                                                                    <div class="form-control" ng-show="model.JenisSurat==='Pindah'">
+                                                                        <div ng-click="showOptions= !showOptions">Pilih Penduduk Pindah</div>
+                                                                        <div ng-show="showOptions">
+                                                                            <label class="form-control" ng-repeat="option in DaftarKeluargas">{{option.Nama}}<input type="checkbox" class="form-control" ng-model="option.Selected" /><br /></label>
+                                                                        </div>
+                                                                    </div>
+
                                                                     <div class="form-group">
+                                                                        <label class="form-control">Email Pemohon : {{model.EmailPemohon}}</label>
+                                                                    </div>
+                                                                    <div>
                                                                         <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" />
                                                                     </div>
                                                                 </form>
@@ -222,7 +226,7 @@
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">
                                                         Close
                                                     </button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="Insert(model)">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="Update(model)">
                                                         Save changes
                                                     </button>
                                                 </div>
@@ -236,7 +240,7 @@
                             </div>
                         </div>
 
-                        <!--Detail Permohonan-->
+                        <!--Ubah Permohonan-->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
@@ -249,7 +253,7 @@
                                                         ×
                                                     </button>
                                                     <h4 class="modal-title" id="myModalLabel">
-                                                        Ubah Data Permohonan
+                                                        Detail
                                                     </h4>
                                                 </div>
                                                 <div class="modal-body">
@@ -258,22 +262,27 @@
                                                             <div class="col-md-12">
                                                                 <form role="form">
                                                                     <div class="form-group">
-                                                                        <select class="form-control">
-                                                                            <option value="" disabled hidden selected>Jenis Surat</option>
-                                                                        </select>
+                                                                        <label class="form-control">Jenis Surat : {{model.JenisSurat}}</label>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select class="form-control">
-                                                                            <option value="" disabled hidden selected>Nomor KK</option>
-                                                                        </select>
+                                                                        <label class="form-control">Nama Pemohon : {{model.Penduduk.Nama}}</label>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <select class="form-control">
-                                                                            <option value="" disabled hidden selected>Anggota KK</option>
-                                                                        </select>
+                                                                        <label class="form-control">NIK : {{model.Penduduk.NIK}}</label>
                                                                     </div>
+
+                                                                    <div class="form-control" ng-show="model.JenisSurat==='Pindah'">
+                                                                        <div ng-click="showOptions= !showOptions">Pilih Penduduk Pindah</div>
+                                                                        <div ng-show="showOptions">
+                                                                            <label class="form-control" ng-repeat="option in DaftarKeluargas">{{option.Nama}}<input type="checkbox" class="form-control" ng-model="option.Selected" /><br /></label>
+                                                                        </div>
+                                                                    </div>
+
                                                                     <div class="form-group">
-                                                                        <textarea type="text" class="form-control" placeholder="Maksud/Keperluan" />
+                                                                        <label class="form-control">Email Pemohon : {{model.EmailPemohon}}</label>
+                                                                    </div>
+                                                                    <div>
+                                                                        <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" />
                                                                     </div>
                                                                 </form>
                                                             </div>

@@ -187,12 +187,12 @@ namespace KelurahanSentani.Apis
             {
                 try
                 {
-                   if( db.Permohonan.Update(O=>new {O.Isi, O.JenisSurat,O.NomorPermohonan,O.PendudukId,O.EmailPemohon  },data,O=>O.Id==data.Id))
+                   if( db.Permohonan.Update(O=>new {O.Isi,O.NomorPermohonan,O.EmailPemohon  },data,O=>O.Id==data.Id))
                     {
                         return Request.CreateResponse(HttpStatusCode.OK, data);
                     }
                    else
-                        return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Data gagal ditambah");
+                        return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Data gagal diubah");
 
                 }
                 catch (Exception ex)

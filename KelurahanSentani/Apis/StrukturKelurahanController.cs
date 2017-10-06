@@ -71,6 +71,7 @@ namespace KelurahanSentani.Apis
                     if (value != null && value.Id == 0)
                     {
                         value.Id = db.RW.InsertAndGetLastID(value);
+                        db.Pejabat.Update(O => new { O.InstansiID }, new pejabat { InstansiID = value.Id }, O => O.Id == value.PejabatId);
                         if (value.Id > 0 && value.DaftarRT != null && value.DaftarRT.Count > 0)
                         {
                             foreach (var rt in value.DaftarRT)
@@ -79,6 +80,7 @@ namespace KelurahanSentani.Apis
                                 {
                                     rt.RWId = value.Id;
                                     rt.Id = db.RT.InsertAndGetLastID(rt);
+                                    db.Pejabat.Update(O => new { O.InstansiID }, new pejabat { InstansiID = rt.Id }, O => O.Id == rt.PejabatId);
                                 }
                             }
                         }
@@ -91,6 +93,8 @@ namespace KelurahanSentani.Apis
                             {
                                 rt.RWId = value.Id;
                                 rt.Id = db.RT.InsertAndGetLastID(rt);
+                                db.Pejabat.Update(O => new { O.InstansiID }, new pejabat { InstansiID = rt.Id }, O => O.Id == rt.PejabatId);
+
                             }
                         }
                     }
@@ -112,15 +116,21 @@ namespace KelurahanSentani.Apis
         {
             using (var db = new OcphDbContext())
             {
+                var trans = db.Connection.BeginTransaction();
                 try
                 {
                     value.Id = db.RT.InsertAndGetLastID(value);
-
-                    return Request.CreateResponse(HttpStatusCode.OK, value);
-
+                    if (value.Id > 0 && db.Pejabat.Update(O => new { O.InstansiID }, new pejabat { InstansiID = value.Id }, O => O.Id == value.PejabatId))
+                    {
+                        trans.Commit();
+                        return Request.CreateResponse(HttpStatusCode.OK, value);
+                    }
+                    else
+                        throw new SystemException("Data Gagal Ditambah");
                 }
                 catch (Exception ex)
                 {
+                    trans.Rollback();
                     return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, ex.Message);
                 }
             }
