@@ -20,6 +20,7 @@ using DAL;
                      }
           } 
 
+
           [DbColumn("NIK")] 
           public string NIK 
           { 

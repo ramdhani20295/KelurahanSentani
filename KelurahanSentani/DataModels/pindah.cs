@@ -52,6 +52,9 @@ using DAL;
           }
 
         public surat Surat { get; set; }
+        public penduduk Penduduk { get;  set; }
+        public kartukeluarga KartuKeluarga { get; set; }
+        public IEnumerable<anggotapindah> AnggotaPindah { get; set; }
 
         private string  _nokk;
            private string  _alamatbaru;
