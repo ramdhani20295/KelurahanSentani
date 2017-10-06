@@ -758,6 +758,21 @@
 
             return deferred.promise;
         }
+        service.GetById= function (Id,JenisSurat) {
+            deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: BaseUrl.URL + "/api/surat/Get/" + Id + "?Jenis=" + JenisSurat
+            }).then(function (response) {
+                deferred.resolve(response.data);
+            }, function (error) {
+
+                alert(Helpers.getMessage(error.status, error.data.Message));
+                // deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
         
 
         return service;

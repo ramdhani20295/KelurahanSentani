@@ -3,84 +3,84 @@
         <center>
             <img src="../../img/Kop Kantor Sentani.png" style="width:800px" />
             <h2 style="margin-top:20px"><u>SURAT KETERANGAN KEMATIAN</u></h2>
-            <h5>Nomor: {{Data.Surat.NoSurat}}</h5>
+            <h5>Nomor: {{Surat.NoSurat}}</h5>
         </center>
     </header>
     <div style="margin-left:100px;margin-right:75px">
         Yang bertanda tangan dibawah ini Kepala Kelurahan Sentani Kota menerangkan dengan sesungguhnya bahwa :
-        <table>
+        <table class="table">
             <tbody>
                 <tr>
                     <th align="left">NIK</th>
                     <td>:</td>
-                    <td>{{Data.Penduduk.NIK}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.NIK}}</td>
                 </tr>
                 <tr>
                     <th align="left">Nama</th>
                     <td>:</td>
-                    <td>{{Data.Penduduk.Nama}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.Nama}}</td>
                 </tr>
                 <tr>
                     <th align="left">Tempat / Tanggal Lahir</th>
                     <td>:</td>
-                    <td>{{Data.Penduduk.TTL}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.TTL}}</td>
                 </tr>
                 <tr>
                     <th align="left">Jenis Kelamin</th>
                     <td>:</td>
-                    <td>{{Data.Penduduk.JK}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.JK}}</td>
                 </tr>
                 <tr>
                     <th align="left">Kewarganegaraan</th>
                     <td>:</td>
-                    <td>{{DataPenduduk.Detail.Kewarganegaraan}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.Detail.Kewarganegaraan}}</td>
                 </tr>
                 <tr>
                     <th align="left">Agama</th>
                     <td>:</td>
-                    <td>{{Data.Penduduk.Agama}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.Agama}}</td>
                 </tr>
                 <tr>
                     <th align="left">Status Perkawinan</th>
                     <td>:</td>
-                    <td>{{DataPenduduk.Detail.StatusPerkawinan}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.Detail.StatusPerkawinan}}</td>
                 </tr>
                 <tr>
                     <th align="left">Pekerjaan</th>
                     <td>:</td>
-                    <td>{{DataPenduduk.Pekerjaan}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.Pekerjaan}}</td>
                 </tr>
                 <tr>
                     <th align="left">Alamat</th>
                     <td>:</td>
-                    <td>{{DataPenduduk.KartuKeluarga.Alamat}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.KartuKeluarga.Alamat}}</td>
                 </tr>
                 <tr>
                     <th align="left">RT / RW</th>
                     <td>:</td>
-                    <td>{{}}</td>
+                    <td>{{Surat.DataSurat.Penduduk.KartuKeluarga.RW.Nama}}</td>
                 </tr>
             </tbody>
         </table>
         <br />
         <br />
         Telah meninggal pada :
-        <table>
+        <table class="table">
             <tbody>
                 <tr>
-                    <th align="left">Hari / Tanggal</th>
+                    <th align="left" style="width:40%">Hari / Tanggal</th>
                     <td>:</td>
-                    <td><span style="font-size:13px; color:black" ng-bind="Data.tglkematian | date:'EEEE, dd-MM-yyyy'"></span></td>
+                    <td><span style="font-size:13px; color:black" ng-bind="Surat.DataSurat.tglkematian | date:'EEEE, dd-MM-yyyy'"></span></td>
                 </tr>
                 <tr>
                     <th align="left">Tempat Kematian</th>
                     <td>:</td>
-                    <td>{{Data.tmptkematian}}</td>
+                    <td>{{Surat.DataSurat.tmptkematian}}</td>
                 </tr>
                 <tr>
                     <th align="left">Sebab Kematian</th>
                     <td>:</td>
-                    <td>{{Data.sebabkematian}}</td>
+                    <td>{{Surat.DataSurat.sebabkematian}}</td>
                 </tr>
             </tbody>
         </table>
@@ -92,33 +92,18 @@
     <div class="form-group row card-block">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                 </div>
                 <div class="col-md-4">
                 </div>
-                <div class="col-md-4">
-                    Sentani, <span style="font-size:13px; color:black" ng-bind="Data.Surat.TanggalBuat | date:'dd MMMM yyyy'"></span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <center>
-                        Ketua Kelurahan Sentani Kota
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <u>{{PejabatLurah.Nama}}</u>
-                        <br />
-                        NIP. {{}}
-                    </center>
+                        <h5> Sentani, {{Surat.TanggalBuat|date}}</h5>
+                        <h5> Ketua Kelurahan Sentani Kota</h5>
 
+                        <h4 style="margin-top:50px">{{PejabatLurah.Nama}}</h4>
+                        <h5 style="text-decoration:overline">NIP {{PejabatLurah.NIP}}</h5>
+                    </center>
                 </div>
             </div>
         </div>

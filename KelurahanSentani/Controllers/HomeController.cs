@@ -50,6 +50,12 @@ namespace KelurahanSentani.Controllers
         }
 
 
+        public ActionResult Report()
+        {
+            return View();
+        }
+
+
 
         public ActionResult About()
         {

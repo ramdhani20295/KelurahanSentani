@@ -13,7 +13,7 @@ namespace KelurahanSentani.Apis
         // GET: api/Pejabat
         // GET: api/Penduduk
 
-            [Authorize(Roles ="Administrator,Lurah")]
+         
         public HttpResponseMessage Get()
         {
             var coll = new Collections.PejabatCollection();
@@ -55,7 +55,7 @@ namespace KelurahanSentani.Apis
                 {
                     if (value != null && value.Id == id)
                     {
-                        var result = db.Pejabat.Update(O => new { O.Alamat,O.InstansiID,O.Jabatan,O.Level,O.Nama,O.Status}, value, O => O.Id == id);
+                        var result = db.Pejabat.Update(O => new { O.Alamat,O.InstansiID,O.Jabatan,O.Level,O.Nama,O.Status, O.NIP }, value, O => O.Id == id);
                         if (result == true)
                             return Request.CreateResponse(HttpStatusCode.OK, value);
                         else

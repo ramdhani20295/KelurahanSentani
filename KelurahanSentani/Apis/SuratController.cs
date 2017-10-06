@@ -12,9 +12,48 @@ namespace KelurahanSentani.Apis
     public class SuratController : ApiController
     {
         // GET: api/Surat
-        public IEnumerable<string> Get()
+        public surat Get(int Id,JenisSurat Jenis)
         {
-            return new string[] { "value1", "value2" };
+            using (var db = new OcphDbContext())
+            {
+                var result = db.Surat.Where(O => O.Id == Id).FirstOrDefault();
+                if (result != null && Jenis == JenisSurat.Kematian)
+                {
+                    var data = db.Kematian.Where(O => O.surat_Id == Id).FirstOrDefault();
+                    if (data != null)
+                        data.Penduduk = new Collections.PendudukCollection().GetPendudukByNIK(data.NIK);
+                    result.DataSurat = data;
+                }
+                else if (result != null && Jenis == JenisSurat.Umum)
+                {
+                    var data = db.Umum.Where(O => O.SuratId == Id).FirstOrDefault();
+                    if (data != null)
+                        data.Penduduk = new Collections.PendudukCollection().GetPendudukByNIK(data.NIK);
+                    result.DataSurat = data;
+                } else if (result != null && Jenis == JenisSurat.Pindah)
+                {
+                    var data = db.Pindah.Where(O => O.SuratId == Id).FirstOrDefault();
+                    if (data != null)
+                    {
+                        data.Penduduk = new Collections.PendudukCollection().GetPendudukByNIK(data.NIK);
+                        data.AnggotaPindah = from a in db.AnggotaPindah.Where(O => O.surat_id == data.SuratId)
+                                             join b in db.Penduduk.Select() on a.NIK equals b.NIK
+                                             select new anggotapindah
+                                             {
+                                                 idAnggotaPindah = a.idAnggotaPindah,
+                                                 NIK = a.NIK,
+                                                 Penduduk = b,
+                                                 PermohonanId = a.PermohonanId,
+                                                 surat_id = a.surat_id
+                                             };
+                        result.DataSurat = data;
+                    }
+
+                } else
+                    throw new SystemException("Data Tidak Ditemukan");
+
+                return result;
+            }
         }
 
         // GET: api/Surat/5
@@ -63,6 +102,15 @@ namespace KelurahanSentani.Apis
                                 if (db.Umum.Insert(umum) && db.Permohonan.Update(O => new { O.Status }, mohonan, O => O.Id == mohonan.Id))
                                 {
                                     trans.Commit();
+                                   var link = string.Format("{0}/Home/Report#!/ReportUmum/{1}?Jenis={2}", Request.RequestUri.GetLeftPart(UriPartial.Authority), umum.SuratId,umum.Surat.JenisSurat);
+                                  //  var link = Url.Link("Default", new { controller = "Home/Report#!/ReportUmum/", umum.SuratId, Jenis = umum.Surat.JenisSurat });
+                                    string surat = string.Format(@"<p><img src='https://farm5.staticflickr.com/4492/36827170234_9be15289f8_z_d.jpg' width='640' height='124' /></p>
+                                                                <p> Dear, &nbsp;</p>
+                                                                <p> Permohonan Surat Anda telah kami proses & nbsp;</p>
+                                                                <p> <a href = '{0}'> Cetak / Lihat Surat </a></p>
+                                                                <p> Terima Kasih ,</p>
+                                                                <p> Salam </p> ",link);
+                                    ApiHelper.SendEmailAsync(new IdentityMessage { Destination = mohonan.EmailPemohon, Subject = "Pembuatan Surat", Body = surat });
                                     return Request.CreateResponse(HttpStatusCode.OK, umum);
                                 }
                                 else
@@ -130,6 +178,15 @@ namespace KelurahanSentani.Apis
                                 {
                                     db.AnggotaPindah.Update(O => new { O.surat_id }, new anggotapindah { surat_id = pindah.SuratId }, O => O.PermohonanId == mohonan.Id);
                                     trans.Commit();
+                                    var link = string.Format("{0}/Home/Report#!/ReportPindah/{1}?Jenis={2}", Request.RequestUri.GetLeftPart(UriPartial.Authority), pindah.SuratId, pindah.Surat.JenisSurat);
+                                    //  var link = Url.Link("Default", new { controller = "Home/Report#!/ReportUmum/", umum.SuratId, Jenis = umum.Surat.JenisSurat });
+                                    string surat = string.Format(@"<p><img src='https://farm5.staticflickr.com/4492/36827170234_9be15289f8_z_d.jpg' width='640' height='124' /></p>
+                                                                <p> Dear, &nbsp;</p>
+                                                                <p> Permohonan Surat Anda telah kami proses & nbsp;</p>
+                                                                <p> <a href = '{0}'> Cetak / Lihat Surat </a></p>
+                                                                <p> Terima Kasih ,</p>
+                                                                <p> Salam </p> ", link);
+                                    ApiHelper.SendEmailAsync(new IdentityMessage { Destination = mohonan.EmailPemohon, Subject = "Pembuatan Surat", Body = surat });
                                     return Request.CreateResponse(HttpStatusCode.OK, pindah);
                                 }
                                 else
@@ -198,6 +255,15 @@ namespace KelurahanSentani.Apis
                                 if (db.Kematian.Insert(kematian) && db.Permohonan.Update(O => new { O.Status }, mohonan, O => O.Id == mohonan.Id))
                                 {
                                     trans.Commit();
+                                    var link = string.Format("{0}/Home/Report#!/ReportKematian/{1}?Jenis={2}", Request.RequestUri.GetLeftPart(UriPartial.Authority), kematian.surat_Id, kematian.Surat.JenisSurat);
+                                    //  var link = Url.Link("Default", new { controller = "Home/Report#!/ReportUmum/", umum.SuratId, Jenis = umum.Surat.JenisSurat });
+                                    string surat = string.Format(@"<p><img src='https://farm5.staticflickr.com/4492/36827170234_9be15289f8_z_d.jpg' width='640' height='124' /></p>
+                                                                <p> Dear, &nbsp;</p>
+                                                                <p> Permohonan Surat Anda telah kami proses & nbsp;</p>
+                                                                <p> <a href = '{0}'> Cetak / Lihat Surat </a></p>
+                                                                <p> Terima Kasih ,</p>
+                                                                <p> Salam </p> ", link);
+                                    ApiHelper.SendEmailAsync(new IdentityMessage { Destination = mohonan.EmailPemohon, Subject = "Pembuatan Surat", Body = surat });
                                     return Request.CreateResponse(HttpStatusCode.OK, kematian);
                                 }
                                 else

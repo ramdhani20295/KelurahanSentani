@@ -11,7 +11,7 @@ using DAL;
      public class kematian:BaseNotifyProperty  
    {
           [DbColumn("surat_Id")] 
-          public int surat_Id 
+          public int surat_Id
           { 
                get{return _surat_id;} 
                set{ 
