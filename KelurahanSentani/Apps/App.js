@@ -59,6 +59,10 @@
             templateUrl: "../Apps/Views/ReportUmum.html",
             controller: "ReportUmumController"
         })
+        .when("/ReportKematian", {
+            templateUrl: "../Apps/Views/ReportKematian.html",
+            controller: "ReportKematianController"
+        })
     ;
 })
 
