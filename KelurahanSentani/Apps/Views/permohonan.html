@@ -130,7 +130,7 @@
                                                                             <select class="form-control" ng-model="model.KK" ng-options="kk.KepalaKeluarga.Nama for kk in KartuKeluargas track by kk.NoKK"></select>
                                                                         </datalist>
                                                                     </div>
-                                                                    <select class="form-control" ng-model="model.Penduduk" ng-options=" (x.Nama) for x in DaftarKeluargas">
+                                                                    <select class="form-control" ng-model="model.Penduduk" ng-options="(x.Nama) for x in DaftarKeluargas">
                                                                         <option value="" disabled hidden selected>Pemohon</option>
                                                                     </select>
                                                                     <div class="form-control" ng-show="model.JenisSurat==='Pindah'">

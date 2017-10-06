@@ -491,9 +491,4 @@
             });
             $scope.Data = $rootScope.SuratUmum;
         }
-        });
-
-
-
-
-    ;
+    });
