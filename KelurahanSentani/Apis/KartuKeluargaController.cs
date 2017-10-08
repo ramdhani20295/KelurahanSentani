@@ -103,6 +103,7 @@ namespace KelurahanSentani.Apis
                 var trans = db.Connection.BeginTransaction();
                 try
                 {
+                    
                     value.Id = db.Penduduk.InsertAndGetLastID(value);
 
                     if (value.Detail != null )
