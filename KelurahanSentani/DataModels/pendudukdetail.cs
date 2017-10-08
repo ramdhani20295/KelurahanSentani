@@ -23,8 +23,9 @@ namespace KelurahanSentani.DataModels
                      }
           } 
 
-          [DbColumn("StatusPerkawinan")] 
-          public string StatusPerkawinan 
+          [DbColumn("StatusPerkawinan")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public StatusPerkawinan StatusPerkawinan 
           { 
                get{return _statusperkawinan;} 
                set{ 
@@ -44,8 +45,9 @@ namespace KelurahanSentani.DataModels
                      }
           } 
 
-          [DbColumn("Kewarganegaraan")] 
-          public string Kewarganegaraan 
+          [DbColumn("Kewarganegaraan")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Kewarganegaraan Kewarganegaraan 
           { 
                get{return _kewarganegaraan;} 
                set{ 
@@ -95,9 +97,9 @@ namespace KelurahanSentani.DataModels
           } 
 
           private int  _id;
-           private string  _statusperkawinan;
+           private StatusPerkawinan  _statusperkawinan;
            private Hubungan  _hubungandalamkeluarga;
-           private string  _kewarganegaraan;
+           private Kewarganegaraan  _kewarganegaraan;
            private string  _ayah;
            private string  _ibu;
            private string  _paspor;

@@ -56,15 +56,13 @@
                                     <td>{{item.sebabkematian}}</td>
                                    
                                     <td>
-                                        <a data-target="#modal-container-UbahKematian" role="button" data-toggle="modal" ng-click="Edit(item)">
+                                        <a ng-show="MyRole==='Administrator'" data-target="#modal-container-UbahKematian" role="button" data-toggle="modal" ng-click="Edit(item)">
                                             <i style="color:black" class="fa fa-pencil fa-lg" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
                                         </a>
                                         <a href="#!ReportKematian/{{item.Surat.Id}}?Jenis={{item.Surat.JenisSurat}}">
                                             <i style="color:black" class="fa fa-print fa-lg" data-toggle="tooltip" title="Print"></i>
                                         </a>
-                                        <a ng-click="DeleteItem(item)">
-                                            <i style="color:black" class="fa fa-trash-o fa-lg" data-toggle="tooltip" title="Hapus"></i>
-                                        </a>
+                                      
                                     </td>
                                 </tr>
                             </tbody>

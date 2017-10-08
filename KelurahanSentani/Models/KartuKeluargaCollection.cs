@@ -105,6 +105,7 @@ namespace KelurahanSentani.DataModels
                     {
                         var p = (from pp in db.Penduduk.Where(O => O.Id == data.PendudukId)
                                  join d in db.PendudukDetail.Select() on pp.Id equals d.Id
+
                                  select new penduduk
                                  {
                                      Agama = pp.Agama,

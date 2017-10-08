@@ -38,12 +38,6 @@
                                             Level
                                         </th>
                                         <th>
-                                            Instansi
-                                        </th>
-                                        <th>
-                                            Jabatan
-                                        </th>
-                                        <th>
                                             Action
                                         </th>
                                     </tr>
@@ -63,13 +57,6 @@
                                         <td>
                                             {{item.Level}}
                                         </td>
-                                        <td>
-                                            {{item.Instansi.Nama}}
-                                        </td>
-                                        <td>
-                                            {{item.Jabatan}}
-                                        </td>
-
                                         <td>
                                             <a data-target="#modal-container-UbahPejabat" role="button" data-toggle="modal" ng-click="Edit(item)">
                                                 <i style="color:black" class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
@@ -135,12 +122,9 @@
                                                         <label>
                                                             Jabatan :
                                                         </label>
-                                                        <ul>
-                                                            <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Ketua" name="optradio">Ketua</label>
-                                                        </ul>
-                                                        <ul>
-                                                            <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Sekretaris" name="optradio">Sekretaris</label>
-                                                        </ul>
+                                                        <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Ketua" name="optradio">Ketua</label>
+                                                        <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Sekretaris" name="optradio">Sekretaris</label>
+
                                                     </div>
                                                 </div>
                                             </form>
@@ -219,12 +203,10 @@
                                                         Jabatan
                                                     </label>
                                                     <div class="form-control">
-                                                        <ul>
-                                                            <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Ketua" name="optradio">Ketua</label>
-                                                        </ul>
-                                                        <ul>
-                                                            <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Sekretaris" name="optradio">Sekretaris</label>
-                                                        </ul>
+                                                        <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Ketua" name="optradio">Ketua</label>
+
+                                                        <label class="radio-inline"><input type="radio" ng-model="model.Jabatan" value="Sekretaris" name="optradio">Sekretaris</label>
+
                                                     </div>
                                                 </div>
                                             </form>

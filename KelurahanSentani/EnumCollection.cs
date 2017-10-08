@@ -37,7 +37,7 @@ namespace KelurahanSentani
 
     public enum Pendidikan
     {
-        SD, SMP, SMA, S1, S2, S3
+        SD, SMP, SMA,Diploma, S1, S2, S3
     }
 
     public enum LevelStruktur
