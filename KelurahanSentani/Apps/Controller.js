@@ -462,6 +462,14 @@
                 });
             });
         };
+
+        $scope.Edit = function(item)
+        {
+            $scope.model = angular.copy(item);
+        }
+
+
+
     })
 
     .controller("PendudukController", function ($scope,Helpers, KartuKeluargaService, StrukturKelurahanService, PagenationService) {

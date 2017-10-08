@@ -51,7 +51,7 @@
                                     <td>{{item.KartuKeluarga.Alamat}}</td>
                                     <td>{{item.Alamatbaru}}</td>
                                     <td>
-                                        <a ng-show="MyRole==='Administrator'" data-target="#modal-container-UbahSUmum" role="button" data-toggle="modal" ng-click="Edit(item)">
+                                        <a ng-show="MyRole==='Administrator'" data-target="#modal-container-UbahPindah" role="button" data-toggle="modal" ng-click="Edit(item)">
                                             <i style="color:black" class="fa fa-pencil fa-fw" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
                                         </a>
                                         <a href="#!ReportPindah/{{item.Surat.Id}}?Jenis={{item.Surat.JenisSurat}}">
@@ -63,78 +63,7 @@
                             </tbody>
                         </table>
 
-                        <!--Tambah Pindah-->
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="modal fade" id="modal-container-TambahPindah" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                        ×
-                                                    </button>
-                                                    <h4 class="modal-title" id="myModalLabel">
-                                                        Tambah Data Pindah
-                                                    </h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <form role="form">
-                                                                    <div class="form-group">
-                                                                        <input type="text" placeholder="Nomor KK" class="form-control" />
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <textarea type="text" class="form-control" placeholder="Alamat Baru" />
-                                                                    </div>
-                                                                    <div class="table-bordered">
-                                                                        <table class="table">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th></th>
-                                                                                    <th>NIK</th>
-                                                                                    <th>Nama</th>
-                                                                                    <th>Status Keluarga</th>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <div class="checkbox">
-                                                                                            <label><input type="checkbox" value=""></label>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td></td>
-                                                                                    <td></td>
-                                                                                    <td></td>
-                                                                                </tr>
-                                                                            </thead>
-                                                                        </table>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                        Close
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
-                                                        Save changes
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                    
 
                         <!--Ubah Pindah-->
                         <div class="container-fluid">
@@ -158,33 +87,53 @@
                                                             <div class="col-md-12">
                                                                 <form role="form">
                                                                     <div class="form-group">
-                                                                        <input type="text" placeholder="Nomor KK" class="form-control" />
+                                                                        <input type="text" ng-model="model.Surat.NoSurat" placeholder="Nomor Surat" class="form-control" />
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <textarea type="text" class="form-control" placeholder="Alamat Baru" />
+                                                                        <input type="text" placeholder="NIK" ng-model="model.Penduduk.NIK" class="form-control" />
                                                                     </div>
-                                                                    <div class="table-bordered">
-                                                                        <table class="table">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th></th>
-                                                                                    <th>NIK</th>
-                                                                                    <th>Nama</th>
-                                                                                    <th>Status Keluarga</th>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <div class="checkbox">
-                                                                                            <label><input type="checkbox" value=""></label>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td></td>
-                                                                                    <td></td>
-                                                                                    <td></td>
-                                                                                </tr>
-                                                                            </thead>
-                                                                        </table>
+                                                                    <div class="form-group">
+                                                                        <input type="text" placeholder="Nama" ng-model="model.Penduduk.Nama" class="form-control" />
                                                                     </div>
+
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" ng-model="model.Surat.JenisSurat" ng-options="x for x in Helpers.JenisSurat">
+                                                                            <option value="" disabled hidden selected>Jenis Surat</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div class="table-bordered" ng-show="model.Surat.JenisSurat==='Pindah'">
+                                                                        <div>Anggota</div>
+                                                                        <div>
+                                                                            <label class="form-control" ng-repeat="option in DaftarKeluargas">({{option.Penduduk.NIK}})  {{option.Penduduk.Nama}}</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="table-bordered" ng-show="model.Surat.JenisSurat==='Kematian'">
+                                                                        <div class="form-group">
+                                                                            Tanggal Kematian
+                                                                            <input type="date" ng-model="model.tglkematian" placeholder="Tanggal Kematian" class="form-control" />
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <textarea type="text" class="form-control" ng-model="model.tempatkematian" placeholder="Tempat Kematian" />
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <textarea type="text" class="form-control" ng-model="model.sebabkematian" placeholder="Sebab Kematian" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="table-bordered" ng-show="model.Surat.JenisSurat==='Umum'">
+                                                                        <div class="form-group">
+                                                                            Berlaku Hingga
+                                                                            <input type="date" ng-model="model.Surat.BerlakuHingga" placeholder="Tanggal Buat" class="form-control" />
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <textarea type="text" class="form-control" ng-model="model.Keterangan" placeholder="Maksud/Keperluan" />
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <textarea type="text" class="form-control" ng-model="model.Kop" placeholder="KOP SURAT" />
+                                                                        </div>
+                                                                    </div>
+
                                                                 </form>
                                                             </div>
                                                         </div>

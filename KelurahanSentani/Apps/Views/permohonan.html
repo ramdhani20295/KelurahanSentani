@@ -130,25 +130,28 @@
                                                                             <select class="form-control" ng-model="model.KK" ng-options="kk.KepalaKeluarga.Nama for kk in KartuKeluargas track by kk.NoKK"></select>
                                                                         </datalist>
                                                                     </div>
-                                                                    <select class="form-control" ng-model="model.Penduduk" ng-options="(x.Nama) for x in DaftarKeluargas">
-                                                                        <option value="" disabled hidden selected>Pemohon</option>
-                                                                    </select>
-                                                                    <div class="form-control" ng-show="model.JenisSurat==='Pindah'">
-                                                                        <div ng-click="showOptions= !showOptions">Pilih Penduduk Pindah</div>
-                                                                        <div ng-show="showOptions">
-                                                                            <label class="form-control" ng-repeat="option in DaftarKeluargas">{{option.Nama}}<input type="checkbox" class="form-control" ng-model="option.Selected"/><br /></label>
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" ng-model="model.Penduduk" ng-options="(x.Nama) for x in DaftarKeluargas">
+                                                                            <option value="" disabled hidden selected>Pemohon</option>
+                                                                        </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input type="email" required placeholder="Email Pemberitahuan" class="form-control" ng-model="model.EmailPemohon"/>
+                                                                        <input type="email" required placeholder="Email Pemberitahuan" class="form-control" ng-model="model.EmailPemohon" />
                                                                     </div>
-                                                                 
-                                                                    
-                                                                    <div>
-                                                                        <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" />
-                                                                    </div>
-                                                                    
-                                                                </form>
+                                                                        <div class="form-group" ng-show="model.JenisSurat==='Pindah'">
+                                                                            <div ng-click="showOptions= !showOptions">Pilih Penduduk Pindah</div>
+                                                                            <div ng-show="showOptions">
+                                                                                <label class="form-control" ng-repeat="option in DaftarKeluargas">{{option.Nama}}<input type="checkbox" class="form-control" ng-model="option.Selected" /><br /></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+
+
+                                                                        <div>
+                                                                            <textarea type="text" class="form-control" ng-model="model.Isi" style="min-height:350px" placeholder="Maksud/Keperluan" />
+                                                                        </div>
+
+</form>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -440,44 +443,49 @@
                                 <div class="col-md-12">
                                     <div class="modal fade" id="modal-container-CreateSUmum" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
+                                            <form role="form" ng-submit="SimpanSurat(model)">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
 
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                        ×
-                                                    </button>
-                                                    <h4 class="modal-title" id="myModalLabel">
-                                                        Buat Surat 
-                                                    </h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <form role="form">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                            ×
+                                                        </button>
+                                                        <h4 class="modal-title" id="myModalLabel">
+                                                            Buat Surat
+                                                        </h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container-fluid">
+                                                            <div class="row">
+
+                                                                <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <input type="text" ng-model="model.Surat.NoSurat" placeholder="Nomor Surat" class="form-control" />
+                                                                        <input type="text" ng-model="model.Surat.NoSurat" required placeholder="Nomor Surat" class="form-control" />
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input type="text" placeholder="NIK"  ng-model="model.Penduduk.NIK" class="form-control" />
+                                                                        <input type="text" disabled placeholder="NIK" ng-model="model.Penduduk.NIK" class="form-control" />
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input type="text" placeholder="Nama" ng-model="model.Penduduk.Nama" class="form-control" />
+                                                                        <input type="text" disabled placeholder="Nama" ng-model="model.Penduduk.Nama" class="form-control" />
                                                                     </div>
-                                                                  
+
                                                                     <div class="form-group">
-                                                                        <select class="form-control" ng-model="model.Surat.JenisSurat" ng-options="x for x in Helpers.JenisSurat">
+                                                                        <select class="form-control" disabled ng-model="model.Surat.JenisSurat" ng-options="x for x in Helpers.JenisSurat">
                                                                             <option value="" disabled hidden selected>Jenis Surat</option>
                                                                         </select>
                                                                     </div>
-                                                                   
-                                                                    <div class="table-bordered" ng-show="model.Surat.JenisSurat==='Pindah'">
-                                                                        <div>Anggota</div>
-                                                                        <div>
-                                                                            <label class="form-control" ng-repeat="option in DaftarKeluargas">({{option.Penduduk.NIK}})  {{option.Penduduk.Nama}}</label>
+                                                                    <div ng-show="model.Surat.JenisSurat==='Pindah'">
+                                                                        <div class="table-bordered">
+                                                                            <div>Anggota</div>
+                                                                            <div>
+                                                                                <label class="form-control" ng-repeat="option in DaftarKeluargas">({{option.Penduduk.NIK}})  {{option.Penduduk.Nama}}</label>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <textarea type="text" class="form-control" required ng-model="model.Alamatbaru" placeholder="Alamat Tujuan" />
                                                                         </div>
                                                                     </div>
-
                                                                     <div class="table-bordered" ng-show="model.Surat.JenisSurat==='Kematian'">
                                                                         <div class="form-group">
                                                                             Tanggal Kematian
@@ -502,23 +510,22 @@
                                                                             <textarea type="text" class="form-control" ng-model="model.Kop" placeholder="KOP SURAT" />
                                                                         </div>
                                                                     </div>
-                                                                    
-</form>
+                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer">
+                                                    <div class="modal-footer">
 
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                        Close
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="SimpanSurat(model)">
-                                                        Save changes
-                                                    </button>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                            Close
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">
+                                                            Save changes
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                            </div>
-
+                                            </form>
                                         </div>
 
                                     </div>
