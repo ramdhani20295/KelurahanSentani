@@ -58,6 +58,7 @@ namespace KelurahanSentani.Apis
                 var trans = db.Connection.BeginTransaction();
                 try
                 {
+                    value.Tanggal = DateTime.Now;
                     value.Id = db.KartuKeluarga.InsertAndGetLastID(value);
                     if(value.DaftarKeluarga!=null && value.DaftarKeluarga.Count>0)
                     {
@@ -99,6 +100,7 @@ namespace KelurahanSentani.Apis
                 var trans = db.Connection.BeginTransaction();
                 try
                 {
+                    
                     value.Id = db.Penduduk.InsertAndGetLastID(value);
 
                     if (value.Detail != null )
