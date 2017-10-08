@@ -311,6 +311,7 @@
     <Content Include="img\avatar-6.jpg" />
     <Content Include="img\favicon.ico" />
     <Content Include="img\Kop Kantor Sentani.png" />
+    <Content Include="img\Logo1.png" />
     <Content Include="img\search.png" />
     <Content Include="img\template-mac.png" />
     <Content Include="js\bootstrap.js" />

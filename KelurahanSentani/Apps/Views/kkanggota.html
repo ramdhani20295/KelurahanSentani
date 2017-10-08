@@ -70,7 +70,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
-                            <a data-target="#modal-container-TambahAnggota" role="button" data-toggle="modal">
+                            <a  ng-show="MyRole==='Administrator'" data-target="#modal-container-TambahAnggota" role="button" data-toggle="modal">
                                 <i style="color:black" class="fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" title="Tambah Anggota"> Anggota</i>
                             </a>
                         </div>
@@ -103,7 +103,7 @@
                                         <th>
                                             Pendidikan
                                         </th>
-                                        <th>
+                                        <th  ng-show="MyRole==='Administrator'">
                                             Action
                                         </th>
                                        
@@ -135,15 +135,9 @@
                                         <td>
                                             {{item.Pendidikan}}
                                         </td>
-                                        <td>
-                                            <a data-target="#modal-container-DetailAnggota" role="button" data-toggle="modal">
-                                                <i style="color:black" class="fa fa-book" aria-hidden="true" data-toggle="tooltip" title="Detail Anggota"></i>
-                                            </a>
+                                        <td  ng-show="MyRole==='Administrator'">
                                             <a data-target="#modal-container-UbahAnggota" role="button" data-toggle="modal" ng-click="SelectPerson(item)">
                                                 <i style="color:black" class="fa fa-pencil" aria-hidden="true" data-toggle="tooltip" title="Ubah"></i>
-                                            </a>
-                                            <a data-target="#" data-toggle="tooltip">
-                                                <i style="color:black" class="fa fa-trash-o" title="Hapus"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -344,206 +338,7 @@
 
             </div>
         </div>
-        <!--Detail Anggota-->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="modal fade" id="modal-container-DetailAnggota" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                        ×
-                                    </button>
-                                    <h4 class="modal-title" id="myModalLabel">
-                                        Detail Anggota
-                                    </h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <form role="form">
-                                                    <div class="form-group">
-                                                        <label>
-                                                            No Induk Kependudukan
-                                                        </label>
-                                                        <input type="text" class="form-control" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Nama Lengkap
-                                                        </label>
-                                                        <input type="text" class="form-control" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Jenis Kelamin
-                                                        </label>
-                                                        <select class="form-control">
-                                                            <option>Laki-laki</option>
-                                                            <option>Perempuan</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Tempat Lahir
-                                                        </label>
-                                                        <input type="text" class="form-control" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Tanggal Lahir
-                                                        </label>
-                                                        <input type="date" class="form-control" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Agama
-                                                        </label>
-                                                        <input type="text" class="form-control" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Pendidikan
-                                                        </label>
-                                                        <select class="form-control">
-                                                            <option>SD</option>
-                                                            <option>SMP</option>
-                                                            <option>SMA</option>
-                                                            <option>S1</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Pekerjaan
-                                                        </label>
-                                                        <input type="text" class="form-control" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Gol. Darah
-                                                        </label>
-                                                        <select class="form-control">
-                                                            <option>A</option>
-                                                            <option>B</option>
-                                                            <option>AB</option>
-                                                            <option>O</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Nama Ayah
-                                                        </label>
-                                                        <input type="text" class="form-control" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Nama Ibu
-                                                        </label>
-                                                        <input type="text" class="form-control" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Alamat
-                                                        </label>
-                                                        <input type="text" class="form-control" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            No RW
-                                                        </label>
-                                                        <select class="form-control">
-                                                            <option>01</option>
-                                                            <option>02</option>
-                                                            <option>03</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            No RT
-                                                        </label>
-                                                        <select class="form-control">
-                                                            <option>01</option>
-                                                            <option>02</option>
-                                                            <option>03</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Desa/Kelurahan
-                                                        </label>
-                                                        <input type="text" class="form-control" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Kecamatan
-                                                        </label>
-                                                        <input type="text" class="form-control" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Kabupaten
-                                                        </label>
-                                                        <input type="text" class="form-control" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Provinsi
-                                                        </label>
-                                                        <input type="text" class="form-control" />
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Status Nikah
-                                                        </label>
-                                                        <select class="form-control">
-                                                            <option>Kawin</option>
-                                                            <option>Belum Kawin</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Warga Negara
-                                                        </label>
-                                                        <select class="form-control">
-                                                            <option>WNI</option>
-                                                            <option>WNA</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Status Keluarga
-                                                        </label>
-                                                        <select class="form-control">
-                                                            <option>Kepala Keluarga</option>
-                                                            <option></option>
-                                                            <option>Anak</option>
-                                                        </select>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-      
+    
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">

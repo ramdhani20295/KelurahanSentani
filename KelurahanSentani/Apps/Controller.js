@@ -159,6 +159,7 @@
         $scope.IsBusy = false;
         $scope.Kepercayaan = Helpers.Kepercayaan();
         $scope.JenisKelamin = Helpers.JenisKelamin();
+        $scope.Pendidikan = Helpers.Pendidikan();
         $scope.KartuKeluarga = [];
         $scope.Pagenation = PagenationService;
         $scope.Search = '';
@@ -182,7 +183,9 @@
                 data.DaftarKeluarga = [];
                 penduduk.Id = 0;
                 data.DaftarKeluarga.push(penduduk);
-                KartuKeluargaService.Insert(data).then(function (response) { })
+                KartuKeluargaService.Insert(data).then(function (response) {
+                    $scope.KartuKeluarga.push(response);
+                })
             } catch (e) {
                 alert(e.message);
             } finally {
@@ -227,6 +230,11 @@
         $scope.Pendidikan = Helpers.Pendidikan();
         $scope.StatusPerkawinan = Helpers.StatusPerkawinan();
         $scope.KartuKeluarga = $rootScope.SelectedKK;
+        $scope.MyRole = '';
+        Helpers.MyRole().then(function (response) {
+            $scope.MyRole = response;
+
+        });
 
         $scope.SimpanAnggota = function(model)
         {
@@ -409,6 +417,7 @@
     .controller("SuratUmumController", function ($scope, Helpers, SuratService, PejabatService) {
         $scope.Helpers = Helpers;
         $scope.Surats = [];
+        $scope.MyRole = '';
         $scope.Init = function () {
             SuratService.sourceumum().then(function (response) {
                 $scope.Surats = response;
@@ -426,6 +435,7 @@
     .controller("SuratKematianController", function ($scope, Helpers, SuratService, $rootScope) {
         $scope.Helpers = Helpers;
         $scope.Surats = [];
+        $scope.MyRole = '';
         $scope.Init = function () {
             SuratService.sourcekematian().then(function (response) {
                 $scope.Surats = response;
@@ -443,6 +453,7 @@
     .controller("SuratPindahController", function ($scope, Helpers, SuratService) {
         $scope.Helpers = Helpers;
         $scope.Surats = [];
+        $scope.MyRole = '';
         $scope.Init = function () {
             SuratService.sourcepindah().then(function (response) {
                 $scope.Surats = response;
@@ -501,7 +512,6 @@
                             $scope.PejabatLurah = value;
                         }
                     });
-                    $window.print();
                 });
             });
         }
@@ -517,7 +527,6 @@
                     angular.forEach(response, function (value, key) {
                         if (value.Level == "Kelurahan") {
                             $scope.PejabatLurah = value;
-                            $window.print();
                         }
                     });
                    

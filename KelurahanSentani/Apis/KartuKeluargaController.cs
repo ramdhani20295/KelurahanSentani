@@ -67,6 +67,9 @@ namespace KelurahanSentani.Apis
                             if(item.Id==0)
                             {
                                 item.Id = db.Penduduk.InsertAndGetLastID(item);
+                                item.Detail = new pendudukdetail { Id = item.Id, HubunganDalamKeluarga = Hubungan.KepalaKeluarga , StatusPerkawinan=StatusPerkawinan.Kawin };
+                                value.KepalaKeluarga = item;
+                                db.PendudukDetail.InsertAndGetLastID(item.Detail);
                                var res= db.KKDetail.Insert(new kkdetail { KartuKeluargaId = value.Id, PendudukId = item.Id });
                                 if(!res)
                                     throw new SystemException("Data Gagal Ditambah");
