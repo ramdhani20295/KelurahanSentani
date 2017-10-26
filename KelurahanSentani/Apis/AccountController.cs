@@ -133,10 +133,10 @@ namespace KelurahanSentani.Apis
                         }
                         // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
-                        string c = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        string code = HttpUtility.UrlEncode(c);
-                        var callbackUrl = Url.Link("DefaultApi", new { controller = "Account/ConfirmEmail", userId = user.Id, code = code });
-                        await UserManager.SendEmailAsync(user.Id, "Confirm your account", "<p>Konfimasi Akun</p><p> Akun Anda Telah Dibuat:</p><p> User Name: user </p><p> Password : password </p> "+"Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        //string code = HttpUtility.UrlEncode(c);
+                        var callbackUrl = Url.Link("Default", new { controller = "Account/ConfirmEmail", userId = user.Id, code = code });
+                        await UserManager.SendEmailAsync(user.Id, "Confirm your account", "<p>Konfimasi Akun</p><p> Akun Anda Telah Dibuat:</p><p> User Name: "+ user.Email +"</p><p> Password : "+ model.Password+" </p> "+ "Silahkan confirm  account anda dengan mengklick link <a href=\"" + callbackUrl + "\">disini</a>");
                         using (var db = new OcphDbContext())
                         {
                             model.usersId = user.Id;
