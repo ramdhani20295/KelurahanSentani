@@ -19,8 +19,8 @@ namespace KelurahanSentani
             // Plug in your email service here to send an email.
             try
             {
-                string email = "ocph23.test@gmail.com";
-                string password = "Sony@7777";
+                string email = "aplikasikelurahan@gmail.com";
+                string password = "r20021995";
                 var loginInfo = new NetworkCredential(email, password);
                 var msg = new MailMessage();
                 var smtpClient = new SmtpClient("smtp.gmail.com", 587);

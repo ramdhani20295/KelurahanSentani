@@ -8,10 +8,10 @@ namespace KelurahanSentani.Models
 {
     public class KelurahanInfo: BaseNotifyProperty
     {
-        public string Provinsi { get { return "Papau"; } }
-        public string Kecamatan { get { return "Sentani Kota"; } }
-        public string Kelurahan { get { return "Hawai"; } }
-        public string KodePos { get { return "992123"; } }
+        public string Provinsi { get { return "Papua"; } }
+        public string Kecamatan { get { return "Sentani"; } }
+        public string Kelurahan { get { return "Sentani Kota"; } }
+        public string KodePos { get { return "999352"; } }
         public string Kabupaten { get { return "Kab. Jayapura"; } }
 
     }
